@@ -4,6 +4,6 @@ namespace SocialGames.Domain.Entities
 {
     internal class Platform : EntityBase
     {
-        public string Name { get; private set; }
+        public string Name { get;  set; }
     }
 }

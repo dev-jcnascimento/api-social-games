@@ -4,7 +4,7 @@ namespace SocialGames.Domain.Arguments.Player
 {
     internal class AddPlayerResponse : IResponse
     {
-        public Guid Id { get; private set; }
-        public string Message { get; private set; }
+        public Guid Id { get; set; }
+        public string Message { get; set; }
     }
 }

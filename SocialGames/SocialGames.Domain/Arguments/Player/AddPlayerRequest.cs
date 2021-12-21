@@ -5,8 +5,9 @@ namespace SocialGames.Domain.Arguments.Player
 {
     internal class AddPlayerRequest : IRequest
     {
-        public Name Name { get; private set; }
-        public Email Email { get; private set; }
-        public string Password { get; private set; }
+        public string FirstName{ get;  set; }
+        public string LastName { get; set; }
+        public string Email { get;  set; }
+        public string Password { get;  set; }
     }
 }

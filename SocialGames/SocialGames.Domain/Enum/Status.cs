@@ -2,8 +2,8 @@
 {
     enum Status
     {
-        Ativo = 0,
-        Inativo = 1,
-        EmAndamento = 2
+        EmAnlise = 0,
+        Ativo = 1,
+        Bloqueado = 2
     }
 }
