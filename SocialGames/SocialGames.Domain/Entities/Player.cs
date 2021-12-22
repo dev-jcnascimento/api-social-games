@@ -1,5 +1,6 @@
 ﻿using SocialGames.Domain.Entities.Base;
 using SocialGames.Domain.Enum;
+using SocialGames.Domain.Extension;
 using SocialGames.Domain.ValueObject;
 
 namespace SocialGames.Domain.Entities
@@ -17,15 +18,26 @@ namespace SocialGames.Domain.Entities
             Password = password;
         }
 
-        public Player(Name name, Email email, Password password, Status status)
+        public Player(Name name, Email email, Password password)
         {
             Name = name;
             Email = email;
             Password = password;
-            Status = status;
+            Status = Status.EmAnlise;               
         }
+        public void ChancePlayer(Name name, Email email, Status status)
+        {
+            Name = name;
+            Email = email;
 
-      
-
+            if (status != Status.Ativo)
+            {
+                throw new Exception("O jogador deve ser ativo para ser Alterado!");
+            }
+        }
+        public override string ToString()
+        {
+            return Name.FirstName + " " + Name.LastName;
+        }
     }
 }

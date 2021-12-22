@@ -19,6 +19,5 @@ namespace SocialGames.Domain.ValueObject
             }
             Word = Word.ConvertToMD5();
         }
-
     }
 }

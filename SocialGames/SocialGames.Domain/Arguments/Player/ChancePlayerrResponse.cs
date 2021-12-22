@@ -2,23 +2,22 @@
 
 namespace SocialGames.Domain.Arguments.Player
 {
-    internal class AuthenticatePlayerResponse : IResponse
+    internal class ChancePlayerResponse : IResponse
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
+        public string FirstName { get; set; }
         public string Email { get; set; }
         public int Status { get; set; }
 
-        public static explicit operator AuthenticatePlayerResponse(Entities.Player entity)
+        public static explicit operator ChancePlayerResponse(Entities.Player entity)
         {
-            return new AuthenticatePlayerResponse()
+            return new ChancePlayerResponse()
             {
-
+                Id = entity.Id,
+                FirstName = entity.Name.FirstName,
                 Email = entity.Email.Address,
-                Name = entity.Name.FirstName,
                 Status = (int)entity.Status
             };
         }
     }
 }
-

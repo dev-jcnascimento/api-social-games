@@ -3,6 +3,10 @@ using SocialGames.Domain.Entities;
 using SocialGames.Domain.Interfaces.Repositories;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Domain.ValueObject;
+using System.Web;
+using System.Collections.Generic;
+using System.Linq;
+using SocialGames.Domain.Arguments.Base;
 
 namespace SocialGames.Domain.Services
 {
@@ -21,13 +25,14 @@ namespace SocialGames.Domain.Services
             var email = new Email(request.Email);
             var password = new Password(request.Password);
 
-            Player player = new Player(name, email, password, Enum.Status.EmAnlise);
+            Player player = new(name, email, password);
             if (_repositoryPlayer.Existe(x => x.Email.Address == request.Email))
-            { 
+            {
                 throw new Exception("Esse Usuário já existe!");
             }
-            Guid Id = _repositoryPlayer.Add(player);
-            return new AddPlayerResponse() { Id = Id, Message = "Operação Realizada com Sucesso" };
+            player = _repositoryPlayer.Adicionar(player);
+            return (AddPlayerResponse)player;
+
         }
 
         public AuthenticatePlayerResponse Authenticate(AuthenticatePlayerRequest request)
@@ -36,11 +41,54 @@ namespace SocialGames.Domain.Services
             {
                 throw new Exception("AuthenticatePlayerRequest é obrigatório!");
             }
-            var response = _repositoryPlayer.Authenticate(request);
-            return response;
+
+            var email = new Email(request.Email);
+            var password = new Password(request.Password);
+            var player = new Player(email, password);
+
+            player = _repositoryPlayer.ObterPor(
+                x => x.Email.Address == player.Email.Address &&
+                x.Password.Word == player.Password.Word);
+            return (AuthenticatePlayerResponse)player;
 
         }
 
+        public ChancePlayerResponse Chance(ChancePlayerRequest request)
+        {
+            if (request == null)
+            {
+                throw new Exception("ChancePlayerRequest é obrigatório!");
+            }
 
+            Player player = _repositoryPlayer.ObterPorId(request.Id);
+            if (player == null)
+            {
+                throw new Exception("Jogador não encontrado!");
+            }
+            var email = new Email(request.Email);
+            var name = new Name(request.FirstName, request.LastName);
+
+            player.ChancePlayer(name, email, player.Status);
+            _repositoryPlayer.Editar(player);
+
+            return (ChancePlayerResponse)player;
+        }
+
+        public ResponseBase DeletePlayer(Guid id)
+        {
+            Player player = _repositoryPlayer.ObterPorId(id);
+            if (player == null)
+            {
+                throw new Exception("Jogador não encontrado!");
+            }
+            _repositoryPlayer.Remover(player);  
+
+            return (ResponseBase)player;
+        }
+
+        public IEnumerable<PlayerResponse> ListPlayers()
+        {
+            return _repositoryPlayer.Listar().ToList().Select(x => (PlayerResponse)x).ToList();
+        }
     }
 }

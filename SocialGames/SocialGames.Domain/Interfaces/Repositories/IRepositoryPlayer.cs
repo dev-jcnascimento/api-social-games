@@ -6,7 +6,5 @@ namespace SocialGames.Domain.Interfaces.Repositories
 {
     internal interface IRepositoryPlayer : IRepositoryBase<Player,Guid>
     {
-        AuthenticatePlayerResponse Authenticate(AuthenticatePlayerRequest request);
-        Guid Add(Player player);
     }
 }
