@@ -1,6 +1,6 @@
 ﻿namespace SocialGames.Domain.Enum
 {
-    enum Status
+    public enum Status
     {
         EmAnlise = 0,
         Ativo = 1,

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SocialGames.Domain.Arguments.Base
 {
-    internal class ResponseBase
+    public class ResponseBase
     {
         public string Message { get; set; }
         public ResponseBase()

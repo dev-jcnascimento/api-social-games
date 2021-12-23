@@ -1,16 +1,13 @@
-﻿using SocialGames.Domain.Arguments.Player;
+﻿using SocialGames.Domain.Arguments.Base;
+using SocialGames.Domain.Arguments.Player;
 using SocialGames.Domain.Entities;
 using SocialGames.Domain.Interfaces.Repositories;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Domain.ValueObject;
-using System.Web;
-using System.Collections.Generic;
-using System.Linq;
-using SocialGames.Domain.Arguments.Base;
 
 namespace SocialGames.Domain.Services
 {
-    internal class ServicePlayer : IServicePlayer
+    public class ServicePlayer : IServicePlayer
     {
         public readonly IRepositoryPlayer _repositoryPlayer;
 

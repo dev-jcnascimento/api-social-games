@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialGames.Domain", "SocialGames.Domain\SocialGames.Domain.csproj", "{24C3404F-5FC9-41EA-9910-89417E9DE243}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialGames.Domain", "SocialGames.Domain\SocialGames.Domain.csproj", "{24C3404F-5FC9-41EA-9910-89417E9DE243}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialGames.Infra", "SocialGames.Infra\SocialGames.Infra.csproj", "{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{24C3404F-5FC9-41EA-9910-89417E9DE243}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24C3404F-5FC9-41EA-9910-89417E9DE243}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24C3404F-5FC9-41EA-9910-89417E9DE243}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

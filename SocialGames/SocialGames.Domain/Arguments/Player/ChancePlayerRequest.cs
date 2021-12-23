@@ -3,7 +3,7 @@ using SocialGames.Domain.ValueObject;
 
 namespace SocialGames.Domain.Arguments.Player
 {
-    internal class ChancePlayerRequest : IRequest
+    public class ChancePlayerRequest : IRequest
     {
         public Guid Id { get; set; }
         public string FirstName{ get;  set; }

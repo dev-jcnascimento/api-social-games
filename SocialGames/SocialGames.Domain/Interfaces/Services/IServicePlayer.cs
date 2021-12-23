@@ -1,10 +1,9 @@
 ﻿using SocialGames.Domain.Arguments.Base;
 using SocialGames.Domain.Arguments.Player;
-using SocialGames.Domain.Entities;
 
 namespace SocialGames.Domain.Interfaces.Services
 {
-    internal interface IServicePlayer
+    public interface IServicePlayer
     {
         AuthenticatePlayerResponse Authenticate(AuthenticatePlayerRequest request);
         AddPlayerResponse Add(AddPlayerRequest request);

@@ -2,7 +2,7 @@
 
 namespace SocialGames.Domain.Arguments.Player
 {
-    internal class AuthenticatePlayerResponse : IResponse
+    public class AuthenticatePlayerResponse : IResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

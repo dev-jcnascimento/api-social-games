@@ -3,7 +3,7 @@ using SocialGames.Domain.ValueObject;
 
 namespace SocialGames.Domain.Arguments.Player
 {
-    internal class PlayerResponse : IResponse
+    public class PlayerResponse : IResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

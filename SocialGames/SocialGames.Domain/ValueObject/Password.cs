@@ -2,7 +2,7 @@
 
 namespace SocialGames.Domain.ValueObject
 {
-    internal class Password
+    public class Password
     {
         public string Word { get; private set; }
         public Password(string word)
