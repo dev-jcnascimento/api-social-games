@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialGames.Domain", "SocialGames.Domain\SocialGames.Domain.csproj", "{24C3404F-5FC9-41EA-9910-89417E9DE243}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialGames.Infra", "SocialGames.Infra\SocialGames.Infra.csproj", "{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialGames.Infra", "SocialGames.Infra\SocialGames.Infra.csproj", "{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialGames.IoC", "SocialGames.IoC\SocialGames.IoC.csproj", "{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
