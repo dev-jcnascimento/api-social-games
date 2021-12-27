@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNet.WebApi.Extensions.Compression.Server;
-using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -8,7 +7,6 @@ using SocialGames.Api.App_Start;
 using SocialGames.Api.Security;
 using SocialGames.IoC.Unity;
 using System;
-using System.Configuration;
 using System.Net.Http.Extensions.Compression.Core.Compressors;
 using System.Web.Http;
 using Unity;
