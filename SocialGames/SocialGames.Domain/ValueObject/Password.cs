@@ -1,4 +1,4 @@
-﻿using SocialGames.Domain.Extension;
+﻿using SocialGames.Domain.Extensions;
 
 namespace SocialGames.Domain.ValueObject
 {

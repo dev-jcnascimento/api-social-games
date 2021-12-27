@@ -7,7 +7,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialGames.Domain", "Socia
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialGames.Infra", "SocialGames.Infra\SocialGames.Infra.csproj", "{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialGames.IoC", "SocialGames.IoC\SocialGames.IoC.csproj", "{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialGames.IoC", "SocialGames.IoC\SocialGames.IoC.csproj", "{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{24C3404F-5FC9-41EA-9910-89417E9DE243} = {24C3404F-5FC9-41EA-9910-89417E9DE243}
+		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C} = {1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialGames.Api2", "SocialGames.Api2\SocialGames.Api2.csproj", "{F515784A-29A9-4BAB-B698-E051A88DC0FE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5} = {89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +36,10 @@ Global
 		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F515784A-29A9-4BAB-B698-E051A88DC0FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F515784A-29A9-4BAB-B698-E051A88DC0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F515784A-29A9-4BAB-B698-E051A88DC0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F515784A-29A9-4BAB-B698-E051A88DC0FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
@@ -12,6 +13,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SocialGames.Domain\SocialGames.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
 </Project>

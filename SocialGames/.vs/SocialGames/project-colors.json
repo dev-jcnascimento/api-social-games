@@ -1,16 +1,21 @@
 {
   "Version": 1,
   "ProjectMap": {
-    "24c3404f-5fc9-41ea-9910-89417e9de243": {
-      "ProjectGuid": "24c3404f-5fc9-41ea-9910-89417e9de243",
-      "DisplayName": "SocialGames.Domain",
+    "28a3dd29-7cfd-4150-abfd-8f572d08e056": {
+      "ProjectGuid": "28a3dd29-7cfd-4150-abfd-8f572d08e056",
+      "DisplayName": "SocialGames.Api",
       "ColorIndex": 0
     },
     "1bc99f8f-aa4e-459f-a55a-ee3bf4c6e50c": {
       "ProjectGuid": "1bc99f8f-aa4e-459f-a55a-ee3bf4c6e50c",
       "DisplayName": "SocialGames.Infra",
       "ColorIndex": 1
+    },
+    "29235e5a-0caa-4353-b6c7-c3d83442ef15": {
+      "ProjectGuid": "29235e5a-0caa-4353-b6c7-c3d83442ef15",
+      "DisplayName": "SocialGames.Api2",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }

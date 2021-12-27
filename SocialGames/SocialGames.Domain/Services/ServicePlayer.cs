@@ -22,7 +22,7 @@ namespace SocialGames.Domain.Services
             var email = new Email(request.Email);
             var password = new Password(request.Password);
 
-            Player player = new(name, email, password);
+            Player player = new Player(name, email, password);
             if (_repositoryPlayer.Existe(x => x.Email.Address == request.Email))
             {
                 throw new Exception("Esse Usuário já existe!");

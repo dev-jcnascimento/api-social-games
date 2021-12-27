@@ -15,7 +15,7 @@ namespace SocialGames.IoC.Unity
             this.container = container;
         }
 
-        public object? GetService(Type serviceType)
+        public object GetService(Type serviceType)
         {
             try
             {
