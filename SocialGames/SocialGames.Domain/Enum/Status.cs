@@ -2,8 +2,8 @@
 {
     public enum Status
     {
-        EmAnlise = 0,
-        Ativo = 1,
-        Bloqueado = 2
+        Em_Anlise,
+        Ativo,
+        Bloqueado
     }
 }

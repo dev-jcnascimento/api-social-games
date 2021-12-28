@@ -53,6 +53,23 @@ namespace SocialGames.Domain.Services
 
         }
 
+        public ChanceAdminPlayerResponse ChanceAdmin(ChanceAdminPlayerRequest request)
+        {
+            if (request == null)
+            {
+                throw new Exception("ChancePlayerRequest é obrigatório!");
+            }
+
+            Player player = _repositoryPlayer.ObterPorId(request.Id);
+            if (player == null)
+            {
+                throw new Exception("Jogador não encontrado!");
+            }
+            player.ChancePlayerAdmin(player.Status);
+            _repositoryPlayer.Editar(player);
+
+            return (ChanceAdminPlayerResponse)player;
+        }
         public ChancePlayerResponse Chance(ChancePlayerRequest request)
         {
             if (request == null)
@@ -73,7 +90,6 @@ namespace SocialGames.Domain.Services
 
             return (ChancePlayerResponse)player;
         }
-
         public ResponseBase DeletePlayer(Guid id)
         {
             Player player = _repositoryPlayer.ObterPorId(id);

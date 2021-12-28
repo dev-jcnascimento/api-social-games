@@ -10,6 +10,7 @@ namespace SocialGames.Domain.Interfaces.Services
         AuthenticatePlayerResponse Authenticate(AuthenticatePlayerRequest request);
         AddPlayerResponse Add(AddPlayerRequest request);
         ChancePlayerResponse Chance(ChancePlayerRequest request);
+        ChanceAdminPlayerResponse ChanceAdmin(ChanceAdminPlayerRequest request);
         IEnumerable<PlayerResponse> ListPlayers();
         ResponseBase DeletePlayer(Guid id);
 

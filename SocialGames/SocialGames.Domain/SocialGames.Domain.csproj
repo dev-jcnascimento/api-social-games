@@ -48,8 +48,10 @@
     <Compile Include="Arguments\Player\AddPlayerResponse.cs" />
     <Compile Include="Arguments\Player\AuthenticatePlayerRequest.cs" />
     <Compile Include="Arguments\Player\AuthenticatePlayerResponse.cs" />
+    <Compile Include="Arguments\Player\ChanceAdminPlayerRequest.cs" />
     <Compile Include="Arguments\Player\ChancePlayerRequest.cs" />
-    <Compile Include="Arguments\Player\ChancePlayerrResponse.cs" />
+    <Compile Include="Arguments\Player\ChanceAdminPlayerResponse.cs" />
+    <Compile Include="Arguments\Player\ChancePlayerResponse.cs" />
     <Compile Include="Arguments\Player\PlayerResponse.cs" />
     <Compile Include="Entities\Base\EntityBase.cs" />
     <Compile Include="Entities\Game.cs" />

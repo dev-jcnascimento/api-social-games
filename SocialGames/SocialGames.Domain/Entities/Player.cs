@@ -26,7 +26,11 @@ namespace SocialGames.Domain.Entities
             Name = name;
             Email = email;
             Password = password;
-            Status = Status.EmAnlise;
+            Status = Status.Em_Anlise;
+        }
+        public void ChancePlayerAdmin(Status status)
+        {
+            Status = Status.Ativo;
         }
         public void ChancePlayer(Name name, Email email, Status status)
         {

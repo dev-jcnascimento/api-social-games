@@ -8,7 +8,7 @@ namespace SocialGames.Domain.Arguments.Player
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string Email { get; set; }
-        public int Status { get; set; }
+        public string Status { get; set; }
 
         public static explicit operator ChancePlayerResponse(Entities.Player entity)
         {
@@ -17,7 +17,7 @@ namespace SocialGames.Domain.Arguments.Player
                 Id = entity.Id,
                 FirstName = entity.Name.FirstName,
                 Email = entity.Email.Address,
-                Status = (int)entity.Status
+                Status = entity.Status.ToString()
             };
         }
     }

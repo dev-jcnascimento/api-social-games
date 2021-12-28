@@ -28,6 +28,20 @@ namespace SocialGames.Domain.ValueObject
             //}
             return email;
         }
+
+        //bool IsEmail(string email)
+        //{
+        //    try
+        //    {
+        //        var addr = new System.Net.Mail.MailAddress(email);
+        //        return addr.Address == email;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
+
         //public static bool IsEmail(string email)
         //{
         //    byte[] bytes = Encoding.Default.GetBytes(email);
