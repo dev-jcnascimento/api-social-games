@@ -1,5 +1,7 @@
 ﻿using SocialGames.Domain.Arguments.Base;
 using SocialGames.Domain.Arguments.Player;
+using System;
+using System.Collections.Generic;
 
 namespace SocialGames.Domain.Interfaces.Services
 {

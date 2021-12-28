@@ -3,19 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialGames.Domain", "SocialGames.Domain\SocialGames.Domain.csproj", "{24C3404F-5FC9-41EA-9910-89417E9DE243}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialGames.Infra", "SocialGames.Infra\SocialGames.Infra.csproj", "{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialGames.IoC", "SocialGames.IoC\SocialGames.IoC.csproj", "{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}"
-	ProjectSection(ProjectDependencies) = postProject
-		{24C3404F-5FC9-41EA-9910-89417E9DE243} = {24C3404F-5FC9-41EA-9910-89417E9DE243}
-		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C} = {1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{74816445-D483-418B-84A4-BA1F4089CD2F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialGames.Api2", "SocialGames.Api2\SocialGames.Api2.csproj", "{F515784A-29A9-4BAB-B698-E051A88DC0FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialGames.Api", "SocialGames.Api\SocialGames.Api.csproj", "{F515784A-29A9-4BAB-B698-E051A88DC0FE}"
 	ProjectSection(ProjectDependencies) = postProject
-		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5} = {89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}
+		{1DBDE269-F263-4EBC-9173-0B3AA88961D0} = {1DBDE269-F263-4EBC-9173-0B3AA88961D0}
+		{824AA5B9-A66E-4671-ADA4-C4E813B7DC3E} = {824AA5B9-A66E-4671-ADA4-C4E813B7DC3E}
+		{3EF1C9D7-1C04-4276-B9B2-1E241C95E922} = {3EF1C9D7-1C04-4276-B9B2-1E241C95E922}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialGames.Domain", "SocialGames.Domain\SocialGames.Domain.csproj", "{1DBDE269-F263-4EBC-9173-0B3AA88961D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialGames.Infra", "SocialGames.Infra\SocialGames.Infra.csproj", "{824AA5B9-A66E-4671-ADA4-C4E813B7DC3E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1DBDE269-F263-4EBC-9173-0B3AA88961D0} = {1DBDE269-F263-4EBC-9173-0B3AA88961D0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialGames.IoC", "SocialGames.IoC\SocialGames.IoC.csproj", "{3EF1C9D7-1C04-4276-B9B2-1E241C95E922}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1DBDE269-F263-4EBC-9173-0B3AA88961D0} = {1DBDE269-F263-4EBC-9173-0B3AA88961D0}
+		{824AA5B9-A66E-4671-ADA4-C4E813B7DC3E} = {824AA5B9-A66E-4671-ADA4-C4E813B7DC3E}
 	EndProjectSection
 EndProject
 Global
@@ -24,22 +34,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{24C3404F-5FC9-41EA-9910-89417E9DE243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24C3404F-5FC9-41EA-9910-89417E9DE243}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24C3404F-5FC9-41EA-9910-89417E9DE243}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24C3404F-5FC9-41EA-9910-89417E9DE243}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BC99F8F-AA4E-459F-A55A-EE3BF4C6E50C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89C8CD27-BAA3-41AE-9C70-6B6EEA5A8AF5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F515784A-29A9-4BAB-B698-E051A88DC0FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F515784A-29A9-4BAB-B698-E051A88DC0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F515784A-29A9-4BAB-B698-E051A88DC0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F515784A-29A9-4BAB-B698-E051A88DC0FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DBDE269-F263-4EBC-9173-0B3AA88961D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DBDE269-F263-4EBC-9173-0B3AA88961D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DBDE269-F263-4EBC-9173-0B3AA88961D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DBDE269-F263-4EBC-9173-0B3AA88961D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{824AA5B9-A66E-4671-ADA4-C4E813B7DC3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{824AA5B9-A66E-4671-ADA4-C4E813B7DC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{824AA5B9-A66E-4671-ADA4-C4E813B7DC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{824AA5B9-A66E-4671-ADA4-C4E813B7DC3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EF1C9D7-1C04-4276-B9B2-1E241C95E922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EF1C9D7-1C04-4276-B9B2-1E241C95E922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EF1C9D7-1C04-4276-B9B2-1E241C95E922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EF1C9D7-1C04-4276-B9B2-1E241C95E922}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

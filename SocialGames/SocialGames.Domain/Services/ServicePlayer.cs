@@ -4,6 +4,9 @@ using SocialGames.Domain.Entities;
 using SocialGames.Domain.Interfaces.Repositories;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Domain.ValueObject;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SocialGames.Domain.Services
 {

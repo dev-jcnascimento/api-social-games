@@ -3,7 +3,7 @@ using SocialGames.Domain.ValueObject;
 
 namespace SocialGames.Domain.Entities
 {
-    internal class Game : EntityBase
+    public class Game : EntityBase
     {
         public Name Name { get; private set; }
         public string Description { get; private set; }

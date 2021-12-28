@@ -1,4 +1,5 @@
 ﻿using SocialGames.Domain.Entities.Base;
+using System;
 
 namespace SocialGames.Domain.Entities
 {

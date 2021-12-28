@@ -1,6 +1,9 @@
 ﻿using SocialGames.Domain.Entities.Base;
 using SocialGames.Domain.Interfaces.Repositories.Base;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace SocialGames.Infra.Persistence.Repositories.Base
@@ -9,9 +12,9 @@ namespace SocialGames.Infra.Persistence.Repositories.Base
         where TEntidade : EntityBase
         where TId : struct
     {
-        private readonly SocialGamesContext _context;
+       private readonly DbContext _context;
 
-        public RepositoryBase(SocialGamesContext context)
+        public RepositoryBase(DbContext context)
         {
             _context = context;
         }

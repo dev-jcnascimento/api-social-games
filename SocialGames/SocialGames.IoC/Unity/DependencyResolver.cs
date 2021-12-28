@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.Practices.Unity;
 using SocialGames.Domain.Interfaces.Repositories;
 using SocialGames.Domain.Interfaces.Repositories.Base;
 using SocialGames.Domain.Interfaces.Services;
@@ -7,8 +7,7 @@ using SocialGames.Infra.Persistence;
 using SocialGames.Infra.Persistence.Repositories;
 using SocialGames.Infra.Persistence.Repositories.Base;
 using SocialGames.Infra.Transactions;
-using Unity;
-using Unity.Lifetime;
+using System.Data.Entity;
 
 namespace SocialGames.IoC.Unity
 {

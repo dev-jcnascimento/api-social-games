@@ -1,9 +1,4 @@
 ﻿using SocialGames.Infra.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SocialGames.Infra.Transactions
 {
@@ -18,7 +13,8 @@ namespace SocialGames.Infra.Transactions
 
         public void Commit()
         {
-            _context.SaveChanges();  
+            
+            _context.SaveChanges();
         }
     }
 }

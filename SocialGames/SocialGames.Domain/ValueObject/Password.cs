@@ -1,10 +1,14 @@
 ﻿using SocialGames.Domain.Extensions;
+using System;
 
 namespace SocialGames.Domain.ValueObject
 {
     public class Password
     {
         public string Word { get; private set; }
+        protected Password()
+        {
+        }
         public Password(string word)
         {
             Word = word;
@@ -13,7 +17,7 @@ namespace SocialGames.Domain.ValueObject
             {
                 throw new Exception("Informe um Password!");
             }
-            if (Word.Length > 6)
+            if (Word.Length < 6)
             {
                 throw new Exception("Digite uma senha de no mínimo 6 caraceteres.");
             }

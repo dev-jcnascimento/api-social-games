@@ -1,4 +1,6 @@
-﻿namespace SocialGames.Domain.Entities.Base
+﻿using System;
+
+namespace SocialGames.Domain.Entities.Base
 {
     public abstract class EntityBase
     {

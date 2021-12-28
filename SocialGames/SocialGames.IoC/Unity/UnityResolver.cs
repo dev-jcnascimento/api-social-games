@@ -1,5 +1,7 @@
-﻿using System.Web.Http.Dependencies;
-using Unity;
+﻿using Microsoft.Practices.Unity;
+using System;
+using System.Collections.Generic;
+using System.Web.Http.Dependencies;
 
 namespace SocialGames.IoC.Unity
 {
@@ -10,7 +12,9 @@ namespace SocialGames.IoC.Unity
         public UnityResolver(IUnityContainer container)
         {
             if (container == null)
+            {
                 throw new ArgumentNullException("container");
+            }
 
             this.container = container;
         }

@@ -1,9 +1,14 @@
-﻿namespace SocialGames.Domain.ValueObject
+﻿using System;
+
+namespace SocialGames.Domain.ValueObject
 {
     public class Name
     {
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
+        protected Name()
+        {
+        }
         public Name(string firstName, string lastName)
         {
             FirstName = firstName;
