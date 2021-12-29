@@ -10,40 +10,34 @@ namespace SocialGames.Domain.Entities
         public Name Name { get; private set; }
         public Email Email { get; private set; }
         public Password Password { get; private set; }
-        public Status Status { get; private set; }
+        public PlayerStatus Status { get; private set; }
         protected Player()
         {
-
         }
         public Player(Email email, Password password)
         {
             Email = email;
             Password = password;
         }
-
         public Player(Name name, Email email, Password password)
         {
             Name = name;
             Email = email;
             Password = password;
-            Status = Status.Em_Anlise;
+            Status = PlayerStatus.In_Analysis;
         }
-        public void ChancePlayerAdmin(Status status)
+        public void ChancePlayerAdmin(PlayerStatus status)
         {
-            Status = Status.Ativo;
+            Status = PlayerStatus.Active;
         }
-        public void ChancePlayer(Name name, Email email, Status status)
+        public void ChancePlayer(Name name, Email email, PlayerStatus status)
         {
-            if (status != Status.Ativo)
+            if (status != PlayerStatus.Active)
             {
-                throw new Exception("O jogador deve ser ativo para ser Alterado!");
+                throw new Exception("Player must be active to be Changed!");
             }
             Name = name;
             Email = email;
-        }
-        public override string ToString()
-        {
-            return Name.FirstName + " " + Name.LastName;
         }
     }
 }

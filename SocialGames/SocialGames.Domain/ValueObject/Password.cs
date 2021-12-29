@@ -15,11 +15,11 @@ namespace SocialGames.Domain.ValueObject
 
             if (string.IsNullOrEmpty(Word))
             {
-                throw new Exception("Informe um Password!");
+                throw new Exception("Enter a Password!");
             }
             if (Word.Length < 6)
             {
-                throw new Exception("Digite uma senha de no mínimo 6 caraceteres.");
+                throw new Exception("Enter a password of at least 6 characters.");
             }
             Word = Word.ConvertToMD5();
         }

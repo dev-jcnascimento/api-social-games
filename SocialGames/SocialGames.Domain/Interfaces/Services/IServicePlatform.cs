@@ -1,9 +1,15 @@
-﻿using SocialGames.Domain.Arguments.PlatForm;
+﻿using SocialGames.Domain.Arguments.Base;
+using SocialGames.Domain.Arguments.PlatForm;
+using System;
+using System.Collections.Generic;
 
 namespace SocialGames.Domain.Interfaces.Services
 {
-    internal interface IServicePlatform
+    public interface IServicePlatForm
     {
         AddPlatFormResponse Add(AddPlatFormRequest request);
+        ChancePlatFormResponse Chance(ChancePlatFormRequest request);
+        IEnumerable<PlatFormResponse> ListPlayers();
+        ResponseBase DeletePlayer(Guid id);
     }
 }

@@ -26,11 +26,11 @@ namespace SocialGames.Domain.Services
             var password = new Password(request.Password);
 
             Player player = new Player(name, email, password);
-            if (_repositoryPlayer.Existe(x => x.Email.Address == request.Email))
+            if (_repositoryPlayer.Exists(x => x.Email.Address == request.Email))
             {
-                throw new Exception("Esse Usuário já existe!");
+                throw new Exception("This User already exists!");
             }
-            player = _repositoryPlayer.Adicionar(player);
+            player = _repositoryPlayer.Add(player);
             return (AddPlayerResponse)player;
 
         }
@@ -39,14 +39,14 @@ namespace SocialGames.Domain.Services
         {
             if (request == null)
             {
-                throw new Exception("AuthenticatePlayerRequest é obrigatório!");
+                throw new Exception("AuthenticatePlayerRequest is required!");
             }
 
             var email = new Email(request.Email);
             var password = new Password(request.Password);
             var player = new Player(email, password);
 
-            player = _repositoryPlayer.ObterPor(
+            player = _repositoryPlayer.GetBy(
                 x => x.Email.Address == player.Email.Address &&
                 x.Password.Word == player.Password.Word);
             return (AuthenticatePlayerResponse)player;
@@ -57,16 +57,16 @@ namespace SocialGames.Domain.Services
         {
             if (request == null)
             {
-                throw new Exception("ChancePlayerRequest é obrigatório!");
+                throw new Exception("ChancePlayerRequest is required!");
             }
 
-            Player player = _repositoryPlayer.ObterPorId(request.Id);
+            Player player = _repositoryPlayer.GetById(request.Id);
             if (player == null)
             {
-                throw new Exception("Jogador não encontrado!");
+                throw new Exception("Player not found!");
             }
             player.ChancePlayerAdmin(player.Status);
-            _repositoryPlayer.Editar(player);
+            _repositoryPlayer.Edit(player);
 
             return (ChanceAdminPlayerResponse)player;
         }
@@ -74,37 +74,37 @@ namespace SocialGames.Domain.Services
         {
             if (request == null)
             {
-                throw new Exception("ChancePlayerRequest é obrigatório!");
+                throw new Exception("ChancePlayerRequest is required!");
             }
 
-            Player player = _repositoryPlayer.ObterPorId(request.Id);
+            Player player = _repositoryPlayer.GetById(request.Id);
             if (player == null)
             {
-                throw new Exception("Jogador não encontrado!");
+                throw new Exception("Player not found!");
             }
             var email = new Email(request.Email);
             var name = new Name(request.FirstName, request.LastName);
 
             player.ChancePlayer(name, email, player.Status);
-            _repositoryPlayer.Editar(player);
+            _repositoryPlayer.Edit(player);
 
             return (ChancePlayerResponse)player;
         }
         public ResponseBase DeletePlayer(Guid id)
         {
-            Player player = _repositoryPlayer.ObterPorId(id);
+            Player player = _repositoryPlayer.GetById(id);
             if (player == null)
             {
-                throw new Exception("Jogador não encontrado!");
+                throw new Exception("Player not found!");
             }
-            _repositoryPlayer.Remover(player);  
+            _repositoryPlayer.Remove(player);  
 
             return (ResponseBase)player;
         }
 
         public IEnumerable<PlayerResponse> ListPlayers()
         {
-            return _repositoryPlayer.Listar().ToList().Select(x => (PlayerResponse)x).ToList();
+            return _repositoryPlayer.List().ToList().Select(x => (PlayerResponse)x).ToList();
         }
     }
 }

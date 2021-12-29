@@ -1,24 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SocialGames.Domain.Arguments.Base
+﻿namespace SocialGames.Domain.Arguments.Base
 {
     public class ResponseBase
     {
         public string Message { get; set; }
-        public ResponseBase()
+        protected ResponseBase()
         {
-            Message = ("Operação realizada com Sucesso!");
+            Message = ("Operation performed successfully!");
         }
 
         public static explicit operator ResponseBase(Entities.Player entity)
         {
             return new ResponseBase()
             {
-                Message = ("Operação realizada com Sucesso!")
+            };
+        }
+
+        public static explicit operator ResponseBase(Entities.PlatForm entity)
+        {
+            return new ResponseBase()
+            { 
             };
         }
     }

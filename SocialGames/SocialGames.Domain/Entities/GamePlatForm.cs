@@ -3,12 +3,12 @@ using System;
 
 namespace SocialGames.Domain.Entities
 {
-    internal class PlatformGames : EntityBase
+    public class GamePlatForm : EntityBase
     {
         public DateTime Date { get; private set; }
         public Game Game { get; private set; }
-        public Platform Platform { get; private set; }
-        public PlatformGames(DateTime date, Game game, Platform platform)
+        public PlatForm Platform { get; private set; }
+        public GamePlatForm(DateTime date, Game game, PlatForm platform)
         {
             Date = date;
             Game = game;

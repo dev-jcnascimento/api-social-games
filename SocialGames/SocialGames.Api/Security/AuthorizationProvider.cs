@@ -43,24 +43,24 @@ namespace SocialGames.Api.Security
 
                 if (response.Email == null)
                 {
-                    context.SetError("invalid_grant", "Preencha um e-mail válido e uma senha com pelo menos 6 caracteres.");
+                    context.SetError("invalid_grant", "Fill in a valid email and password of at least 6 characters.");
                     return;
                 }
 
                 if (response == null)
                 {
-                    context.SetError("invalid_grant", "Jogador não encontrado!");
+                    context.SetError("invalid_grant", "Player not found!");
                     return;
                 }
 
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
 
                 //Definindo as Claims
-                identity.AddClaim(new Claim("Jogador", JsonConvert.SerializeObject(response)));
+                identity.AddClaim(new Claim("Player", JsonConvert.SerializeObject(response)));
 
-                var principal = new GenericPrincipal(identity, new string[] { });
+                var main = new GenericPrincipal(identity, new string[] { });
 
-                Thread.CurrentPrincipal = principal;
+                Thread.CurrentPrincipal = main;
 
                 context.Validated(identity);
             }

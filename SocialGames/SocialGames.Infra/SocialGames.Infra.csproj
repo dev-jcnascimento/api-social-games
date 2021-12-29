@@ -55,9 +55,15 @@
     <Compile Include="Migrations\202112281410563_Inicial.designer.cs">
       <DependentUpon>202112281410563_Inicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112291454273_PlatForm.cs" />
+    <Compile Include="Migrations\202112291454273_PlatForm.designer.cs">
+      <DependentUpon>202112291454273_PlatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Persistence\Map\MapPlatForm.cs" />
     <Compile Include="Persistence\Map\MapPlayer.cs" />
     <Compile Include="Persistence\Repositories\Base\RepositoryBase.cs" />
+    <Compile Include="Persistence\Repositories\RepositoryPlatForm.cs" />
     <Compile Include="Persistence\Repositories\RepositoryPlayer.cs" />
     <Compile Include="Persistence\SocialGamesContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,6 +83,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202112281410563_Inicial.resx">
       <DependentUpon>202112281410563_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112291454273_PlatForm.resx">
+      <DependentUpon>202112291454273_PlatForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

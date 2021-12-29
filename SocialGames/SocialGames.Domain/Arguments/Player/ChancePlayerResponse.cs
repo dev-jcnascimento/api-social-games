@@ -1,9 +1,10 @@
-﻿using SocialGames.Domain.Interfaces.Arguments;
+﻿using SocialGames.Domain.Arguments.Base;
+using SocialGames.Domain.Interfaces.Arguments;
 using System;
 
 namespace SocialGames.Domain.Arguments.Player
 {
-    public class ChancePlayerResponse : IResponse
+    public class ChancePlayerResponse : ResponseBase , IResponse
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }

@@ -19,9 +19,9 @@ namespace SocialGames.Api.Controllers
         {
             _servicePlayer = servicePlayer;
         }
-        [Route("Adicionar")]
+        [Route("Add")]
         [HttpPost]
-        public async Task<HttpResponseMessage> Adicionar(AddPlayerRequest request)
+        public async Task<HttpResponseMessage> Add(AddPlayerRequest request)
         {
             try
             {
@@ -35,9 +35,9 @@ namespace SocialGames.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
-        [Route("EditarAdmin")]
+        [Route("EditAdmin")]
         [HttpPatch]
-        public async Task<HttpResponseMessage> EditarAdmin(ChanceAdminPlayerRequest request)
+        public async Task<HttpResponseMessage> EditAdmin(ChanceAdminPlayerRequest request)
         {
             try
             {
@@ -51,9 +51,9 @@ namespace SocialGames.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
-        [Route("Editar")]
+        [Route("Edit")]
         [HttpPut]
-        public async Task<HttpResponseMessage> Editar(ChancePlayerRequest request)
+        public async Task<HttpResponseMessage> Edit(ChancePlayerRequest request)
         {
             try
             {
@@ -84,9 +84,9 @@ namespace SocialGames.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
-        [Route("Listar")]
+        [Route("List")]
         [HttpGet]
-        public async Task<HttpResponseMessage> Listar()
+        public async Task<HttpResponseMessage> List()
         {
             try
             {

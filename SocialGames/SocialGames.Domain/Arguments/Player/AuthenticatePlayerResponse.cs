@@ -1,9 +1,10 @@
-﻿using SocialGames.Domain.Interfaces.Arguments;
+﻿using SocialGames.Domain.Arguments.Base;
+using SocialGames.Domain.Interfaces.Arguments;
 using System;
 
 namespace SocialGames.Domain.Arguments.Player
 {
-    public class AuthenticatePlayerResponse : IResponse
+    public class AuthenticatePlayerResponse : ResponseBase,IResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

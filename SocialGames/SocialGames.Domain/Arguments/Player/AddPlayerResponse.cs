@@ -1,19 +1,18 @@
-﻿using SocialGames.Domain.Interfaces.Arguments;
+﻿using SocialGames.Domain.Arguments.Base;
+using SocialGames.Domain.Interfaces.Arguments;
 using System;
 
 namespace SocialGames.Domain.Arguments.Player
 {
-    public class AddPlayerResponse : IResponse
+    public class AddPlayerResponse : ResponseBase,IResponse
     {
         public Guid Id { get; set; }
-        public string Message { get; set; }
 
         public static explicit operator AddPlayerResponse(Entities.Player entity)
         {
             return new AddPlayerResponse()
             {
                 Id = entity.Id,
-                Message = "Operação realizada com Sucesso",
             };
         }
     }

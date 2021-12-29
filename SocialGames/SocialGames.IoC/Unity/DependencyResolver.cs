@@ -24,6 +24,7 @@ namespace SocialGames.IoC.Unity
             //container.RegisterType(typeof(IServiceBase<,>), typeof(ServiceBase<,>));
 
             container.RegisterType<IServicePlayer, ServicePlayer>(new HierarchicalLifetimeManager());
+            container.RegisterType<IServicePlatForm, ServicePlatForm>(new HierarchicalLifetimeManager());
 
 
 
@@ -31,6 +32,7 @@ namespace SocialGames.IoC.Unity
             container.RegisterType(typeof(IRepositoryBase<,>), typeof(RepositoryBase<,>));
 
             container.RegisterType<IRepositoryPlayer, RepositoryPlayer>(new HierarchicalLifetimeManager());
+            container.RegisterType<IRepositoryPlatForm, RepositoryPlatForm>(new HierarchicalLifetimeManager());
 
 
 

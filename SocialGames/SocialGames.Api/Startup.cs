@@ -53,7 +53,7 @@ namespace SocialGames.Api
 
             // Modifica a serialização
             formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.None;
-
+       
             Register(config);
         }
 

@@ -1,12 +1,15 @@
 ﻿using SocialGames.Domain.Entities.Base;
-using SocialGames.Domain.ValueObject;
 
 namespace SocialGames.Domain.Entities
 {
-    internal class Platform : EntityBase
+    public class PlatForm : EntityBase
     {
-        public Name Name { get; private set; }
-        public Platform(Name name)
+        public string Name { get; private set; }
+        public PlatForm(string name)
+        {
+            Name = name;
+        }
+        public void ChancePlatForm(string name)
         {
             Name = name;
         }

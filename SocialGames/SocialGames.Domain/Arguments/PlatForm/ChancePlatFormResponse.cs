@@ -1,21 +1,18 @@
 ﻿using SocialGames.Domain.Arguments.Base;
 using SocialGames.Domain.Interfaces.Arguments;
-using System;
 
 namespace SocialGames.Domain.Arguments.PlatForm
 {
-    public class AddPlatFormResponse : ResponseBase, IResponse
+    public class ChancePlatFormResponse : ResponseBase , IResponse
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
 
-        public static explicit operator AddPlatFormResponse(Entities.PlatForm entity)
+        public static explicit operator ChancePlatFormResponse(Entities.PlatForm entity)
         {
-            return new AddPlatFormResponse()
+            return new ChancePlatFormResponse()
             {
                 Name = entity.Name
             };
         }
     }
-
 }

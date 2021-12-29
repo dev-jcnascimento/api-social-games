@@ -9,26 +9,26 @@ namespace SocialGames.Domain.Interfaces.Repositories.Base
     where TEntidade : class
     where TId : struct
     {
-        IQueryable<TEntidade> ListarPor(Expression<Func<TEntidade, bool>> where, params Expression<Func<TEntidade, object>>[] includeProperties);
+        IQueryable<TEntidade> ListBy(Expression<Func<TEntidade, bool>> where, params Expression<Func<TEntidade, object>>[] includeProperties);
 
-        IQueryable<TEntidade> ListarEOrdenadosPor<TKey>(Expression<Func<TEntidade, bool>> where, Expression<Func<TEntidade, TKey>> ordem, bool ascendente = true, params Expression<Func<TEntidade, object>>[] includeProperties);
+        IQueryable<TEntidade> ListEndOrdersBy<TKey>(Expression<Func<TEntidade, bool>> where, Expression<Func<TEntidade, TKey>> ordem, bool ascendente = true, params Expression<Func<TEntidade, object>>[] includeProperties);
 
-        TEntidade ObterPor(Func<TEntidade, bool> where, params Expression<Func<TEntidade, object>>[] includeProperties);
+        TEntidade GetBy(Func<TEntidade, bool> where, params Expression<Func<TEntidade, object>>[] includeProperties);
 
-        bool Existe(Func<TEntidade, bool> where);
+        bool Exists(Func<TEntidade, bool> where);
 
-        IQueryable<TEntidade> Listar(params Expression<Func<TEntidade, object>>[] includeProperties);
+        IQueryable<TEntidade> List(params Expression<Func<TEntidade, object>>[] includeProperties);
 
-        IQueryable<TEntidade> ListarOrdenadosPor<TKey>(Expression<Func<TEntidade, TKey>> ordem, bool ascendente = true, params Expression<Func<TEntidade, object>>[] includeProperties);
+        IQueryable<TEntidade> ListOrderedBy<TKey>(Expression<Func<TEntidade, TKey>> ordem, bool ascendente = true, params Expression<Func<TEntidade, object>>[] includeProperties);
 
-        TEntidade ObterPorId(TId id, params Expression<Func<TEntidade, object>>[] includeProperties);
+        TEntidade GetById(TId id, params Expression<Func<TEntidade, object>>[] includeProperties);
 
-        TEntidade Adicionar(TEntidade entidade);
+        TEntidade Add(TEntidade entidade);
 
-        TEntidade Editar(TEntidade entidade);
+        TEntidade Edit(TEntidade entidade);
 
-        void Remover(TEntidade entidade);
+        void Remove(TEntidade entidade);
 
-        IEnumerable<TEntidade> AdicionarLista(IEnumerable<TEntidade> entidades);
+        IEnumerable<TEntidade> AddList(IEnumerable<TEntidade> entidades);
     }
 }
