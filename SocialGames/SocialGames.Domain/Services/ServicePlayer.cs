@@ -12,7 +12,7 @@ namespace SocialGames.Domain.Services
 {
     public class ServicePlayer : IServicePlayer
     {
-        public readonly IRepositoryPlayer _repositoryPlayer;
+        private readonly IRepositoryPlayer _repositoryPlayer;
 
         public ServicePlayer(IRepositoryPlayer repositoryPlayer)
         {
@@ -22,7 +22,7 @@ namespace SocialGames.Domain.Services
         public AddPlayerResponse Add(AddPlayerRequest request)
         {
             var name = new Name(request.FirstName, request.LastName);
-            var email = new Email(request.Email);
+            var email = new Email(request.Email.ToString().Replace("%40","@"));
             var password = new Password(request.Password);
 
             Player player = new Player(name, email, password);

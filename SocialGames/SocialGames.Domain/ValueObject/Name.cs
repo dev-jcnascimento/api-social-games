@@ -15,7 +15,7 @@ namespace SocialGames.Domain.ValueObject
             LastName = lastName;
             if (string.IsNullOrEmpty(FirstName) || FirstName.Length > 30)
             {
-                throw new Exception("First Name cannot be empty and cannot be shorter than 30 characters.");
+                throw new Exception("Name cannot be empty and cannot be shorter than 30 characters.");
             }
             if (string.IsNullOrEmpty(LastName) || LastName.Length > 30)
             {
@@ -24,7 +24,7 @@ namespace SocialGames.Domain.ValueObject
         }
         public override string ToString()
         {
-            return FirstName + " " + LastName;  
+            return FirstName + " " + LastName;
         }
     }
 }

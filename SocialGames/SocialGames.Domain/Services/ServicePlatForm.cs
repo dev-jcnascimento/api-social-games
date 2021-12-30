@@ -13,7 +13,7 @@ namespace SocialGames.Domain.Services
 {
     public class ServicePlatForm : IServicePlatForm
     {
-        public readonly IRepositoryPlatForm _repositoryPlatForm;
+        private readonly IRepositoryPlatForm _repositoryPlatForm;
 
         public ServicePlatForm(IRepositoryPlatForm repositoryPlatForm)
         {
@@ -22,9 +22,10 @@ namespace SocialGames.Domain.Services
 
         public AddPlatFormResponse Add(AddPlatFormRequest request)
         {
-
             PlatForm platForm = new PlatForm(request.Name);
-            if (_repositoryPlatForm.Exists(x => x.Name == request.Name))
+            if (_repositoryPlatForm.Exists(
+                x => x.Name.ToString().ToLower().Replace(" ", "") == 
+                request.Name.ToString().ToLower().Replace(" ", "")))
             {
                 throw new Exception("This PlatForm already exists!");
             }
@@ -46,12 +47,12 @@ namespace SocialGames.Domain.Services
                 throw new Exception("PlatForm not found!");
             }
 
-            platForm.ChancePlatForm(platForm.Name);
+            platForm.ChancePlatForm(request.Name);
             _repositoryPlatForm.Edit(platForm);
 
             return (ChancePlatFormResponse)platForm;
         }
-        public ResponseBase DeletePlayer(Guid id)
+        public ResponseBase Delete(Guid id)
         {
             PlatForm platForm = _repositoryPlatForm.GetById(id);
             if (platForm == null)
@@ -63,7 +64,7 @@ namespace SocialGames.Domain.Services
             return (ResponseBase)platForm;
         }
 
-        public IEnumerable<PlatFormResponse> ListPlayers()
+        public IEnumerable<PlatFormResponse> List()
         {
             return _repositoryPlatForm.List().ToList().Select(x => (PlatFormResponse)x).ToList();
         }

@@ -1,4 +1,4 @@
-﻿using SocialGames.Api.Controllers.Base;
+﻿    using SocialGames.Api.Controllers.Base;
 using SocialGames.Domain.Arguments.Player;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Infra.Transactions;

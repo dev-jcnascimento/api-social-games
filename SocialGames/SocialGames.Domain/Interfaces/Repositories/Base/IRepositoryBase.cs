@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace SocialGames.Domain.Interfaces.Repositories.Base
 {
-    public interface IRepositoryBase<TEntidade, TId>
+    public interface RepositoryBase<TEntidade, TId>
     where TEntidade : class
     where TId : struct
     {

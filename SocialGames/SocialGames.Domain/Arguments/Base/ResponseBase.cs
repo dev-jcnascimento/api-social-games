@@ -1,4 +1,6 @@
-﻿namespace SocialGames.Domain.Arguments.Base
+﻿using System;
+
+namespace SocialGames.Domain.Arguments.Base
 {
     public class ResponseBase
     {
@@ -19,6 +21,13 @@
         {
             return new ResponseBase()
             { 
+            };
+        }
+
+        public static explicit operator ResponseBase(Entities.Game v)
+        {
+            return new ResponseBase()
+            {
             };
         }
     }

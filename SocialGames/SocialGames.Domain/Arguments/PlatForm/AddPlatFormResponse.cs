@@ -13,6 +13,7 @@ namespace SocialGames.Domain.Arguments.PlatForm
         {
             return new AddPlatFormResponse()
             {
+                Id = entity.Id,
                 Name = entity.Name
             };
         }

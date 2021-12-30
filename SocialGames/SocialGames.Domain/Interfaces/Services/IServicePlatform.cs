@@ -9,7 +9,7 @@ namespace SocialGames.Domain.Interfaces.Services
     {
         AddPlatFormResponse Add(AddPlatFormRequest request);
         ChancePlatFormResponse Chance(ChancePlatFormRequest request);
-        IEnumerable<PlatFormResponse> ListPlayers();
-        ResponseBase DeletePlayer(Guid id);
+        IEnumerable<PlatFormResponse> List();
+        ResponseBase Delete(Guid id);
     }
 }

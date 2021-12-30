@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace SocialGames.Infra.Persistence.Repositories.Base
 {
-    public class RepositoryBase<TEntidade, TId> : IRepositoryBase<TEntidade, TId>
+    public class RepositoryBase<TEntidade, TId>
         where TEntidade : EntityBase
         where TId : struct
     {
