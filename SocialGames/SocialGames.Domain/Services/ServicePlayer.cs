@@ -19,7 +19,7 @@ namespace SocialGames.Domain.Services
             _repositoryPlayer = repositoryPlayer;
         }
 
-        public AddPlayerResponse Add(AddPlayerRequest request)
+        public CreatePlayerResponse Create(CreatePlayerRequest request)
         {
             var name = new Name(request.FirstName, request.LastName);
             var email = new Email(request.Email.ToString().Replace("%40","@"));
@@ -30,8 +30,8 @@ namespace SocialGames.Domain.Services
             {
                 throw new Exception("This User already exists!");
             }
-            player = _repositoryPlayer.Add(player);
-            return (AddPlayerResponse)player;
+            player = _repositoryPlayer.Create(player);
+            return (CreatePlayerResponse)player;
 
         }
 
@@ -53,7 +53,7 @@ namespace SocialGames.Domain.Services
 
         }
 
-        public ChanceAdminPlayerResponse ChanceAdmin(ChanceAdminPlayerRequest request)
+        public UpdateAdminPlayerResponse UpdateAdmin(UpdateAdminPlayerRequest request)
         {
             if (request == null)
             {
@@ -65,12 +65,12 @@ namespace SocialGames.Domain.Services
             {
                 throw new Exception("Player not found!");
             }
-            player.ChancePlayerAdmin(player.Status);
-            _repositoryPlayer.Edit(player);
+            player.UpdatePlayerAdmin(player.Status);
+            _repositoryPlayer.Update(player);
 
-            return (ChanceAdminPlayerResponse)player;
+            return (UpdateAdminPlayerResponse)player;
         }
-        public ChancePlayerResponse Chance(ChancePlayerRequest request)
+        public UpdatePlayerResponse Update(UpdatePlayerRequest request)
         {
             if (request == null)
             {
@@ -85,19 +85,19 @@ namespace SocialGames.Domain.Services
             var email = new Email(request.Email);
             var name = new Name(request.FirstName, request.LastName);
 
-            player.ChancePlayer(name, email, player.Status);
-            _repositoryPlayer.Edit(player);
+            player.UpdatePlayer(name, email, player.Status);
+            _repositoryPlayer.Update(player);
 
-            return (ChancePlayerResponse)player;
+            return (UpdatePlayerResponse)player;
         }
-        public ResponseBase DeletePlayer(Guid id)
+        public ResponseBase Delete(Guid id)
         {
             Player player = _repositoryPlayer.GetById(id);
             if (player == null)
             {
                 throw new Exception("Player not found!");
             }
-            _repositoryPlayer.Remove(player);  
+            _repositoryPlayer.Delete(player);  
 
             return (ResponseBase)player;
         }

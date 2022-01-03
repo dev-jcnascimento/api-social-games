@@ -4,7 +4,7 @@ using System;
 
 namespace SocialGames.Domain.Interfaces.Repositories
 {
-    public interface IRepositoryPlatForm : IRepositoryBase<PlatForm, Guid>
+    public interface IRepositoryGamePlatForm : IRepositoryBase<GamePlatForm, Guid>
     {
     }
 }

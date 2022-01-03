@@ -8,11 +8,11 @@ namespace SocialGames.Domain.Interfaces.Services
     public interface IServicePlayer
     {
         AuthenticatePlayerResponse Authenticate(AuthenticatePlayerRequest request);
-        AddPlayerResponse Add(AddPlayerRequest request);
-        ChancePlayerResponse Chance(ChancePlayerRequest request);
-        ChanceAdminPlayerResponse ChanceAdmin(ChanceAdminPlayerRequest request);
+        CreatePlayerResponse Create(CreatePlayerRequest request);
+        UpdatePlayerResponse Update(UpdatePlayerRequest request);
+        UpdateAdminPlayerResponse UpdateAdmin(UpdateAdminPlayerRequest request);
         IEnumerable<PlayerResponse> ListPlayers();
-        ResponseBase DeletePlayer(Guid id);
+        ResponseBase Delete(Guid id);
 
     }
 }

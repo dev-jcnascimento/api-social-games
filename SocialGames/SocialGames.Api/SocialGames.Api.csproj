@@ -148,6 +148,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Controllers\Base\ControllerBase.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\GamePlatFormController.cs" />
     <Compile Include="Controllers\PlatFormController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

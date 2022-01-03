@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace SocialGames.Domain.Interfaces.Repositories.Base
 {
-    public interface RepositoryBase<TEntidade, TId>
+    public interface IRepositoryBase<TEntidade, TId>
     where TEntidade : class
     where TId : struct
     {
@@ -23,11 +23,11 @@ namespace SocialGames.Domain.Interfaces.Repositories.Base
 
         TEntidade GetById(TId id, params Expression<Func<TEntidade, object>>[] includeProperties);
 
-        TEntidade Add(TEntidade entidade);
+        TEntidade Create(TEntidade entidade);
 
-        TEntidade Edit(TEntidade entidade);
+        TEntidade Update(TEntidade entidade);
 
-        void Remove(TEntidade entidade);
+        void Delete(TEntidade entidade);
 
         IEnumerable<TEntidade> AddList(IEnumerable<TEntidade> entidades);
     }

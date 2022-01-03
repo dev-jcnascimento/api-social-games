@@ -55,12 +55,30 @@
     <Compile Include="Migrations\202112301943260_Inicial.designer.cs">
       <DependentUpon>202112301943260_Inicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201031227212_Password.cs" />
+    <Compile Include="Migrations\202201031227212_Password.designer.cs">
+      <DependentUpon>202201031227212_Password.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201031556263_GamePlatForm.cs" />
+    <Compile Include="Migrations\202201031556263_GamePlatForm.designer.cs">
+      <DependentUpon>202201031556263_GamePlatForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201031644596_Correção de Prop.cs" />
+    <Compile Include="Migrations\202201031644596_Correção de Prop.designer.cs">
+      <DependentUpon>202201031644596_Correção de Prop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201032025534_Prop GP.cs" />
+    <Compile Include="Migrations\202201032025534_Prop GP.designer.cs">
+      <DependentUpon>202201032025534_Prop GP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\Map\MapGame.cs" />
+    <Compile Include="Persistence\Map\MapGamePlatForm.cs" />
     <Compile Include="Persistence\Map\MapPlatForm.cs" />
     <Compile Include="Persistence\Map\MapPlayer.cs" />
     <Compile Include="Persistence\Repositories\Base\RepositoryBase.cs" />
     <Compile Include="Persistence\Repositories\RepositoryGame.cs" />
+    <Compile Include="Persistence\Repositories\RepositoryGamePlatForm.cs" />
     <Compile Include="Persistence\Repositories\RepositoryPlatForm.cs" />
     <Compile Include="Persistence\Repositories\RepositoryPlayer.cs" />
     <Compile Include="Persistence\SocialGamesContext.cs" />
@@ -81,6 +99,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202112301943260_Inicial.resx">
       <DependentUpon>202112301943260_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201031227212_Password.resx">
+      <DependentUpon>202201031227212_Password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201031556263_GamePlatForm.resx">
+      <DependentUpon>202201031556263_GamePlatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201031644596_Correção de Prop.resx">
+      <DependentUpon>202201031644596_Correção de Prop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201032025534_Prop GP.resx">
+      <DependentUpon>202201032025534_Prop GP.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

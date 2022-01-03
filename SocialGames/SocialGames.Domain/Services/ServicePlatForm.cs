@@ -20,7 +20,7 @@ namespace SocialGames.Domain.Services
             _repositoryPlatForm = repositoryPlatForm;
         }
 
-        public AddPlatFormResponse Add(AddPlatFormRequest request)
+        public CreatePlatFormResponse Create(CreatePlatFormRequest request)
         {
             PlatForm platForm = new PlatForm(request.Name);
             if (_repositoryPlatForm.Exists(
@@ -29,12 +29,12 @@ namespace SocialGames.Domain.Services
             {
                 throw new Exception("This PlatForm already exists!");
             }
-            platForm = _repositoryPlatForm.Add(platForm);
-            return (AddPlatFormResponse)platForm;
+            platForm = _repositoryPlatForm.Create(platForm);
+            return (CreatePlatFormResponse)platForm;
 
         }
 
-        public ChancePlatFormResponse Chance(ChancePlatFormRequest request)
+        public UpdatePlatFormResponse Update(UpdatePlatFormRequest request)
         {
             if (request == null)
             {
@@ -48,9 +48,9 @@ namespace SocialGames.Domain.Services
             }
 
             platForm.ChancePlatForm(request.Name);
-            _repositoryPlatForm.Edit(platForm);
+            _repositoryPlatForm.Update(platForm);
 
-            return (ChancePlatFormResponse)platForm;
+            return (UpdatePlatFormResponse)platForm;
         }
         public ResponseBase Delete(Guid id)
         {
@@ -59,7 +59,7 @@ namespace SocialGames.Domain.Services
             {
                 throw new Exception("PlatForm not found!");
             }
-            _repositoryPlatForm.Remove(platForm);  
+            _repositoryPlatForm.Delete(platForm);  
 
             return (ResponseBase)platForm;
         }

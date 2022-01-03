@@ -18,14 +18,13 @@ namespace SocialGames.Api.Controllers
         {
             _servicePlatForm = servicePlatForm;
         }
-
-        [Route("Add")]
+        [Route("create")]
         [HttpPost]
-        public async Task<HttpResponseMessage> Add(AddPlatFormRequest request)
+        public async Task<HttpResponseMessage> Create(CreatePlatFormRequest request)
         {
             try
             {
-                var response = _servicePlatForm.Add(request);
+                var response = _servicePlatForm.Create(request);
                 return await ResponseAsync(response);
             }
             catch (Exception ex)
@@ -34,13 +33,13 @@ namespace SocialGames.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
-        [Route("Edit")]
+        [Route("update")]
         [HttpPut]
-        public async Task<HttpResponseMessage> Edit(ChancePlatFormRequest request)
+        public async Task<HttpResponseMessage> Update(UpdatePlatFormRequest request)
         {
             try
             {
-                var response = _servicePlatForm.Chance(request);
+                var response = _servicePlatForm.Update(request);
                 return await ResponseAsync(response);
             }
             catch (Exception ex)
@@ -48,7 +47,7 @@ namespace SocialGames.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
-        [Route("List")]
+        [Route("read")]
         [HttpGet]
         public async Task<HttpResponseMessage> List()
         {
@@ -63,7 +62,7 @@ namespace SocialGames.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
-        [Route("Delete")]
+        [Route("delete/{id}")]
         [HttpDelete]
         public async Task<HttpResponseMessage> Delete(Guid id)
         {

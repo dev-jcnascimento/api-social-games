@@ -1,5 +1,5 @@
-﻿using SocialGames.Domain.Entities.Base;
-using SocialGames.Domain.Interfaces.Repositories.Base;
+﻿using SocialGames.Domain.Entities;
+using SocialGames.Domain.Entities.Base;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -61,19 +61,19 @@ namespace SocialGames.Infra.Persistence.Repositories.Base
             return ascendente ? List(includeProperties).OrderBy(ordem) : List(includeProperties).OrderByDescending(ordem);
         }
 
-        public TEntidade Add(TEntidade entidade)
+        public TEntidade Create(TEntidade entidade)
         {
             return _context.Set<TEntidade>().Add(entidade);
         }
 
-        public TEntidade Edit(TEntidade entidade)
+        public TEntidade Update(TEntidade entidade)
         {
-            _context.Entry(entidade).State = System.Data.Entity.EntityState.Modified;
+            _context.Entry(entidade).State = EntityState.Modified;
 
             return entidade;
         }
 
-        public void Remove(TEntidade entidade)
+        public void Delete(TEntidade entidade)
         {
             _context.Set<TEntidade>().Remove(entidade);
         }
@@ -97,7 +97,7 @@ namespace SocialGames.Infra.Persistence.Repositories.Base
         {
             return _context.Set<TEntidade>().Any(where);
         }
-
+  
         /// <summary>
         /// Realiza include populando o objeto passado por parametro
         /// </summary>

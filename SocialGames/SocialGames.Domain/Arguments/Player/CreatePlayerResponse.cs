@@ -4,13 +4,13 @@ using System;
 
 namespace SocialGames.Domain.Arguments.Player
 {
-    public class AddPlayerResponse : ResponseBase,IResponse
+    public class CreatePlayerResponse : ResponseBase,IResponse
     {
         public Guid Id { get; set; }
 
-        public static explicit operator AddPlayerResponse(Entities.Player entity)
+        public static explicit operator CreatePlayerResponse(Entities.Player entity)
         {
-            return new AddPlayerResponse()
+            return new CreatePlayerResponse()
             {
                 Id = entity.Id,
             };

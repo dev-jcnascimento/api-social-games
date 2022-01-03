@@ -7,8 +7,8 @@ namespace SocialGames.Domain.Interfaces.Services
 {
     public interface IServicePlatForm
     {
-        AddPlatFormResponse Add(AddPlatFormRequest request);
-        ChancePlatFormResponse Chance(ChancePlatFormRequest request);
+        CreatePlatFormResponse Create(CreatePlatFormRequest request);
+        UpdatePlatFormResponse Update(UpdatePlatFormRequest request);
         IEnumerable<PlatFormResponse> List();
         ResponseBase Delete(Guid id);
     }

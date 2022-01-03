@@ -17,13 +17,13 @@ namespace SocialGames.Api.Controllers
         {
             _serviceGame = serviceGame; 
         }
-        [Route("Add")]
+        [Route("create")]
         [HttpPost]
-        public async Task<HttpResponseMessage> Add(AddGameRequest request)
+        public async Task<HttpResponseMessage> Create(CreateGameRequest request)
         {
             try
             {
-                var response = _serviceGame.Add(request);
+                var response = _serviceGame.Create(request);
                 return await ResponseAsync(response);
             }
             catch (Exception ex)
@@ -32,13 +32,13 @@ namespace SocialGames.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
-        [Route("Edit")]
+        [Route("update")]
         [HttpPut]
-        public async Task<HttpResponseMessage> Edit(ChanceGameRequest request)
+        public async Task<HttpResponseMessage> Update(UpdateGameRequest request)
         {
             try
             {
-                var response = _serviceGame.Chance(request);
+                var response = _serviceGame.Update(request);
                 return await ResponseAsync(response);
             }
             catch (Exception ex)
@@ -46,9 +46,9 @@ namespace SocialGames.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
-        [Route("Get")]
+        [Route("read")]
         [HttpGet]
-        public async Task<HttpResponseMessage> Get()
+        public async Task<HttpResponseMessage> List()
         {
             try
             {
@@ -61,7 +61,7 @@ namespace SocialGames.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
-        [Route("Delete")]
+        [Route("delete/{id}")]
         [HttpDelete]
         public async Task<HttpResponseMessage> Delete(Guid id)
         {

@@ -1,5 +1,4 @@
 ﻿using SocialGames.Domain.Entities.Base;
-using SocialGames.Domain.ValueObject;
 using System;
 
 namespace SocialGames.Domain.Entities
@@ -12,13 +11,13 @@ namespace SocialGames.Domain.Entities
         }
         public PlatForm(string name)
         {
-            if (string.IsNullOrEmpty(name) || name.Length > 30)
-            {
-                throw new Exception("Name cannot be empty and cannot be shorter than 30 characters.");
-            }
-            Name = name;
+            Validate(name);
         }
         public void ChancePlatForm(string name)
+        {
+            Validate(name);
+        }
+        private void Validate(string name)
         {
             if (string.IsNullOrEmpty(name) || name.Length > 30)
             {

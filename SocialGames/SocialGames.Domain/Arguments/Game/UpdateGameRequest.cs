@@ -2,7 +2,7 @@
 
 namespace SocialGames.Domain.Arguments.Game
 {
-    public class ChanceGameRequest
+    public class UpdateGameRequest
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

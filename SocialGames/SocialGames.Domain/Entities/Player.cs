@@ -26,11 +26,11 @@ namespace SocialGames.Domain.Entities
             Password = password;
             Status = PlayerStatus.In_Analysis;
         }
-        public void ChancePlayerAdmin(PlayerStatus status)
+        public void UpdatePlayerAdmin(PlayerStatus status)
         {
             Status = PlayerStatus.Active;
         }
-        public void ChancePlayer(Name name, Email email, PlayerStatus status)
+        public void UpdatePlayer(Name name, Email email, PlayerStatus status)
         {
             if (status != PlayerStatus.Active)
             {

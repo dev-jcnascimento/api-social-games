@@ -3,7 +3,7 @@ using System;
 
 namespace SocialGames.Domain.Arguments.Game
 {
-    public class AddGameResponse : ResponseBase
+    public class UpdateGameResponse : ResponseBase
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -11,9 +11,9 @@ namespace SocialGames.Domain.Arguments.Game
         public string Gender { get; set; }
         public string Distributor { get; set; }
 
-        public static explicit operator AddGameResponse(Entities.Game entity)
+        public static explicit operator UpdateGameResponse(Entities.Game entity)
         {
-            return new AddGameResponse()
+            return new UpdateGameResponse()
             {
                 Name = entity.Name,
                 Description = entity.Description,

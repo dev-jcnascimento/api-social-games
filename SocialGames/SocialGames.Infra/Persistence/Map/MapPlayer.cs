@@ -14,7 +14,7 @@ namespace SocialGames.Infra.Persistence.Map
             Property(p => p.Email.Address).HasMaxLength(200).IsRequired().HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("UK_PLAYER_EMAIL") { IsUnique = true })).HasColumnName("Email");
             Property(p => p.Name.FirstName).HasMaxLength(50).IsRequired().HasColumnName("FirstName");
             Property(p => p.Name.LastName).HasMaxLength(50).IsRequired().HasColumnName("LastName");
-            Property(p => p.Password.Word).IsRequired();
+            Property(p => p.Password.Word).HasColumnName("Password").IsRequired();
             Property(p => p.Status).IsRequired();
         }
     }

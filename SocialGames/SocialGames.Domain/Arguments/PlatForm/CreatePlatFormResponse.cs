@@ -4,14 +4,14 @@ using System;
 
 namespace SocialGames.Domain.Arguments.PlatForm
 {
-    public class AddPlatFormResponse : ResponseBase, IResponse
+    public class CreatePlatFormResponse : ResponseBase, IResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
 
-        public static explicit operator AddPlatFormResponse(Entities.PlatForm entity)
+        public static explicit operator CreatePlatFormResponse(Entities.PlatForm entity)
         {
-            return new AddPlatFormResponse()
+            return new CreatePlatFormResponse()
             {
                 Id = entity.Id,
                 Name = entity.Name

@@ -3,13 +3,13 @@ using SocialGames.Domain.Interfaces.Arguments;
 
 namespace SocialGames.Domain.Arguments.PlatForm
 {
-    public class ChancePlatFormResponse : ResponseBase , IResponse
+    public class UpdatePlatFormResponse : ResponseBase , IResponse
     {
         public string Name { get; set; }
 
-        public static explicit operator ChancePlatFormResponse(Entities.PlatForm entity)
+        public static explicit operator UpdatePlatFormResponse(Entities.PlatForm entity)
         {
-            return new ChancePlatFormResponse()
+            return new UpdatePlatFormResponse()
             {
                 Name = entity.Name
             };

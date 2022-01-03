@@ -1,6 +1,6 @@
 ﻿using SocialGames.Domain.Entities.Base;
-using SocialGames.Domain.ValueObject;
 using System;
+using System.Runtime.InteropServices;
 
 namespace SocialGames.Domain.Entities
 {
@@ -14,36 +14,19 @@ namespace SocialGames.Domain.Entities
         protected Game()
         {
         }
+        public Game(string name)
+        {
+            Validate(name);
+        }
         public Game(string name, string description, string producer, string gender, string distributor)
         {
-            if (string.IsNullOrEmpty(name) || name.Length > 30)
-            {
-                throw new Exception("Name cannot be empty and cannot be shorter than 30 characters.");
-            }
-            Name = name;
-
-            if (string.IsNullOrEmpty(description))
-            {
-                description = "Not Description!";
-            }
-            Description = description;
-            if (string.IsNullOrEmpty(producer))
-            {
-                producer = "Not Producer";
-            }
-            Producer = producer;
-            if (string.IsNullOrEmpty(gender))
-            {
-                gender = "Not Gender";
-            }
-            Gender = gender;
-            if (string.IsNullOrEmpty(distributor))
-            {
-                distributor = "Not Distributor";
-            }
-            Distributor = distributor;
+            Validate(name, description, producer, gender, distributor);
         }
-        public void EditGame(string name, string description, string producer, string gender, string distributor)
+        public void UpdateGame(string name, string description, string producer, string gender, string distributor)
+        {
+            Validate(name, description, producer, gender, distributor);
+        }
+        private void Validate(string name, [Optional] string description, [Optional] string producer, [Optional] string gender, [Optional] string distributor)
         {
             if (string.IsNullOrEmpty(name) || name.Length > 30)
             {

@@ -2,7 +2,7 @@
 
 namespace SocialGames.Domain.Arguments.Player
 {
-    public class AddPlayerRequest : IRequest
+    public class CreatePlayerRequest : IRequest
     {
         public string FirstName{ get;  set; }
         public string LastName { get; set; }

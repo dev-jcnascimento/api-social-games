@@ -4,16 +4,16 @@ using System;
 
 namespace SocialGames.Domain.Arguments.Player
 {
-    public class ChancePlayerResponse : ResponseBase , IResponse
+    public class UpdatePlayerResponse : ResponseBase , IResponse
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string Email { get; set; }
         public string Status { get; set; }
 
-        public static explicit operator ChancePlayerResponse(Entities.Player entity)
+        public static explicit operator UpdatePlayerResponse(Entities.Player entity)
         {
-            return new ChancePlayerResponse()
+            return new UpdatePlayerResponse()
             {
                 Id = entity.Id,
                 FirstName = entity.Name.FirstName,

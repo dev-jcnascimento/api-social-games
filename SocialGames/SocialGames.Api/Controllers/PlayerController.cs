@@ -1,4 +1,4 @@
-﻿    using SocialGames.Api.Controllers.Base;
+﻿using SocialGames.Api.Controllers.Base;
 using SocialGames.Domain.Arguments.Player;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Infra.Transactions;
@@ -14,19 +14,17 @@ namespace SocialGames.Api.Controllers
     {
         private readonly IServicePlayer _servicePlayer;
 
-
-        public PlayerController(IUnitOfWork unitOfWork,IServicePlayer servicePlayer): base(unitOfWork)
+        public PlayerController(IUnitOfWork unitOfWork, IServicePlayer servicePlayer) : base(unitOfWork)
         {
             _servicePlayer = servicePlayer;
         }
-        [Route("Add")]
+        [Route("create")]
         [HttpPost]
-        public async Task<HttpResponseMessage> Add(AddPlayerRequest request)
+        public async Task<HttpResponseMessage> Create(CreatePlayerRequest request)
         {
             try
             {
-
-                var response = _servicePlayer.Add(request);
+                var response = _servicePlayer.Create(request);
 
                 return await ResponseAsync(response);
             }
@@ -35,14 +33,13 @@ namespace SocialGames.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
-        [Route("EditAdmin")]
+        [Route("update/admin")]
         [HttpPatch]
-        public async Task<HttpResponseMessage> EditAdmin(ChanceAdminPlayerRequest request)
+        public async Task<HttpResponseMessage> EditAdmin(UpdateAdminPlayerRequest request)
         {
             try
             {
-
-                var response = _servicePlayer.ChanceAdmin(request);
+                var response = _servicePlayer.UpdateAdmin(request);
 
                 return await ResponseAsync(response);
             }
@@ -51,14 +48,29 @@ namespace SocialGames.Api.Controllers
                 return await ResponseExceptionAsync(ex);
             }
         }
-        [Route("Edit")]
+        [Route("update")]
         [HttpPut]
-        public async Task<HttpResponseMessage> Edit(ChancePlayerRequest request)
+        public async Task<HttpResponseMessage> Update(UpdatePlayerRequest request)
         {
             try
             {
 
-                var response = _servicePlayer.Chance(request);
+                var response = _servicePlayer.Update(request);
+
+                return await ResponseAsync(response);
+            }
+            catch (Exception ex)
+            {
+                return await ResponseExceptionAsync(ex);
+            }
+        }
+        [Route("read")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> List()
+        {
+            try
+            {
+                var response = _servicePlayer.ListPlayers();
 
                 return await ResponseAsync(response);
             }
@@ -68,30 +80,13 @@ namespace SocialGames.Api.Controllers
             }
         }
         [Authorize]
-        [Route("Delete")]
+        [Route("delete/{id}")]
         [HttpDelete]
         public async Task<HttpResponseMessage> Delete(Guid id)
         {
             try
             {
-
-                var response = _servicePlayer.DeletePlayer(id);
-
-                return await ResponseAsync(response);
-            }
-            catch (Exception ex)
-            {
-                return await ResponseExceptionAsync(ex);
-            }
-        }
-        [Route("List")]
-        [HttpGet]
-        public async Task<HttpResponseMessage> List()
-        {
-            try
-            {
-
-                var response = _servicePlayer.ListPlayers();
+                var response = _servicePlayer.Delete(id);
 
                 return await ResponseAsync(response);
             }

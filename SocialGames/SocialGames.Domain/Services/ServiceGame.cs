@@ -19,7 +19,7 @@ namespace SocialGames.Domain.Services
             _RepositoryGame = repositoryGame;
         }
 
-        public AddGameResponse Add(AddGameRequest request)
+        public CreateGameResponse Create(CreateGameRequest request)
         {
             if (request != null)
             {
@@ -28,8 +28,8 @@ namespace SocialGames.Domain.Services
                 {
                     throw new Exception("This Game already exists!");
                 }
-                var response = _RepositoryGame.Add(game);
-                return (AddGameResponse)game;
+                var response = _RepositoryGame.Create(game);
+                return (CreateGameResponse)game;
             }
             else
             {
@@ -37,7 +37,7 @@ namespace SocialGames.Domain.Services
             }
         }
 
-        public ChanceGameResponse Chance(ChanceGameRequest request)
+        public UpdateGameResponse Update(UpdateGameRequest request)
         {
             if (request == null)
             {
@@ -48,9 +48,9 @@ namespace SocialGames.Domain.Services
             {
                 throw new Exception("Not found Game!");
             }
-            game.EditGame(request.Name, request.Description, request.Producer, request.Gender, request.Distributor);
-                var response = _RepositoryGame.Edit(game);
-                return (ChanceGameResponse)response;
+            game.UpdateGame(request.Name, request.Description, request.Producer, request.Gender, request.Distributor);
+                var response = _RepositoryGame.Update(game);
+                return (UpdateGameResponse)response;
         }
 
         public ResponseBase Delete(Guid id)
@@ -60,7 +60,7 @@ namespace SocialGames.Domain.Services
             {
                 throw new Exception("Id Game not Found!");
             }
-            _RepositoryGame.Remove(game);
+            _RepositoryGame.Delete(game);
             return (ResponseBase)game;
         }
 
