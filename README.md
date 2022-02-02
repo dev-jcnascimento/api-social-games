@@ -12,13 +12,8 @@ TODO - Ao rodar pela primeira vez a aplicação e o banco de dados estiver vazio
 ## COMO RODAR O PROJETO
 
 ### INICIAR O PROJETO
-Primeiro, deve ser feito o build do projeto. 
-<br>
-Abra o cmd (prompt de comando) e digite:
->dotnet build
-
 >
-Depois, execute o comando para rodar o projeto:
+Execute o comando para rodar o projeto:
 >dotnet run --project 
 
 ## DOCUMENTAÇÃO
