@@ -1,9 +1,9 @@
 # SOBRE O PROJETO
-Trata-se de uma API Agenda desenvolvida em:<br>
-**.NET 5**<br>
+Trata-se de uma API para treinamento, com foco em criar uma rede Social de Games, ela foi desenvolvida em:<br>
+**.NET Framework 4.7**<br>
 utilizando:<br> 
-*Entity Framework Core*,<br>
-*SQLite*,<br>
+*Entity Framework*,<br>
+*SQL Server*,<br>
 
 A API foi elaborada tendo como objetivo, aplicar conceitos e princípios: REST, DRY e SOLID.
 
