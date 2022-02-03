@@ -1,11 +1,7 @@
 ﻿using SocialGames.Domain.Entities;
 using SocialGames.Domain.Enum;
 using SocialGames.Domain.ValueObject;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SocialGames.Infra.Persistence
 {
@@ -20,7 +16,8 @@ namespace SocialGames.Infra.Persistence
         public void Seed()
         {
 
-            if (_context.Players.Any())
+            if (_context.Players.Any() && _context.PlatForms.Any() && _context.Games.Any()
+                && _context.MyGames.Any())
             {
                 return;
             }
@@ -128,6 +125,15 @@ namespace SocialGames.Infra.Persistence
             _context.Games.Add(game10);
             _context.Games.Add(game11);
 
+            _context.MyGames.Add(myGame1);
+            _context.MyGames.Add(myGame2);
+            _context.MyGames.Add(myGame3);
+            _context.MyGames.Add(myGame4);
+            _context.MyGames.Add(myGame5);
+            _context.MyGames.Add(myGame6);
+            _context.MyGames.Add(myGame7);
+
+            _context.SaveChangesAsync();
         }
     }
 
