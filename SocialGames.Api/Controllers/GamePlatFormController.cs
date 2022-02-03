@@ -10,7 +10,7 @@ using System.Net.Http;
 
 namespace SocialGames.Api.Controllers
 {
-    [RoutePrefix("api/gamePlatForm")]
+    [RoutePrefix("v1/gamePlatForms")]
     public class GamePlatFormController : ControllerBase
     {
         private readonly IServiceGamePlatForm _serviceGamePlatForm;
@@ -19,20 +19,34 @@ namespace SocialGames.Api.Controllers
         {
             _serviceGamePlatForm = serviceGamePlatForm;
         }
-        [Route("create")]
+        [Route("")]
         [HttpPost]
         public async Task<HttpResponseMessage> Create(CreateGamePlatFormRequest request)
         {
-            try
-            {
-                var response = _serviceGamePlatForm.Create(request);
+            var response = _serviceGamePlatForm.Create(request);
+            return await ResponseAsync(response);
+        }
+        [Route("")]
+        [HttpPut]
+        public async Task<HttpResponseMessage> Update(UpdateGamePlatFormRequest request)
+        {
+            var response = _serviceGamePlatForm.Update(request);
+            return await ResponseAsync(response);
+        }
+        [Route("")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> List()
+        {
+            var response = _serviceGamePlatForm.GetAll();
+            return await ResponseAsync(response);
+        }
+        [Route("{id}")]
+        [HttpDelete]
+        public async Task<HttpResponseMessage> Delete(Guid id)
+        {
+            var response = _serviceGamePlatForm.Delete(id);
+            return await ResponseAsync(response);
 
-                return await ResponseAsync(response);
-            }
-            catch(Exception ex)
-            {
-                return await ResponseExceptionAsync(ex);
-            }
         }
     }
 }

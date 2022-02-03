@@ -76,6 +76,7 @@ namespace SocialGames.Api
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
+                
                 TokenEndpointPath = new Microsoft.Owin.PathString("/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),
                 Provider = new AuthorizationProvider(container)

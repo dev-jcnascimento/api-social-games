@@ -81,6 +81,7 @@
     <Compile Include="Persistence\Repositories\RepositoryGamePlatForm.cs" />
     <Compile Include="Persistence\Repositories\RepositoryPlatForm.cs" />
     <Compile Include="Persistence\Repositories\RepositoryPlayer.cs" />
+    <Compile Include="Persistence\Seeding.cs" />
     <Compile Include="Persistence\SocialGamesContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transactions\IUnitOfWork.cs" />

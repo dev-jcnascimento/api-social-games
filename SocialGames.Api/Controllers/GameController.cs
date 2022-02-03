@@ -9,72 +9,42 @@ using System.Web.Http;
 
 namespace SocialGames.Api.Controllers
 {
-    [RoutePrefix("api/game")]
+    [RoutePrefix("v1/games")]
     public class GameController : ControllerBase
     {
         private readonly IServiceGame _serviceGame;
         public GameController(IUnitOfWork unitOfWork, IServiceGame serviceGame) : base(unitOfWork)
         {
-            _serviceGame = serviceGame; 
+            _serviceGame = serviceGame;
         }
-        [Route("create")]
+        [Route("")]
         [HttpPost]
         public async Task<HttpResponseMessage> Create(CreateGameRequest request)
         {
-            try
-            {
-                var response = _serviceGame.Create(request);
-                return await ResponseAsync(response);
-            }
-            catch (Exception ex)
-            {
-
-                return await ResponseExceptionAsync(ex);
-            }
+            var response = _serviceGame.Create(request);
+            return await ResponseAsync(response);
         }
-        [Route("update")]
+        [Route("")]
         [HttpPut]
         public async Task<HttpResponseMessage> Update(UpdateGameRequest request)
         {
-            try
-            {
-                var response = _serviceGame.Update(request);
-                return await ResponseAsync(response);
-            }
-            catch (Exception ex)
-            {
-                return await ResponseExceptionAsync(ex);
-            }
+            var response = _serviceGame.Update(request);
+            return await ResponseAsync(response);
         }
-        [Route("read")]
+        [Route("")]
         [HttpGet]
         public async Task<HttpResponseMessage> List()
         {
-            try
-            {
-                var response = _serviceGame.List();
-                return await ResponseAsync(response);
-            }
-            catch (Exception ex)
-            {
-
-                return await ResponseExceptionAsync(ex);
-            }
+            var response = _serviceGame.List();
+            return await ResponseAsync(response);
         }
-        [Route("delete/{id}")]
+        [Route("{id}")]
         [HttpDelete]
         public async Task<HttpResponseMessage> Delete(Guid id)
         {
-            try
-            {
-                var response = _serviceGame.Delete(id);
-                return await ResponseAsync(response);
-            }
-            catch (Exception ex)
-            {
+            var response = _serviceGame.Delete(id);
+            return await ResponseAsync(response);
 
-                return await ResponseExceptionAsync(ex);
-            }
         }
     }
 }
