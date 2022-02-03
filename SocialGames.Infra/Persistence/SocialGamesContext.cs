@@ -15,6 +15,7 @@ namespace SocialGames.Infra.Persistence
         public IDbSet<Game> Games { get; set; }
         public IDbSet<PlatForm> PlatForms { get; set; }
         public IDbSet<GamePlatForm> GamePlatForms { get; set; }
+        public IDbSet<MyGame> MyGames { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelbuilder)
         {

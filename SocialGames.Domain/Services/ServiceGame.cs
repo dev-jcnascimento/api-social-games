@@ -23,7 +23,7 @@ namespace SocialGames.Domain.Services
         {
             if (request != null)
             {
-                Game game = new Game(request.Name, request.Description, request.Producer, request.Gender, request.Distributor);
+                Game game = new Game(request.Name, request.Description, request.Producer, request.Gender, request.Distributor,request.PlatFormId);
                 if (_RepositoryGame.Exists(x => x.Name.ToString().ToLower() == request.Name.ToString().ToLower()))
                 {
                     throw new Exception("This Game already exists!");

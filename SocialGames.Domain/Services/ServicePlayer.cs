@@ -1,6 +1,7 @@
 ﻿using SocialGames.Domain.Arguments.Base;
 using SocialGames.Domain.Arguments.Player;
 using SocialGames.Domain.Entities;
+using SocialGames.Domain.Extensions;
 using SocialGames.Domain.Interfaces.Repositories;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Domain.ValueObject;
@@ -42,13 +43,13 @@ namespace SocialGames.Domain.Services
                 throw new Exception("AuthenticatePlayerRequest is required!");
             }
 
-            var email = new Email(request.Email);
-            var password = new Password(request.Password);
-            var player = new Player(email, password);
+            //var email = new Email(request.Email);
+            //var password = new Password(request.Password);
+            //var player = new Player(email, password);
 
-            player = _repositoryPlayer.GetBy(
-                x => x.Email.Address == player.Email.Address &&
-                x.Password.Word == player.Password.Word);
+            var player = _repositoryPlayer.GetBy(
+                x => x.Email.Address == request.Email &&
+                x.Password.Word == request.Password.ConvertToMD5());
             return (AuthenticatePlayerResponse)player;
 
         }

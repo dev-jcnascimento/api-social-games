@@ -6,6 +6,7 @@ using Newtonsoft.Json.Serialization;
 using Owin;
 using SocialGames.Api.App_Start;
 using SocialGames.Api.Security;
+using SocialGames.Infra.Persistence;
 using SocialGames.IoC.Unity;
 using System;
 using System.Net.Http.Extensions.Compression.Core.Compressors;
@@ -16,8 +17,9 @@ namespace SocialGames.Api
 {
     public class Startup
     {
-        public void Configuration(IAppBuilder app)
+        public void Configuration(IAppBuilder app, Seeding seeding)
         {
+            seeding.Seed();
             HttpConfiguration config = new HttpConfiguration();
 
             // Swagger
@@ -63,6 +65,7 @@ namespace SocialGames.Api
             //config.Filters.Add(new UnitOfWorkActionFilter());
 
             config.MapHttpAttributeRoutes();
+
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

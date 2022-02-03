@@ -11,6 +11,8 @@ namespace SocialGames.Domain.Entities
         public string Producer { get; private set; }
         public string Gender { get; private set; }
         public string Distributor { get; private set; }
+        public Guid PlatFormId { get; private set; }
+        public PlatForm PlatForm { get; private set; }
         protected Game()
         {
         }
@@ -18,9 +20,10 @@ namespace SocialGames.Domain.Entities
         {
             Validate(name);
         }
-        public Game(string name, string description, string producer, string gender, string distributor)
+        public Game(string name, string description, string producer, string gender, string distributor,Guid platFormId)
         {
             Validate(name, description, producer, gender, distributor);
+            PlatFormId = platFormId;
         }
         public void UpdateGame(string name, string description, string producer, string gender, string distributor)
         {
