@@ -11,6 +11,7 @@ namespace SocialGames.Infra.Persistence.Map
         {
             ToTable("Player");
 
+            HasKey(p => p.Id);
             Property(p => p.Email.Address).HasMaxLength(200).IsRequired().HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("UK_PLAYER_EMAIL") { IsUnique = true })).HasColumnName("Email");
             Property(p => p.Name.FirstName).HasMaxLength(50).IsRequired().HasColumnName("FirstName");
             Property(p => p.Name.LastName).HasMaxLength(50).IsRequired().HasColumnName("LastName");

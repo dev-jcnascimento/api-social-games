@@ -17,14 +17,13 @@ namespace SocialGames.Api
 {
     public class Startup
     {
-        public void Configuration(IAppBuilder app, Seeding seeding)
+        public void Configuration(IAppBuilder app)
         {
-            seeding.Seed();
+
             HttpConfiguration config = new HttpConfiguration();
 
             // Swagger
-           SwaggerConfig.Register(config);
-
+            SwaggerConfig.Register(config);
             // Configure Dependency Injection
             var container = new UnityContainer();
             DependencyResolver.Resolve(container);
@@ -41,6 +40,7 @@ namespace SocialGames.Api
 
         public static void ConfigureWebApi(HttpConfiguration config)
         {
+
             // Remove o XML
             var formatters = config.Formatters;
             formatters.Remove(formatters.XmlFormatter);
@@ -55,7 +55,7 @@ namespace SocialGames.Api
 
             // Modifica a serialização
             formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.None;
-       
+
             Register(config);
         }
 
@@ -79,7 +79,7 @@ namespace SocialGames.Api
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
-                
+
                 TokenEndpointPath = new Microsoft.Owin.PathString("/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),
                 Provider = new AuthorizationProvider(container)

@@ -47,6 +47,7 @@ namespace SocialGames.Api.Controllers
             var response = _servicePlayer.ListPlayers();
             return await ResponseAsync(response);
         }
+        
         [Route("{id}")]
         [HttpDelete]
         public async Task<HttpResponseMessage> Delete(Guid id)

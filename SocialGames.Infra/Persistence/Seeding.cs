@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SocialGames.Infra.Persistence
 {
-    public class Seeding
+    public  class Seeding
     {
         private readonly SocialGamesContext _context;
 
@@ -13,6 +13,7 @@ namespace SocialGames.Infra.Persistence
         {
             _context = context;
         }
+
         public void Seed()
         {
 
@@ -92,14 +93,16 @@ namespace SocialGames.Infra.Persistence
             var game11 = new Game("Gran Turismo" , "Uma breve descrição do jogo Gran Turismo",
                 "SCEA", "Driving, Racing, GT / Street", "SCEA", platForm3.Id);
 
-            var myGame1 = new MyGame(null,MyGameStatus.NewGame, player1.Id,game1.Id);
-            var myGame2 = new MyGame(null,MyGameStatus.NewGame, player1.Id,game11.Id);
-            var myGame3 = new MyGame(null,MyGameStatus.NewGame, player1.Id,game10.Id);
-            var myGame4 = new MyGame(null,MyGameStatus.NewGame, player1.Id,game4.Id);
-            var myGame5 = new MyGame(null,MyGameStatus.NewGame, player2.Id,game4.Id);
-            var myGame6 = new MyGame(null,MyGameStatus.NewGame, player2.Id,game11.Id);
-            var myGame7 = new MyGame(null,MyGameStatus.NewGame, player3.Id,game9.Id);
-            var myGame8 = new MyGame(null,MyGameStatus.NewGame, player3.Id,game7.Id);
+            var date = System.DateTime.Now;
+
+            var myGame1 = new MyGame(date,MyGameStatus.NewGame, player1.Id,game1.Id);
+            var myGame2 = new MyGame(date, MyGameStatus.NewGame, player1.Id,game11.Id);
+            var myGame3 = new MyGame(date, MyGameStatus.NewGame, player1.Id,game10.Id);
+            var myGame4 = new MyGame(date, MyGameStatus.NewGame, player1.Id,game4.Id);
+            var myGame5 = new MyGame(date, MyGameStatus.NewGame, player2.Id,game4.Id);
+            var myGame6 = new MyGame(date, MyGameStatus.NewGame, player2.Id,game11.Id);
+            var myGame7 = new MyGame(date, MyGameStatus.NewGame, player3.Id,game9.Id);
+            var myGame8 = new MyGame(date, MyGameStatus.NewGame, player3.Id,game7.Id);
 
             _context.Players.Add(player1);
             _context.Players.Add(player2);
@@ -133,7 +136,7 @@ namespace SocialGames.Infra.Persistence
             _context.MyGames.Add(myGame6);
             _context.MyGames.Add(myGame7);
 
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 

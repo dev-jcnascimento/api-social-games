@@ -9,6 +9,7 @@ namespace SocialGames.Infra.Persistence.Map
         {
             ToTable("PlatForm");
 
+            HasKey(p => p.Id);
             Property(p => p.Name).HasMaxLength(50).IsRequired().HasColumnName("Name");
             HasMany(x => x.Games);
         }

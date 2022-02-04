@@ -1,8 +1,10 @@
 ﻿namespace SocialGames.Infra.Migrations
 {
+    using SocialGames.Infra.Persistence;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SocialGames.Infra.Persistence.SocialGamesContext>
+     internal sealed class Configuration : DbMigrationsConfiguration<SocialGames.Infra.Persistence.SocialGamesContext>
     {
         public Configuration()
         {
@@ -11,10 +13,7 @@
 
         protected override void Seed(SocialGames.Infra.Persistence.SocialGamesContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+            
         }
     }
 }
