@@ -9,8 +9,10 @@ utilizando:<br>
 A API foi elaborada tendo como objetivo, aplicar conceitos e princípios: REST, DRY e SOLID.
 
 ToDo: <br>
+Renomar EndPoints<br>
 GamePlatForm - Delete<br>
 Finalizar Requests e Responses MyGame.<br>
+Tratamento de erros<br>
 Teste Unitários<br>
 Implementar Comentários<br>
 Implementer Interesse de Troca e Venda de Games<br>
