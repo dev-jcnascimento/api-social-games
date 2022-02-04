@@ -7,11 +7,23 @@ utilizando:<br>
 
 A API foi elaborada tendo como objetivo, aplicar conceitos e princípios: REST, DRY e SOLID.
 
-TODO - Ao rodar pela primeira vez a aplicação e o banco de dados estiver vazio, ela vai realizar uma persistência de dados inicial, para visualização e testes.
+ToDo: <br>
+GamePlatForm - Delete<br>
+Finalizar Requests e Responses MyGame.<br>
+Teste Unitários<br>
+Implementar Comentários<br>
+Implementer Interesse de Troca e Venda de Games<br>
+Documentação com Postman<br>
+Seendig: Ao rodar pela primeira vez a aplicação e o banco de dados estiver vazio, ela vai realizar uma persistência de dados inicial, para visualização e testes.<br>
+
+
 
 ## COMO RODAR O PROJETO
 
-### INICIAR O PROJETO
+### CONFIGURANDO DATABASE:
+
+
+### INICIAR O PROJETO:
 >
 Execute o comando para rodar o projeto:
 >dotnet run --project 
