@@ -20,7 +20,12 @@
       "ProjectGuid": "1dbde269-f263-4ebc-9173-0b3aa88961d0",
       "DisplayName": "SocialGames.Domain",
       "ColorIndex": 2
+    },
+    "824aa5b9-a66e-4671-ada4-c4e813b7dc3e": {
+      "ProjectGuid": "824aa5b9-a66e-4671-ada4-c4e813b7dc3e",
+      "DisplayName": "SocialGames.Infra",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }

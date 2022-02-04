@@ -74,6 +74,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\Map\MapGame.cs" />
     <Compile Include="Persistence\Map\MapGamePlatForm.cs" />
+    <Compile Include="Persistence\Map\MapMyGame.cs" />
     <Compile Include="Persistence\Map\MapPlatForm.cs" />
     <Compile Include="Persistence\Map\MapPlayer.cs" />
     <Compile Include="Persistence\Repositories\Base\RepositoryBase.cs" />

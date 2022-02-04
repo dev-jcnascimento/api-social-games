@@ -1,7 +1,6 @@
 ﻿using SocialGames.Domain.Entities.Base;
 using SocialGames.Domain.Enum;
 using System;
-using System.Runtime.InteropServices;
 
 namespace SocialGames.Domain.Entities
 {
