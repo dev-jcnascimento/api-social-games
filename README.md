@@ -14,6 +14,7 @@ GamePlatForm - Delete<br>
 Finalizar Requests e Responses MyGame.<br>
 Tratamento de erros<br>
 Teste Unitários<br>
+Paginação nos EndPoints<br>
 Implementar Comentários<br>
 Implementer Interesse de Troca e Venda de Games<br>
 Documentação com Postman<br>
