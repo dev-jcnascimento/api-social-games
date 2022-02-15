@@ -18,7 +18,7 @@ Paginação nos EndPoints<br>
 Implementar Comentários<br>
 Implementer Interesse de Troca e Venda de Games<br>
 Documentação com Postman<br>
-Seendig: Ao rodar pela primeira vez a aplicação e o banco de dados estiver vazio, ela vai realizar uma persistência de dados inicial, para visualização e testes.<br>
+Seendig<br>
 
 
 
