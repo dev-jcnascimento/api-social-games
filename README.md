@@ -4,7 +4,7 @@ Trata-se de uma API para treinamento, com foco em criar uma rede Social de Games
 utilizando:<br> 
 *Entity Framework*,<br>
 *SQL Server*,<br>
-*Autenticação por Oauth*,<br>
+*Autenticação por OAuth*,<br>
 
 A API foi elaborada tendo como objetivo, aplicar conceitos e princípios: REST, Clean Code e SOLID.
 
