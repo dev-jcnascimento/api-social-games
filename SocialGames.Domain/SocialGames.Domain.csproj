@@ -43,16 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arguments\Base\ResponseBase.cs" />
-    <Compile Include="Arguments\MyGame\CreateGameRequest.cs" />
-    <Compile Include="Arguments\MyGame\CreateGameResponse.cs" />
-    <Compile Include="Arguments\MyGame\GameResponse.cs" />
-    <Compile Include="Arguments\MyGame\UpdateGameRequest.cs" />
-    <Compile Include="Arguments\MyGame\UpdateGameResponse.cs" />
-    <Compile Include="Arguments\GamePlatForm\CreateGamePlatFormRequest.cs" />
-    <Compile Include="Arguments\GamePlatForm\CreateGamePlatFormResponse.cs" />
-    <Compile Include="Arguments\GamePlatForm\GamePlatFormResponse.cs" />
-    <Compile Include="Arguments\GamePlatForm\UpdateGamePlatFormRequest.cs" />
-    <Compile Include="Arguments\GamePlatForm\UpdateGamePlatFormResponse.cs" />
+    <Compile Include="Arguments\MyGame\CreateMyGameRequest.cs" />
+    <Compile Include="Arguments\MyGame\MyGameResponse.cs" />
+    <Compile Include="Arguments\MyGame\UpdateMyGameRequest.cs" />
     <Compile Include="Arguments\Game\CreateGameRequest.cs" />
     <Compile Include="Arguments\Game\CreateGameResponse.cs" />
     <Compile Include="Arguments\Game\UpdateGameRequest.cs" />
@@ -76,7 +69,6 @@
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\MyGame.cs" />
     <Compile Include="Entities\PlatForm.cs" />
-    <Compile Include="Entities\GamePlatForm.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Enum\MyGameStatus.cs" />
     <Compile Include="Enum\PlayerStatus.cs" />
@@ -85,18 +77,15 @@
     <Compile Include="Interfaces\Arguments\IResponse.cs" />
     <Compile Include="Interfaces\Repositories\Base\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryGame.cs" />
-    <Compile Include="Interfaces\Repositories\IRepositoryGamePlatForm.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryMyGame.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryPlatForm.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryPlayer.cs" />
     <Compile Include="Interfaces\Services\IServiceGame.cs" />
-    <Compile Include="Interfaces\Services\IServiceGamePlatForm.cs" />
     <Compile Include="Interfaces\Services\IServiceMyGame.cs" />
     <Compile Include="Interfaces\Services\IServicePlatForm.cs" />
     <Compile Include="Interfaces\Services\IServicePlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ServiceGame.cs" />
-    <Compile Include="Services\ServiceGamePlatForm.cs" />
     <Compile Include="Services\ServiceMyGame.cs" />
     <Compile Include="Services\ServicePlatForm.cs" />
     <Compile Include="Services\ServicePlayer.cs" />

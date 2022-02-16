@@ -1,5 +1,4 @@
 ﻿using Microsoft.Owin.Security.OAuth;
-using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
 using SocialGames.Domain.Arguments.Player;
 using SocialGames.Domain.Interfaces.Services;
@@ -8,6 +7,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
+using Unity;
 
 namespace SocialGames.Api.Security
 {

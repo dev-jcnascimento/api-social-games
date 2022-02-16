@@ -1,12 +1,11 @@
 ﻿using SocialGames.Domain.Arguments.Base;
 using SocialGames.Domain.Arguments.PlatForm;
-using SocialGames.Domain.Arguments.Player;
 using SocialGames.Domain.Entities;
 using SocialGames.Domain.Interfaces.Repositories;
 using SocialGames.Domain.Interfaces.Services;
-using SocialGames.Domain.ValueObject;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace SocialGames.Domain.Services
@@ -27,7 +26,7 @@ namespace SocialGames.Domain.Services
                 x => x.Name.ToString().ToLower().Replace(" ", "") == 
                 request.Name.ToString().ToLower().Replace(" ", "")))
             {
-                throw new Exception("This PlatForm already exists!");
+                throw new ValidationException("This PlatForm already exists!");
             }
             platForm = _repositoryPlatForm.Create(platForm);
             return (CreatePlatFormResponse)platForm;
@@ -38,13 +37,13 @@ namespace SocialGames.Domain.Services
         {
             if (request == null)
             {
-                throw new Exception("ChancePlatFormRequest is required!");
+                throw new ValidationException("ChancePlatFormRequest is required!");
             }
 
             PlatForm platForm = _repositoryPlatForm.GetById(request.Id);
             if (platForm == null)
             {
-                throw new Exception("PlatForm not found!");
+                throw new ValidationException("PlatForm not found!");
             }
 
             platForm.ChancePlatForm(request.Name);
@@ -57,7 +56,7 @@ namespace SocialGames.Domain.Services
             PlatForm platForm = _repositoryPlatForm.GetById(id);
             if (platForm == null)
             {
-                throw new Exception("PlatForm not found!");
+                throw new ValidationException("PlatForm not found!");
             }
             _repositoryPlatForm.Delete(platForm);  
 

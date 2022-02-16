@@ -7,6 +7,7 @@ using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Domain.ValueObject;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace SocialGames.Domain.Services
@@ -20,6 +21,19 @@ namespace SocialGames.Domain.Services
             _repositoryPlayer = repositoryPlayer;
         }
 
+        public AuthenticatePlayerResponse Authenticate(AuthenticatePlayerRequest request)
+        {
+            if (request == null)
+            {
+                throw new ValidationException("AuthenticatePlayerRequest is required!");
+            }
+
+            var player = _repositoryPlayer.GetBy(
+                x => x.Email.Address == request.Email &&
+                x.Password.Word == request.Password.ConvertToMD5());
+            return (AuthenticatePlayerResponse)player;
+        }
+
         public CreatePlayerResponse Create(CreatePlayerRequest request)
         {
             var name = new Name(request.FirstName, request.LastName);
@@ -29,42 +43,39 @@ namespace SocialGames.Domain.Services
             Player player = new Player(name, email, password);
             if (_repositoryPlayer.Exists(x => x.Email.Address == request.Email))
             {
-                throw new Exception("This User already exists!");
+                throw new ValidationException("This User already exists!");
             }
             player = _repositoryPlayer.Create(player);
             return (CreatePlayerResponse)player;
+        }
+        
+        public IEnumerable<PlayerResponse> GetAllPlayers()
+        {
+            return _repositoryPlayer.List().ToList().Select(x => (PlayerResponse)x).ToList();
 
         }
 
-        public AuthenticatePlayerResponse Authenticate(AuthenticatePlayerRequest request)
+        public PlayerResponse GetById(Guid id)
         {
-            if (request == null)
+            var player = _repositoryPlayer.GetById(id);
+            if (player == null)
             {
-                throw new Exception("AuthenticatePlayerRequest is required!");
+                throw new ValidationException("Player not found!");
             }
-
-            //var email = new Email(request.Email);
-            //var password = new Password(request.Password);
-            //var player = new Player(email, password);
-
-            var player = _repositoryPlayer.GetBy(
-                x => x.Email.Address == request.Email &&
-                x.Password.Word == request.Password.ConvertToMD5());
-            return (AuthenticatePlayerResponse)player;
-
+            return (PlayerResponse)player;
         }
 
         public UpdateAdminPlayerResponse UpdateAdmin(UpdateAdminPlayerRequest request)
         {
             if (request == null)
             {
-                throw new Exception("ChancePlayerRequest is required!");
+                throw new ValidationException("ChancePlayerRequest is required!");
             }
 
             Player player = _repositoryPlayer.GetById(request.Id);
             if (player == null)
             {
-                throw new Exception("Player not found!");
+                throw new ValidationException("Player not found!");
             }
             player.UpdatePlayerAdmin(player.Status);
             _repositoryPlayer.Update(player);
@@ -75,13 +86,13 @@ namespace SocialGames.Domain.Services
         {
             if (request == null)
             {
-                throw new Exception("ChancePlayerRequest is required!");
+                throw new ValidationException("ChancePlayerRequest is required!");
             }
 
             Player player = _repositoryPlayer.GetById(request.Id);
             if (player == null)
             {
-                throw new Exception("Player not found!");
+                throw new ValidationException("Player not found!");
             }
             var email = new Email(request.Email);
             var name = new Name(request.FirstName, request.LastName);
@@ -96,16 +107,11 @@ namespace SocialGames.Domain.Services
             Player player = _repositoryPlayer.GetById(id);
             if (player == null)
             {
-                throw new Exception("Player not found!");
+                throw new ValidationException("Player not found!");
             }
             _repositoryPlayer.Delete(player);  
 
             return (ResponseBase)player;
-        }
-
-        public IEnumerable<PlayerResponse> ListPlayers()
-        {
-            return _repositoryPlayer.List().ToList().Select(x => (PlayerResponse)x).ToList();
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using Microsoft.Practices.Unity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Web.Http.Dependencies;
+using Unity;
 
 namespace SocialGames.IoC.Unity
 {

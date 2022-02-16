@@ -1,5 +1,4 @@
-﻿using Microsoft.Practices.Unity;
-using SocialGames.Domain.Interfaces.Repositories;
+﻿using SocialGames.Domain.Interfaces.Repositories;
 using SocialGames.Domain.Interfaces.Repositories.Base;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Domain.Services;
@@ -8,6 +7,8 @@ using SocialGames.Infra.Persistence.Repositories;
 using SocialGames.Infra.Persistence.Repositories.Base;
 using SocialGames.Infra.Transactions;
 using System.Data.Entity;
+using Unity;
+using Unity.Lifetime;
 
 namespace SocialGames.IoC.Unity
 {
@@ -28,7 +29,6 @@ namespace SocialGames.IoC.Unity
             container.RegisterType<IServicePlatForm, ServicePlatForm>(new HierarchicalLifetimeManager());
             container.RegisterType<IServiceGame, ServiceGame>(new HierarchicalLifetimeManager());
             container.RegisterType<IServiceMyGame, ServiceMyGame>(new HierarchicalLifetimeManager());
-            container.RegisterType<IServiceGamePlatForm, ServiceGamePlatForm>(new HierarchicalLifetimeManager());
 
 
 
@@ -39,7 +39,6 @@ namespace SocialGames.IoC.Unity
             container.RegisterType<IRepositoryPlatForm, RepositoryPlatForm>(new HierarchicalLifetimeManager());
             container.RegisterType<IRepositoryGame, RepositoryGame>(new HierarchicalLifetimeManager());
             container.RegisterType<IRepositoryMyGame, RepositoryMyGame>(new HierarchicalLifetimeManager());
-            container.RegisterType<IRepositoryGamePlatForm, RepositoryGamePlatForm>(new HierarchicalLifetimeManager());
 
 
 

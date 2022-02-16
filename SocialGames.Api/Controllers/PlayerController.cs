@@ -1,4 +1,5 @@
-﻿using SocialGames.Api.Controllers.Base;
+﻿using Canducci.Pagination;
+using SocialGames.Api.Controllers.Base;
 using SocialGames.Domain.Arguments.Player;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Infra.Transactions;
@@ -42,10 +43,13 @@ namespace SocialGames.Api.Controllers
         }
         [Route("")]
         [HttpGet]
-        public async Task<HttpResponseMessage> List()
+        public async Task<HttpResponseMessage> List(int? page,int? size)
         {
-            var response = _servicePlayer.ListPlayers();
-            return await ResponseAsync(response);
+            if (page <= 0) page = 1;
+            if (size <= 0) size = 1;
+
+            var response = _servicePlayer.GetAllPlayers();
+            return await ResponseAsync(response.ToPaginated((int)page, (int)size));
         }
         
         [Route("{id}")]

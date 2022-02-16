@@ -11,20 +11,17 @@ namespace SocialGames.Domain.Entities
         public Guid PlayerId { get; private set; }
         public Player Player { get; private set; }
         public Guid GameId { get; private set; }
-        public Game Game { get; private set; }  
-        public MyGame(DateTime? date, MyGameStatus? myGameStatus, Guid playerId, Guid gameId)
+        public Game Game { get; private set; }
+        public MyGame(Guid playerId, Guid gameId)
         {
-            if (date == null)
-            {
-                Date = DateTime.Now;
-            }
-            Date = (DateTime)date;
-            if (myGameStatus == null)
-            {
-                MyGameStatus = MyGameStatus.NewGame;
-            }
-            MyGameStatus = (MyGameStatus)myGameStatus;
+            Date = DateTime.Now;
+            MyGameStatus = MyGameStatus.NewGame;
             PlayerId = playerId;
+            GameId = gameId;
+        }
+        public void Update(MyGameStatus myGameStatus, Guid gameId)
+        {
+            MyGameStatus = myGameStatus;
             GameId = gameId;
         }
     }

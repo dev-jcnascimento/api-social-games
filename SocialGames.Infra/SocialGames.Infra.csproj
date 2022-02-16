@@ -57,14 +57,12 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\Map\MapGame.cs" />
-    <Compile Include="Persistence\Map\MapGamePlatForm.cs" />
     <Compile Include="Persistence\Map\MapMyGame.cs" />
     <Compile Include="Persistence\Map\MapPlatForm.cs" />
     <Compile Include="Persistence\Map\MapPlayer.cs" />
     <Compile Include="Persistence\Repositories\Base\RepositoryBase.cs" />
     <Compile Include="Persistence\Repositories\RepositoryMyGame.cs" />
     <Compile Include="Persistence\Repositories\RepositoryGame.cs" />
-    <Compile Include="Persistence\Repositories\RepositoryGamePlatForm.cs" />
     <Compile Include="Persistence\Repositories\RepositoryPlatForm.cs" />
     <Compile Include="Persistence\Repositories\RepositoryPlayer.cs" />
     <Compile Include="Persistence\Seeding.cs" />

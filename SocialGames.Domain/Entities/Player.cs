@@ -18,12 +18,7 @@ namespace SocialGames.Domain.Entities
         protected Player()
         {
         }
-        //public Player(Email email, Password password)
-        //{
-        //    Email = email;
-        //    Password = password;
-        //}
-        public Player(Name name, Email email, Password password,[Optional] PlayerStatus playerStatus)
+        public Player(Name name, Email email, Password password, [Optional] PlayerStatus playerStatus)
         {
             Name = name;
             Email = email;

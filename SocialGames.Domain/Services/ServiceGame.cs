@@ -3,9 +3,9 @@ using SocialGames.Domain.Arguments.Game;
 using SocialGames.Domain.Entities;
 using SocialGames.Domain.Interfaces.Repositories;
 using SocialGames.Domain.Interfaces.Services;
-using SocialGames.Domain.ValueObject;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace SocialGames.Domain.Services
@@ -26,14 +26,14 @@ namespace SocialGames.Domain.Services
                 Game game = new Game(request.Name, request.Description, request.Producer, request.Gender, request.Distributor,request.PlatFormId);
                 if (_RepositoryGame.Exists(x => x.Name.ToString().ToLower() == request.Name.ToString().ToLower()))
                 {
-                    throw new Exception("This Game already exists!");
+                    throw new ValidationException("This Game already exists!");
                 }
                 var response = _RepositoryGame.Create(game);
                 return (CreateGameResponse)game;
             }
             else
             {
-                throw new Exception("Request is required!");
+                throw new ValidationException("Request is required!");
             }
         }
 
@@ -41,12 +41,12 @@ namespace SocialGames.Domain.Services
         {
             if (request == null)
             {
-                throw new Exception("Request is required!");
+                throw new ValidationException("Request is required!");
             }
             Game game = _RepositoryGame.GetById(request.Id);
             if(game == null)
             {
-                throw new Exception("Not found Game!");
+                throw new ValidationException("Not found Game!");
             }
             game.UpdateGame(request.Name, request.Description, request.Producer, request.Gender, request.Distributor);
                 var response = _RepositoryGame.Update(game);
@@ -58,7 +58,7 @@ namespace SocialGames.Domain.Services
             Game game = _RepositoryGame.GetById(id);
             if(game == null)
             {
-                throw new Exception("Id Game not Found!");
+                throw new ValidationException("Id Game not Found!");
             }
             _RepositoryGame.Delete(game);
             return (ResponseBase)game;

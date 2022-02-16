@@ -1,5 +1,4 @@
-﻿using SocialGames.Domain.Entities;
-using SocialGames.Domain.Entities.Base;
+﻿using SocialGames.Domain.Entities.Base;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

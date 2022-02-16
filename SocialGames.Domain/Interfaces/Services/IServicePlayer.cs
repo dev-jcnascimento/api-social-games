@@ -9,9 +9,10 @@ namespace SocialGames.Domain.Interfaces.Services
     {
         AuthenticatePlayerResponse Authenticate(AuthenticatePlayerRequest request);
         CreatePlayerResponse Create(CreatePlayerRequest request);
-        UpdatePlayerResponse Update(UpdatePlayerRequest request);
+        IEnumerable<PlayerResponse> GetAllPlayers();
+        PlayerResponse GetById(Guid id);
         UpdateAdminPlayerResponse UpdateAdmin(UpdateAdminPlayerRequest request);
-        IEnumerable<PlayerResponse> ListPlayers();
+        UpdatePlayerResponse Update(UpdatePlayerRequest request);
         ResponseBase Delete(Guid id);
 
     }
