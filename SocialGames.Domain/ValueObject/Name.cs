@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SocialGames.Domain.ValueObject
 {
@@ -15,11 +15,11 @@ namespace SocialGames.Domain.ValueObject
             LastName = lastName;
             if (string.IsNullOrEmpty(FirstName) || FirstName.Length > 30)
             {
-                throw new Exception("Name cannot be empty and cannot be shorter than 30 characters.");
+                throw new ValidationException("Name cannot be empty and cannot be shorter than 30 characters.");
             }
             if (string.IsNullOrEmpty(LastName) || LastName.Length > 30)
             {
-                throw new Exception("Name is not empty and cannot be shorter than 30 characters.");
+                throw new ValidationException("Name is not empty and cannot be shorter than 30 characters.");
             }
         }
         public override string ToString()

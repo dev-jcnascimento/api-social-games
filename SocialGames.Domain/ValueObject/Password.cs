@@ -1,5 +1,5 @@
 ﻿using SocialGames.Domain.Extensions;
-using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SocialGames.Domain.ValueObject
 {
@@ -15,11 +15,11 @@ namespace SocialGames.Domain.ValueObject
 
             if (string.IsNullOrEmpty(Word))
             {
-                throw new Exception("Enter a Password!");
+                throw new ValidationException("Enter a Password!");
             }
             if (Word.Length < 6)
             {
-                throw new Exception("Enter a password of at least 6 characters.");
+                throw new ValidationException("Enter a password of at least 6 characters.");
             }
             Word = Word.ConvertToMD5();
         }

@@ -19,11 +19,11 @@ namespace SocialGames.Domain.ValueObject
         {
             if (string.IsNullOrEmpty(email))
             {
-                throw new Exception("Enter e-mail!");
+                throw new ValidationException("Enter e-mail!");
             }
             if (!IsMail(email))
             {
-                throw new Exception("E-mail is not valid!");
+                throw new ValidationException("E-mail is not valid!");
             }
             return email;
         }
