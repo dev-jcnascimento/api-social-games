@@ -34,10 +34,10 @@ namespace SocialGames.Domain.Services
             return (AuthenticatePlayerResponse)player;
         }
 
-        public CreatePlayerResponse Create(CreatePlayerRequest request)
+        public PlayerResponse Create(CreatePlayerRequest request)
         {
             var name = new Name(request.FirstName, request.LastName);
-            var email = new Email(request.Email.ToString().Replace("%40","@"));
+            var email = new Email(request.Email.ToString().Replace("%40", "@"));
             var password = new Password(request.Password);
 
             Player player = new Player(name, email, password);
@@ -46,72 +46,54 @@ namespace SocialGames.Domain.Services
                 throw new ValidationException("This User already exists!");
             }
             player = _repositoryPlayer.Create(player);
-            return (CreatePlayerResponse)player;
+            return (PlayerResponse)player;
         }
-        
-        public IEnumerable<PlayerResponse> GetAllPlayers()
+
+        public IEnumerable<PlayerResponse> GetAll()
         {
             return _repositoryPlayer.List().ToList().Select(x => (PlayerResponse)x).ToList();
-
         }
 
         public PlayerResponse GetById(Guid id)
         {
-            var player = _repositoryPlayer.GetById(id);
-            if (player == null)
-            {
-                throw new ValidationException("Player not found!");
-            }
+            var player = ExistPlayer(id);
+
             return (PlayerResponse)player;
         }
 
-        public UpdateAdminPlayerResponse UpdateAdmin(UpdateAdminPlayerRequest request)
+        public PlayerResponse UpdateAdmin(Guid id, UpdateAdminPlayerRequest request)
         {
-            if (request == null)
-            {
-                throw new ValidationException("ChancePlayerRequest is required!");
-            }
+            var player = ExistPlayer(id);
 
-            Player player = _repositoryPlayer.GetById(request.Id);
-            if (player == null)
-            {
-                throw new ValidationException("Player not found!");
-            }
-            player.UpdatePlayerAdmin(player.Status);
+            player.UpdatePlayerAdmin();
             _repositoryPlayer.Update(player);
 
-            return (UpdateAdminPlayerResponse)player;
+            return (PlayerResponse)player;
         }
-        public UpdatePlayerResponse Update(UpdatePlayerRequest request)
+        public PlayerResponse Update(Guid id, UpdatePlayerRequest request)
         {
-            if (request == null)
-            {
-                throw new ValidationException("ChancePlayerRequest is required!");
-            }
+            var player = ExistPlayer(id);
 
-            Player player = _repositoryPlayer.GetById(request.Id);
-            if (player == null)
-            {
-                throw new ValidationException("Player not found!");
-            }
             var email = new Email(request.Email);
             var name = new Name(request.FirstName, request.LastName);
 
             player.UpdatePlayer(name, email, player.Status);
-            _repositoryPlayer.Update(player);
+            player = _repositoryPlayer.Update(player);
 
-            return (UpdatePlayerResponse)player;
+            return (PlayerResponse)player;
         }
-        public ResponseBase Delete(Guid id)
+        public void Delete(Guid id)
         {
-            Player player = _repositoryPlayer.GetById(id);
-            if (player == null)
-            {
-                throw new ValidationException("Player not found!");
-            }
-            _repositoryPlayer.Delete(player);  
+            var player = ExistPlayer(id);
 
-            return (ResponseBase)player;
+            _repositoryPlayer.Delete(player);
+        }
+
+        private Player ExistPlayer(Guid id)
+        {
+            var player = _repositoryPlayer.GetById(id);
+            if (player == null) throw new ValidationException("Id Player not found!");
+            return player;
         }
     }
 }

@@ -53,13 +53,10 @@
     <Compile Include="Arguments\PlatForm\UpdatePlatFormRequest.cs" />
     <Compile Include="Arguments\PlatForm\PlatFormResponse.cs" />
     <Compile Include="Arguments\Player\CreatePlayerRequest.cs" />
-    <Compile Include="Arguments\Player\CreatePlayerResponse.cs" />
     <Compile Include="Arguments\Player\AuthenticatePlayerRequest.cs" />
     <Compile Include="Arguments\Player\AuthenticatePlayerResponse.cs" />
     <Compile Include="Arguments\Player\UpdateAdminPlayerRequest.cs" />
     <Compile Include="Arguments\Player\UpdatePlayerRequest.cs" />
-    <Compile Include="Arguments\Player\UpdateAdminPlayerResponse.cs" />
-    <Compile Include="Arguments\Player\UpdatePlayerResponse.cs" />
     <Compile Include="Arguments\Player\PlayerResponse.cs" />
     <Compile Include="Entities\Base\EntityBase.cs" />
     <Compile Include="Entities\Game.cs" />

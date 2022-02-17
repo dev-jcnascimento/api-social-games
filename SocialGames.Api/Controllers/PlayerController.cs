@@ -4,6 +4,8 @@ using SocialGames.Domain.Arguments.Player;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Infra.Transactions;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -22,42 +24,91 @@ namespace SocialGames.Api.Controllers
         }
         [Route("")]
         [HttpPost]
-        public async Task<HttpResponseMessage> Create(CreatePlayerRequest request)
+        public HttpResponseMessage Create(CreatePlayerRequest request)
         {
-            var response = _servicePlayer.Create(request);
-            return await ResponseAsync(response);
+            try
+            {
+                var response = _servicePlayer.Create(request);
+                Commit();
+                return Request.CreateResponse(HttpStatusCode.Created, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
-        [Route("admin")]
-        [HttpPatch]
-        public async Task<HttpResponseMessage> EditAdmin(UpdateAdminPlayerRequest request)
-        {
-            var response = _servicePlayer.UpdateAdmin(request);
-            return await ResponseAsync(response);
-        }
-        [Route("")]
-        [HttpPut]
-        public async Task<HttpResponseMessage> Update(UpdatePlayerRequest request)
-        {
-            var response = _servicePlayer.Update(request);
-            return await ResponseAsync(response);
-        }
+
         [Route("")]
         [HttpGet]
-        public async Task<HttpResponseMessage> List(int? page,int? size)
+        public HttpResponseMessage GetAll()
         {
-            if (page <= 0) page = 1;
-            if (size <= 0) size = 1;
-
-            var response = _servicePlayer.GetAllPlayers();
-            return await ResponseAsync(response.ToPaginated((int)page, (int)size));
+            var response = _servicePlayer.GetAll();
+            Commit();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
         }
-        
+
+        [Route("{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetById(Guid id)
+        {
+            try
+            {
+                var response = _servicePlayer.GetById(id);
+                Commit();
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
+            }
+        }
+
+        [Route("updateAdmin/{id}")]
+        [HttpPut]
+        public HttpResponseMessage UpdateAdmin(Guid id, UpdateAdminPlayerRequest request)
+        {
+            try
+            {
+                var response = _servicePlayer.UpdateAdmin(id, request);
+                Commit();
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
+            }
+        }
+
+        [Route("{id}")]
+        [HttpPut]
+        public HttpResponseMessage Update(Guid id, UpdatePlayerRequest request)
+        {
+            try
+            {
+                var response = _servicePlayer.Update(id, request);
+                Commit();
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
+            }
+        }
+
         [Route("{id}")]
         [HttpDelete]
-        public async Task<HttpResponseMessage> Delete(Guid id)
+        public HttpResponseMessage Delete(Guid id)
         {
-            var response = _servicePlayer.Delete(id);
-            return await ResponseAsync(response);
+            try
+            {
+                _servicePlayer.Delete(id);
+                Commit();
+                return Request.CreateResponse(HttpStatusCode.NoContent);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
+            }
         }
     }
 }

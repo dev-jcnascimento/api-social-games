@@ -29,7 +29,7 @@ namespace SocialGames.Domain.Entities
             }
             Status = playerStatus;
         }
-        public void UpdatePlayerAdmin(PlayerStatus status)
+        public void UpdatePlayerAdmin()
         {
             Status = PlayerStatus.Active;
         }
