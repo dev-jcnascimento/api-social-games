@@ -23,7 +23,7 @@ namespace SocialGames.Domain.Services
         {
             if (request != null)
             {
-                Game game = new Game(request.Name, request.Description, request.Producer, request.Gender, request.Distributor,request.PlatFormId);
+                Game game = new Game(request.Name, request.Description, request.Producer, request.Gender, request.Distributor, request.PlatFormId);
                 if (_RepositoryGame.Exists(x => x.Name.ToString().ToLower() == request.Name.ToString().ToLower()))
                 {
                     throw new ValidationException("This Game already exists!");
@@ -44,19 +44,19 @@ namespace SocialGames.Domain.Services
                 throw new ValidationException("Request is required!");
             }
             Game game = _RepositoryGame.GetById(request.Id);
-            if(game == null)
+            if (game == null)
             {
                 throw new ValidationException("Not found Game!");
             }
             game.UpdateGame(request.Name, request.Description, request.Producer, request.Gender, request.Distributor);
-                var response = _RepositoryGame.Update(game);
-                return (UpdateGameResponse)response;
+            var response = _RepositoryGame.Update(game);
+            return (UpdateGameResponse)response;
         }
 
         public ResponseBase Delete(Guid id)
         {
             Game game = _RepositoryGame.GetById(id);
-            if(game == null)
+            if (game == null)
             {
                 throw new ValidationException("Id Game not Found!");
             }
@@ -67,6 +67,13 @@ namespace SocialGames.Domain.Services
         public IEnumerable<GameResponse> List()
         {
             return _RepositoryGame.List().ToList().Select(x => (GameResponse)x).ToList();
+        }
+
+        private Game ExistGame(Guid id)
+        {
+            var game = _RepositoryGame.GetById(id);
+            if (game == null) throw new ValidationException("Id Game not found!");
+            return game;
         }
     }
 }
