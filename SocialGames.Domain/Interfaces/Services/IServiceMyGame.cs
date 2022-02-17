@@ -8,8 +8,9 @@ namespace SocialGames.Domain.Interfaces.Services
     public interface IServiceMyGame
     {
         MyGameResponse Create(CreateMyGameRequest request);
-        MyGameResponse Update(UpdateMyGameRequest request);
-        IEnumerable<MyGameResponse> ListMyGame();
-        ResponseBase Delete(Guid id);
+        IEnumerable<MyGameResponse> GetAll();
+        MyGameResponse GetById(Guid id);
+        MyGameResponse Update(Guid id,UpdateMyGameRequest request);
+        void Delete(Guid id);
     }
 }

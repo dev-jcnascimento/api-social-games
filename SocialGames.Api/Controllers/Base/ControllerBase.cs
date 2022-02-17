@@ -13,18 +13,15 @@ namespace SocialGames.Api.Controllers.Base
         {
             _unitOfWork = unitOfWork;
         }
-        public void Commit(object result)
+        public void Commit()
         {
-            if (result != null)
+            try
             {
-                try
-                {
-                    _unitOfWork.Commit();
-                }
-                catch (Exception)
-                {
-                    throw new ValidationException($"Error adding/Request");
-                }
+                _unitOfWork.Commit();
+            }
+            catch (Exception)
+            {
+                throw new ValidationException($"Error adding/Request");
             }
         }
     }

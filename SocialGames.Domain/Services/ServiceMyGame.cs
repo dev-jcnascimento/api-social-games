@@ -1,5 +1,4 @@
-﻿using SocialGames.Domain.Arguments.Base;
-using SocialGames.Domain.Arguments.MyGame;
+﻿using SocialGames.Domain.Arguments.MyGame;
 using SocialGames.Domain.Entities;
 using SocialGames.Domain.Enum;
 using SocialGames.Domain.Interfaces.Repositories;
@@ -14,16 +13,21 @@ namespace SocialGames.Domain.Services
     public class ServiceMyGame : IServiceMyGame
     {
         private readonly IRepositoryMyGame _repositoryMyGame;
-        private readonly IRepositoryGame _repositoryGame;
+        private readonly IServiceGame _serviceGame;
+        private readonly IServicePlayer _servicePlayer ;
 
-        public ServiceMyGame(IRepositoryMyGame repositoryMyGame, IRepositoryGame repositoryGame)
+        public ServiceMyGame(IRepositoryMyGame repositoryMyGame, IServiceGame serviceGame, IServicePlayer servicePlayer)
         {
             _repositoryMyGame = repositoryMyGame;
-            _repositoryGame = repositoryGame;
+            _serviceGame = serviceGame;
+            _servicePlayer = servicePlayer;
         }
 
         public MyGameResponse Create(CreateMyGameRequest request)
         {
+            _servicePlayer.GetById(request.PlayerId);
+            _serviceGame.GetById(request.GameId);   
+
             var myGame = new MyGame(request.PlayerId, request.GameId);
 
             if (_repositoryMyGame.Exists(x => x.Player.Id == request.PlayerId && x.Game.Id == request.GameId))
@@ -31,26 +35,26 @@ namespace SocialGames.Domain.Services
                 throw new ValidationException("This game already exists for this player ");
             }
             myGame = _repositoryMyGame.Create(myGame);
+
             return (MyGameResponse)myGame;
         }
-        public MyGameResponse Update(UpdateMyGameRequest request)
+
+        public IEnumerable<MyGameResponse> GetAll()
         {
-            if (request == null)
-            {
-                throw new ValidationException("UpdateMyGameRequest is required!");
-            }
+            return _repositoryMyGame.List().ToList().Select(x => (MyGameResponse)x).ToList();
+        }
 
-            MyGame myGame = _repositoryMyGame.GetById(request.Id);
-            if (myGame == null)
-            {
-                throw new ValidationException("MyGame not found!");
-            }
+        public MyGameResponse GetById(Guid id)
+        {
+            var myGame = ExistMyGame(id);
+            return (MyGameResponse)myGame;
+        }
+        public MyGameResponse Update(Guid id,UpdateMyGameRequest request)
+        {
+            var myGame = ExistMyGame(id);
 
-            var game = _repositoryMyGame.GetById(request.GameId);
-            if (game == null)
-            {
-                throw new ValidationException("Game not found!");
-            }
+            _serviceGame.GetById(request.GameId);
+
             var status = MyGameStatus.NewGame;
 
             switch (request.MyStatusGame.ToLower())
@@ -69,20 +73,17 @@ namespace SocialGames.Domain.Services
             return (MyGameResponse)myGame;
         }
 
-        public IEnumerable<MyGameResponse> ListMyGame()
+        public void Delete(Guid id)
         {
-            return _repositoryMyGame.List().ToList().Select(x => (MyGameResponse)x).ToList();
+            var myGame = ExistMyGame(id);
+            _repositoryMyGame.Delete(myGame);
         }
 
-        //public MyGameResponse GetById(Guid Id)
-        //{
-        //    var myGame = _repositoryMyGame.GetById(Id);
-
-        //}
-
-        public ResponseBase Delete(Guid id)
+        private MyGame ExistMyGame(Guid id)
         {
-            throw new NotImplementedException();
+            var myGame = _repositoryMyGame.GetById(id);
+            if (myGame == null) throw new ValidationException("Id MyGame not found!");
+            return myGame;
         }
 
 
