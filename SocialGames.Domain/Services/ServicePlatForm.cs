@@ -55,13 +55,11 @@ namespace SocialGames.Domain.Services
 
             return (PlatFormResponse)platForm;
         }
-        public ResponseBase Delete(Guid id)
+        public void Delete(Guid id)
         {
            var platForm = ExistPlatForm(id);
 
             _repositoryPlatForm.Delete(platForm);  
-
-            return (ResponseBase)platForm;
         }
 
         private PlatForm ExistPlatForm(Guid id)

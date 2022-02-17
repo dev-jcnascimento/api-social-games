@@ -26,7 +26,7 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _servicePlatForm.Create(request);
-                Commit(response);
+                Commit();
                 return Request.CreateResponse(HttpStatusCode.Created, response);
             }
             catch (ValidationException ex)
@@ -40,7 +40,7 @@ namespace SocialGames.Api.Controllers
         public HttpResponseMessage GetAll()
         {
             var response = _servicePlatForm.GetAll();
-            Commit(response);
+            Commit();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
@@ -51,7 +51,7 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _servicePlatForm.GetById(id);
-                Commit(response);
+                Commit();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (ValidationException ex)
@@ -67,7 +67,7 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _servicePlatForm.Update(id, request);
-                Commit(response);
+                Commit();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (ValidationException ex)
@@ -82,9 +82,9 @@ namespace SocialGames.Api.Controllers
         {
             try
             {
-                var response = _servicePlatForm.Delete(id);
-                Commit(response);
-                return Request.CreateResponse(HttpStatusCode.NoContent, response);
+                _servicePlatForm.Delete(id);
+                Commit();
+                return Request.CreateResponse(HttpStatusCode.NoContent);
             }
             catch (ValidationException ex)
             {

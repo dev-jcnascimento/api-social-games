@@ -11,6 +11,6 @@ namespace SocialGames.Domain.Interfaces.Services
         IEnumerable<PlatFormResponse> GetAll();
         PlatFormResponse GetById(Guid id);
         PlatFormResponse Update(Guid id,UpdatePlatFormRequest request);
-        ResponseBase Delete(Guid id);
+        void Delete(Guid id);
     }
 }
