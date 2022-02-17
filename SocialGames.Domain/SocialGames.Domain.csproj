@@ -47,9 +47,7 @@
     <Compile Include="Arguments\MyGame\MyGameResponse.cs" />
     <Compile Include="Arguments\MyGame\UpdateMyGameRequest.cs" />
     <Compile Include="Arguments\Game\CreateGameRequest.cs" />
-    <Compile Include="Arguments\Game\CreateGameResponse.cs" />
     <Compile Include="Arguments\Game\UpdateGameRequest.cs" />
-    <Compile Include="Arguments\Game\UpdateGameResponse.cs" />
     <Compile Include="Arguments\Game\GameResponse.cs" />
     <Compile Include="Arguments\PlatForm\CreatePlatFormRequest.cs" />
     <Compile Include="Arguments\PlatForm\UpdatePlatFormRequest.cs" />

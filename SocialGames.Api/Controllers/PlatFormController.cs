@@ -33,7 +33,6 @@ namespace SocialGames.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-
         }
 
         [Route("")]
