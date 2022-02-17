@@ -3,6 +3,7 @@ using SocialGames.Domain.Arguments.PlatForm;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Infra.Transactions;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -22,9 +23,17 @@ namespace SocialGames.Api.Controllers
         [HttpPost]
         public HttpResponseMessage Create(CreatePlatFormRequest request)
         {
-            var response = _servicePlatForm.Create(request);
-            Commit(response);
-            return Request.CreateResponse(HttpStatusCode.Created, response);
+            try
+            {
+                var response = _servicePlatForm.Create(request);
+                Commit(response);
+                return Request.CreateResponse(HttpStatusCode.Created, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
         }
 
         [Route("")]
@@ -40,27 +49,48 @@ namespace SocialGames.Api.Controllers
         [HttpGet]
         public HttpResponseMessage GetById(Guid id)
         {
-            var response = _servicePlatForm.GetById(id);
-            Commit(response);
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+            try
+            {
+                var response = _servicePlatForm.GetById(id);
+                Commit(response);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
+            }
         }
 
         [Route("{id}")]
         [HttpPut]
         public HttpResponseMessage Update(Guid id, UpdatePlatFormRequest request)
         {
-            var response = _servicePlatForm.Update(id, request);
-            Commit(response);
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+            try
+            {
+                var response = _servicePlatForm.Update(id, request);
+                Commit(response);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
+            }
         }
 
         [Route("{id}")]
         [HttpDelete]
         public HttpResponseMessage Delete(Guid id)
         {
-            var response = _servicePlatForm.Delete(id);
-            Commit(response);
-            return Request.CreateResponse(HttpStatusCode.NoContent, response);
+            try
+            {
+                var response = _servicePlatForm.Delete(id);
+                Commit(response);
+                return Request.CreateResponse(HttpStatusCode.NoContent, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
+            }
         }
     }
 }
