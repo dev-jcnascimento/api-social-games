@@ -19,54 +19,39 @@ namespace SocialGames.Domain.Services
             _RepositoryGame = repositoryGame;
         }
 
-        public CreateGameResponse Create(CreateGameRequest request)
+        public GameResponse Create(CreateGameRequest request)
         {
-            if (request != null)
+            Game game = new Game(request.Name, request.Description, request.Producer, request.Gender, request.Distributor, request.PlatFormId);
+            if (_RepositoryGame.Exists(x => x.Name.ToString().ToLower() == request.Name.ToString().ToLower()))
             {
-                Game game = new Game(request.Name, request.Description, request.Producer, request.Gender, request.Distributor, request.PlatFormId);
-                if (_RepositoryGame.Exists(x => x.Name.ToString().ToLower() == request.Name.ToString().ToLower()))
-                {
-                    throw new ValidationException("This Game already exists!");
-                }
-                var response = _RepositoryGame.Create(game);
-                return (CreateGameResponse)game;
+                throw new ValidationException("This Game already exists!");
             }
-            else
-            {
-                throw new ValidationException("Request is required!");
-            }
+            var response = _RepositoryGame.Create(game);
+            return (GameResponse)game;
+        }
+        public IEnumerable<GameResponse> GetAll()
+        {
+            return _RepositoryGame.List().ToList().Select(x => (GameResponse)x).ToList();
+        }
+        public GameResponse GetById(Guid id)
+        {
+            var game = ExistGame(id);
+            return (GameResponse)game;
         }
 
-        public UpdateGameResponse Update(UpdateGameRequest request)
+        public GameResponse Update(Guid id, UpdateGameRequest request)
         {
-            if (request == null)
-            {
-                throw new ValidationException("Request is required!");
-            }
-            Game game = _RepositoryGame.GetById(request.Id);
-            if (game == null)
-            {
-                throw new ValidationException("Not found Game!");
-            }
+            var game = ExistGame(id);
             game.UpdateGame(request.Name, request.Description, request.Producer, request.Gender, request.Distributor);
             var response = _RepositoryGame.Update(game);
-            return (UpdateGameResponse)response;
+            return (GameResponse)response;
         }
 
         public ResponseBase Delete(Guid id)
         {
-            Game game = _RepositoryGame.GetById(id);
-            if (game == null)
-            {
-                throw new ValidationException("Id Game not Found!");
-            }
+            var game = ExistGame(id);
             _RepositoryGame.Delete(game);
             return (ResponseBase)game;
-        }
-
-        public IEnumerable<GameResponse> List()
-        {
-            return _RepositoryGame.List().ToList().Select(x => (GameResponse)x).ToList();
         }
 
         private Game ExistGame(Guid id)

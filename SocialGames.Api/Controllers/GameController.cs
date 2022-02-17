@@ -3,6 +3,8 @@ using SocialGames.Domain.Arguments.Game;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Infra.Transactions;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -19,32 +21,76 @@ namespace SocialGames.Api.Controllers
         }
         [Route("")]
         [HttpPost]
-        public async Task<HttpResponseMessage> Create(CreateGameRequest request)
+        public HttpResponseMessage Create(CreateGameRequest request)
         {
-            var response = _serviceGame.Create(request);
-            return await ResponseAsync(response);
+            try
+            {
+                var response = _serviceGame.Create(request);
+                Commit(response);
+                return Request.CreateResponse(HttpStatusCode.Created, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
         }
-        [Route("")]
-        [HttpPut]
-        public async Task<HttpResponseMessage> Update(UpdateGameRequest request)
-        {
-            var response = _serviceGame.Update(request);
-            return await ResponseAsync(response);
-        }
+
         [Route("")]
         [HttpGet]
-        public async Task<HttpResponseMessage> List()
+        public HttpResponseMessage GetAll()
         {
-            var response = _serviceGame.List();
-            return await ResponseAsync(response);
+            var response = _serviceGame.GetAll();
+            Commit(response);
+            return Request.CreateResponse(HttpStatusCode.OK, response);
         }
+
+        [Route("{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetById(Guid id)
+        {
+            try
+            {
+                var response = _serviceGame.GetById(id);
+                Commit(response);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
+            }
+        }
+
+        [Route("{id}")]
+        [HttpPut]
+        public HttpResponseMessage Update(Guid id, UpdateGameRequest request)
+        {
+            try
+            {
+                var response = _serviceGame.Update(id, request);
+                Commit(response);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
+            }
+        }
+
         [Route("{id}")]
         [HttpDelete]
-        public async Task<HttpResponseMessage> Delete(Guid id)
+        public HttpResponseMessage Delete(Guid id)
         {
-            var response = _serviceGame.Delete(id);
-            return await ResponseAsync(response);
-
+            try
+            {
+                var response = _serviceGame.Delete(id);
+                Commit(response);
+                return Request.CreateResponse(HttpStatusCode.NoContent, response);
+            }
+            catch (ValidationException ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
+            }
         }
     }
 }
