@@ -20,7 +20,7 @@ namespace SocialGames.IoC.Unity
             container.RegisterType<DbContext, SocialGamesContext>(new HierarchicalLifetimeManager());
             //UnitOfWork
             container.RegisterType<IUnitOfWork, UnitOfWork>(new HierarchicalLifetimeManager());
-            container.RegisterType<Seeding>(new HierarchicalLifetimeManager());
+            //container.RegisterType<Seeding>(new HierarchicalLifetimeManager());
 
             //Serviço de Domain
             //container.RegisterType(typeof(IServiceBase<,>), typeof(ServiceBase<,>));

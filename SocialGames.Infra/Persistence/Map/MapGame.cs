@@ -11,11 +11,11 @@ namespace SocialGames.Infra.Persistence.Map
             ToTable("Game");
 
             HasKey(p => p.Id);
-            Property(x => x.Name).IsRequired().HasColumnName("Name").HasMaxLength(50);
+            Property(x => x.Name).IsRequired().HasColumnName("Name").HasMaxLength(100);
             Property(x => x.Description).IsRequired().HasColumnName("Description").HasMaxLength(200);
-            Property(x => x.Gender).IsRequired().HasColumnName("Gender").HasMaxLength(50); 
-            Property(x => x.Distributor).IsRequired().HasColumnName("Distributor").HasMaxLength(50); 
-            Property(x => x.Producer).IsRequired().HasColumnName("Producer").HasMaxLength(50);
+            Property(x => x.Gender).IsRequired().HasColumnName("Gender").HasMaxLength(100); 
+            Property(x => x.Distributor).IsRequired().HasColumnName("Distributor").HasMaxLength(100); 
+            Property(x => x.Producer).IsRequired().HasColumnName("Producer").HasMaxLength(100);
             Property(x => x.PlatFormId).IsRequired().HasColumnName("PlatFormId");
         }
     }

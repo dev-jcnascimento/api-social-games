@@ -12,6 +12,9 @@ namespace SocialGames.Domain.Entities
         public Player Player { get; private set; }
         public Guid GameId { get; private set; }
         public Game Game { get; private set; }
+        protected MyGame()
+        {
+        }
         public MyGame(Guid playerId, Guid gameId)
         {
             Date = DateTime.Now;
