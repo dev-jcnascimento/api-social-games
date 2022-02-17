@@ -1,8 +1,6 @@
-﻿using SocialGames.Domain.Interfaces.Arguments;
-
-namespace SocialGames.Domain.Arguments.Player
+﻿namespace SocialGames.Domain.Arguments.Player
 {
-    public class CreatePlayerRequest : IRequest
+    public class CreatePlayerRequest
     {
         public string FirstName{ get;  set; }
         public string LastName { get; set; }

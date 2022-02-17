@@ -52,9 +52,7 @@
     <Compile Include="Arguments\Game\UpdateGameResponse.cs" />
     <Compile Include="Arguments\Game\GameResponse.cs" />
     <Compile Include="Arguments\PlatForm\CreatePlatFormRequest.cs" />
-    <Compile Include="Arguments\PlatForm\CreatePlatFormResponse.cs" />
     <Compile Include="Arguments\PlatForm\UpdatePlatFormRequest.cs" />
-    <Compile Include="Arguments\PlatForm\UpdatePlatFormResponse.cs" />
     <Compile Include="Arguments\PlatForm\PlatFormResponse.cs" />
     <Compile Include="Arguments\Player\CreatePlayerRequest.cs" />
     <Compile Include="Arguments\Player\CreatePlayerResponse.cs" />
@@ -73,8 +71,6 @@
     <Compile Include="Enum\MyGameStatus.cs" />
     <Compile Include="Enum\PlayerStatus.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
-    <Compile Include="Interfaces\Arguments\IRequest.cs" />
-    <Compile Include="Interfaces\Arguments\IResponse.cs" />
     <Compile Include="Interfaces\Repositories\Base\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryGame.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryMyGame.cs" />

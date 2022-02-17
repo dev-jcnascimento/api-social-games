@@ -19,7 +19,7 @@ namespace SocialGames.Domain.Services
             _repositoryPlatForm = repositoryPlatForm;
         }
 
-        public CreatePlatFormResponse Create(CreatePlatFormRequest request)
+        public PlatFormResponse Create(CreatePlatFormRequest request)
         {
             PlatForm platForm = new PlatForm(request.Name);
             if (_repositoryPlatForm.Exists(
@@ -29,43 +29,48 @@ namespace SocialGames.Domain.Services
                 throw new ValidationException("This PlatForm already exists!");
             }
             platForm = _repositoryPlatForm.Create(platForm);
-            return (CreatePlatFormResponse)platForm;
+
+            return (PlatFormResponse)platForm;
 
         }
 
-        public UpdatePlatFormResponse Update(UpdatePlatFormRequest request)
+        public IEnumerable<PlatFormResponse> GetAll()
         {
-            if (request == null)
-            {
-                throw new ValidationException("ChancePlatFormRequest is required!");
-            }
+            return _repositoryPlatForm.List().ToList().Select(x => (PlatFormResponse)x).ToList();
+        }
 
-            PlatForm platForm = _repositoryPlatForm.GetById(request.Id);
-            if (platForm == null)
-            {
-                throw new ValidationException("PlatForm not found!");
-            }
+        public PlatFormResponse GetById(Guid id)
+        {
+            var platForm = ExistPlatForm(id);
+
+            return (PlatFormResponse)platForm;
+        }
+
+        public PlatFormResponse Update(Guid id, UpdatePlatFormRequest request)
+        {
+            var platForm = ExistPlatForm(id);
 
             platForm.ChancePlatForm(request.Name);
             _repositoryPlatForm.Update(platForm);
 
-            return (UpdatePlatFormResponse)platForm;
+            return (PlatFormResponse)platForm;
         }
         public ResponseBase Delete(Guid id)
         {
-            PlatForm platForm = _repositoryPlatForm.GetById(id);
-            if (platForm == null)
-            {
-                throw new ValidationException("PlatForm not found!");
-            }
+           var platForm = ExistPlatForm(id);
+
             _repositoryPlatForm.Delete(platForm);  
 
             return (ResponseBase)platForm;
         }
 
-        public IEnumerable<PlatFormResponse> List()
+        private PlatForm ExistPlatForm(Guid id)
         {
-            return _repositoryPlatForm.List().ToList().Select(x => (PlatFormResponse)x).ToList();
+            var platForm = _repositoryPlatForm.GetById(id);
+
+            if (platForm == null) throw new ValidationException("Id PlatForm not Found");
+
+            return platForm;
         }
     }
 }

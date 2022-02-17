@@ -21,7 +21,7 @@ namespace SocialGames.Domain.Entities
         }
         private void Validate(string name)
         {
-            if (string.IsNullOrEmpty(name) || name.Length > 30)
+            if (string.IsNullOrEmpty(name) || name.Length > 50)
             {
                 throw new Exception("Name cannot be empty and cannot be shorter than 30 characters.");
             }

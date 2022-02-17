@@ -1,8 +1,6 @@
 ﻿using SocialGames.Infra.Transactions;
 using System;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Http;
 
 namespace SocialGames.Api.Controllers.Base
@@ -15,30 +13,19 @@ namespace SocialGames.Api.Controllers.Base
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<HttpResponseMessage> ResponseAsync(object result)
+        public void Commit(object result)
         {
             if (result != null)
             {
                 try
                 {
-
                     _unitOfWork.Commit();
-                    return Request.CreateResponse(HttpStatusCode.OK, result);
                 }
                 catch (Exception)
                 {
-                    return Request.CreateResponse(HttpStatusCode.Conflict, $"Error adding/Request");
+                    throw new ValidationException($"Error adding/Request");
                 }
             }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { erros = "Error Request." });
-            }
-
-        }
-        public async Task<HttpResponseMessage> ResponseExceptionAsync(Exception ex)
-        {
-            return Request.CreateResponse(HttpStatusCode.InternalServerError, new { errors = ex.Message, exception = ex.ToString() });
         }
     }
 }

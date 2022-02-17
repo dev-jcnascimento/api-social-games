@@ -1,8 +1,6 @@
-﻿using SocialGames.Domain.Interfaces.Arguments;
-
-namespace SocialGames.Domain.Arguments.PlatForm
+﻿namespace SocialGames.Domain.Arguments.PlatForm
 {
-    public class CreatePlatFormRequest : IRequest
+    public class CreatePlatFormRequest
     {
         public string Name { get; set; }
     }

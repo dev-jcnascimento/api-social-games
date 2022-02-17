@@ -3,8 +3,8 @@ using SocialGames.Domain.Arguments.PlatForm;
 using SocialGames.Domain.Interfaces.Services;
 using SocialGames.Infra.Transactions;
 using System;
+using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace SocialGames.Api.Controllers
@@ -20,33 +20,47 @@ namespace SocialGames.Api.Controllers
         }
         [Route("")]
         [HttpPost]
-        public async Task<HttpResponseMessage> Create(CreatePlatFormRequest request)
+        public HttpResponseMessage Create(CreatePlatFormRequest request)
         {
             var response = _servicePlatForm.Create(request);
-            return await ResponseAsync(response);
+            Commit(response);
+            return Request.CreateResponse(HttpStatusCode.Created, response);
         }
-        [Route("")]
-        [HttpPut]
-        public async Task<HttpResponseMessage> Update(UpdatePlatFormRequest request)
-        {
 
-            var response = _servicePlatForm.Update(request);
-            return await ResponseAsync(response);
-
-        }
         [Route("")]
         [HttpGet]
-        public async Task<HttpResponseMessage> List()
+        public HttpResponseMessage GetAll()
         {
-            var response = _servicePlatForm.List();
-            return await ResponseAsync(response);
+            var response = _servicePlatForm.GetAll();
+            Commit(response);
+            return Request.CreateResponse(HttpStatusCode.OK, response);
         }
+
+        [Route("{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetById(Guid id)
+        {
+            var response = _servicePlatForm.GetById(id);
+            Commit(response);
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+        [Route("{id}")]
+        [HttpPut]
+        public HttpResponseMessage Update(Guid id, UpdatePlatFormRequest request)
+        {
+            var response = _servicePlatForm.Update(id, request);
+            Commit(response);
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
         [Route("{id}")]
         [HttpDelete]
-        public async Task<HttpResponseMessage> Delete(Guid id)
+        public HttpResponseMessage Delete(Guid id)
         {
             var response = _servicePlatForm.Delete(id);
-            return await ResponseAsync(response);
+            Commit(response);
+            return Request.CreateResponse(HttpStatusCode.NoContent, response);
         }
     }
 }

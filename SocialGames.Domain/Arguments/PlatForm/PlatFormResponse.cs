@@ -1,9 +1,8 @@
-﻿using SocialGames.Domain.Interfaces.Arguments;
-using System;
+﻿using System;
 
 namespace SocialGames.Domain.Arguments.PlatForm
 {
-    public class PlatFormResponse : IResponse
+    public class PlatFormResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

@@ -7,9 +7,10 @@ namespace SocialGames.Domain.Interfaces.Services
 {
     public interface IServicePlatForm
     {
-        CreatePlatFormResponse Create(CreatePlatFormRequest request);
-        UpdatePlatFormResponse Update(UpdatePlatFormRequest request);
-        IEnumerable<PlatFormResponse> List();
+        PlatFormResponse Create(CreatePlatFormRequest request);
+        IEnumerable<PlatFormResponse> GetAll();
+        PlatFormResponse GetById(Guid id);
+        PlatFormResponse Update(Guid id,UpdatePlatFormRequest request);
         ResponseBase Delete(Guid id);
     }
 }
