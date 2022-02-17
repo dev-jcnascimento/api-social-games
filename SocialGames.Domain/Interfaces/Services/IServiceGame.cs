@@ -11,6 +11,6 @@ namespace SocialGames.Domain.Interfaces.Services
         IEnumerable<GameResponse> GetAll();
         GameResponse GetById(Guid id);
         GameResponse Update(Guid id,UpdateGameRequest request);
-        ResponseBase Delete(Guid id);
+        void Delete(Guid id);
     }
 }

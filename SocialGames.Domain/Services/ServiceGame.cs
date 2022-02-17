@@ -1,5 +1,4 @@
-﻿using SocialGames.Domain.Arguments.Base;
-using SocialGames.Domain.Arguments.Game;
+﻿using SocialGames.Domain.Arguments.Game;
 using SocialGames.Domain.Entities;
 using SocialGames.Domain.Interfaces.Repositories;
 using SocialGames.Domain.Interfaces.Services;
@@ -13,19 +12,26 @@ namespace SocialGames.Domain.Services
     public class ServiceGame : IServiceGame
     {
         private readonly IRepositoryGame _RepositoryGame;
+        private readonly IServicePlatForm _ServicePlatForm;
 
-        public ServiceGame(IRepositoryGame repositoryGame)
+        public ServiceGame(IRepositoryGame repositoryGame, IServicePlatForm servicePlatForm)
         {
             _RepositoryGame = repositoryGame;
+            _ServicePlatForm = servicePlatForm;
         }
 
         public GameResponse Create(CreateGameRequest request)
         {
-            Game game = new Game(request.Name, request.Description, request.Producer, request.Gender, request.Distributor, request.PlatFormId);
-            if (_RepositoryGame.Exists(x => x.Name.ToString().ToLower() == request.Name.ToString().ToLower()))
+            _ServicePlatForm.GetById(request.PlatFormId);
+
+            if (_RepositoryGame.Exists(x => x.Name.ToString().ToLower() == request.Name.ToString().ToLower() 
+            && x.PlatFormId == request.PlatFormId))
             {
-                throw new ValidationException("This Game already exists!");
+                throw new ValidationException("This Game already exists in Platform!");
             }
+
+            var game = new Game(request.Name, request.Description, request.Producer, request.Gender, request.Distributor, request.PlatFormId);
+
             var response = _RepositoryGame.Create(game);
             return (GameResponse)game;
         }
@@ -47,11 +53,10 @@ namespace SocialGames.Domain.Services
             return (GameResponse)response;
         }
 
-        public ResponseBase Delete(Guid id)
+        public void Delete(Guid id)
         {
             var game = ExistGame(id);
             _RepositoryGame.Delete(game);
-            return (ResponseBase)game;
         }
 
         private Game ExistGame(Guid id)

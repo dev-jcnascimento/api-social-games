@@ -6,7 +6,6 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace SocialGames.Api.Controllers
@@ -26,7 +25,7 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _serviceGame.Create(request);
-                Commit(response);
+                Commit();
                 return Request.CreateResponse(HttpStatusCode.Created, response);
             }
             catch (ValidationException ex)
@@ -41,7 +40,7 @@ namespace SocialGames.Api.Controllers
         public HttpResponseMessage GetAll()
         {
             var response = _serviceGame.GetAll();
-            Commit(response);
+            Commit();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
@@ -52,7 +51,7 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _serviceGame.GetById(id);
-                Commit(response);
+                Commit();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (ValidationException ex)
@@ -68,7 +67,7 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _serviceGame.Update(id, request);
-                Commit(response);
+                Commit();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (ValidationException ex)
@@ -83,9 +82,9 @@ namespace SocialGames.Api.Controllers
         {
             try
             {
-                var response = _serviceGame.Delete(id);
-                Commit(response);
-                return Request.CreateResponse(HttpStatusCode.NoContent, response);
+                _serviceGame.Delete(id);
+                Commit();
+                return Request.CreateResponse(HttpStatusCode.NoContent);
             }
             catch (ValidationException ex)
             {
