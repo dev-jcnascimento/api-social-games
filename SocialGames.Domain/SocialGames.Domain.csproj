@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arguments\Base\ResponseBase.cs" />
+    <Compile Include="Arguments\Comment\CommentResponse.cs" />
+    <Compile Include="Arguments\Comment\CreateCommentRequest.cs" />
+    <Compile Include="Arguments\Comment\UpdateCommentRequest.cs" />
     <Compile Include="Arguments\MyGame\CreateMyGameRequest.cs" />
     <Compile Include="Arguments\MyGame\MyGameResponse.cs" />
     <Compile Include="Arguments\MyGame\UpdateMyGameRequest.cs" />
@@ -59,6 +62,7 @@
     <Compile Include="Arguments\Player\UpdatePlayerRequest.cs" />
     <Compile Include="Arguments\Player\PlayerResponse.cs" />
     <Compile Include="Entities\Base\EntityBase.cs" />
+    <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\MyGame.cs" />
     <Compile Include="Entities\PlatForm.cs" />
@@ -67,10 +71,12 @@
     <Compile Include="Enum\PlayerStatus.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Interfaces\Repositories\Base\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\IRepositoryComment.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryGame.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryMyGame.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryPlatForm.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryPlayer.cs" />
+    <Compile Include="Interfaces\Services\IServiceComment.cs" />
     <Compile Include="Interfaces\Services\IServiceGame.cs" />
     <Compile Include="Interfaces\Services\IServiceMyGame.cs" />
     <Compile Include="Interfaces\Services\IServicePlatForm.cs" />
