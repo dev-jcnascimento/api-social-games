@@ -102,21 +102,20 @@ namespace SocialGames.Domain.Services
         private CommentResponse GetByMyGame(Guid myGameId,Guid commentId)
         {
             var myGame = _serviceMyGame.GetById(myGameId);
-            var player = _repositoryPlayer.GetById(myGame.PlayerId);
-            var game = _repositoryGame.List(x => x.PlatForm).Where(x => x.Id == myGame.GameId).SingleOrDefault();
-            var comment = GetById(commentId);
+            
+            var comment = ExistComment(commentId);
 
             var commentReponse = new CommentResponse()
             {
                 Id = commentId,
                 DateTime = comment.DateTime.ToString(),
                 Description = comment.Description,
-                PlayerId = player.Id,
-                Player = player.Name.ToString(),
-                GameId = game.Id,
-                Game = game.Name,
-                PlatformId = game.PlatForm.Id,
-                Platform = game.PlatForm.Name,
+                PlayerId = myGame.PlayerId,
+                Player = myGame.PlayerName,
+                GameId = myGame.GameId,
+                Game = myGame.GameName,
+                PlatformId = myGame.PlatformId,
+                Platform = myGame.PlatformName,
             };
             return commentReponse;
         }
