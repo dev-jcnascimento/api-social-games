@@ -11,14 +11,14 @@ namespace SocialGames.Infra.Persistence.Repositories.Base
         where TEntidade : EntityBase
         where TId : struct
     {
-       private readonly DbContext _context;
+        private readonly DbContext _context;
 
         public RepositoryBase(DbContext context)
         {
             _context = context;
         }
 
-         public IQueryable<TEntidade> ListBy(Expression<Func<TEntidade, bool>> where, params Expression<Func<TEntidade, object>>[] includeProperties)
+        public IQueryable<TEntidade> ListBy(Expression<Func<TEntidade, bool>> where, params Expression<Func<TEntidade, object>>[] includeProperties)
         {
             return List(includeProperties).Where(where);
         }
@@ -43,6 +43,7 @@ namespace SocialGames.Infra.Persistence.Repositories.Base
             return _context.Set<TEntidade>().Find(id);
         }
 
+       
         public IQueryable<TEntidade> List(params Expression<Func<TEntidade, object>>[] includeProperties)
         {
             IQueryable<TEntidade> query = _context.Set<TEntidade>();
@@ -51,10 +52,8 @@ namespace SocialGames.Infra.Persistence.Repositories.Base
             {
                 return Include(_context.Set<TEntidade>(), includeProperties);
             }
-
             return query;
         }
-
         public IQueryable<TEntidade> ListOrderedBy<TKey>(Expression<Func<TEntidade, TKey>> ordem, bool ascendente = true, params Expression<Func<TEntidade, object>>[] includeProperties)
         {
             return ascendente ? List(includeProperties).OrderBy(ordem) : List(includeProperties).OrderByDescending(ordem);
@@ -62,7 +61,7 @@ namespace SocialGames.Infra.Persistence.Repositories.Base
 
         public TEntidade Create(TEntidade entidade)
         {
-            var result =_context.Set<TEntidade>().Add(entidade);
+            var result = _context.Set<TEntidade>().Add(entidade);
             _context.SaveChanges();
             return result;
         }
@@ -99,13 +98,14 @@ namespace SocialGames.Infra.Persistence.Repositories.Base
         {
             return _context.Set<TEntidade>().Any(where);
         }
-  
+
         /// <summary>
         /// Realiza include populando o objeto passado por parametro
         /// </summary>
         /// <param name="query">Informe o objeto do tipo IQuerable</param>
         /// <param name="includeProperties">Ínforme o array de expressões que deseja incluir</param>
         /// <returns></returns>
+     
         private IQueryable<TEntidade> Include(IQueryable<TEntidade> query, params Expression<Func<TEntidade, object>>[] includeProperties)
         {
             foreach (var property in includeProperties)

@@ -36,7 +36,7 @@ namespace SocialGames.Api.Controllers
 
         [Route("")]
         [HttpGet]
-        public HttpResponseMessage GetAll(int page,int size)
+        public HttpResponseMessage GetAll(int page = 1,int size = 5)
         {
             var response = _serviceMyGame.GetAll().ToPaginated(page,size);
             return Request.CreateResponse(HttpStatusCode.OK, response);
@@ -55,6 +55,14 @@ namespace SocialGames.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
             }
+        }
+
+        [Route("allMyGames/{playerId}")]
+        [HttpGet]
+        public HttpResponseMessage GetByPlayerId(Guid playerId, int page = 1, int size = 5)
+        {
+            var response = _serviceMyGame.GetByPlayerId(playerId).ToPaginated(page, size);
+            return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
         [Route("{id}")]

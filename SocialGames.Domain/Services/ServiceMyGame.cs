@@ -15,12 +15,14 @@ namespace SocialGames.Domain.Services
         private readonly IRepositoryMyGame _repositoryMyGame;
         private readonly IServiceGame _serviceGame;
         private readonly IServicePlayer _servicePlayer;
+        private readonly IServicePlatForm _servicePlatForm;
 
-        public ServiceMyGame(IRepositoryMyGame repositoryMyGame, IServiceGame serviceGame, IServicePlayer servicePlayer)
+        public ServiceMyGame(IRepositoryMyGame repositoryMyGame, IServiceGame serviceGame, IServicePlayer servicePlayer, IServicePlatForm servicePlatForm)
         {
             _repositoryMyGame = repositoryMyGame;
             _serviceGame = serviceGame;
             _servicePlayer = servicePlayer;
+            _servicePlatForm = servicePlatForm;
         }
 
         public MyGameResponse Create(CreateMyGameRequest request)
@@ -51,6 +53,26 @@ namespace SocialGames.Domain.Services
             result = _repositoryMyGame.List(x => x.Game, y => y.Player).Where(x => x.Id == result.Id).FirstOrDefault();
 
             return (MyGameResponse)result;
+        }
+        public IEnumerable<MyGameResponse> GetByPlayerId(Guid playerId)
+        {
+            _servicePlayer.GetById(playerId);
+            var allMyGames = _repositoryMyGame.List(x => x.Game, y => y.Player).Where(x => x.PlayerId == playerId).ToList();
+            List<MyGameResponse> listMyGame = new List<MyGameResponse>();
+            foreach (var myGame in allMyGames)
+            {
+                var platform = _servicePlatForm.GetById(myGame.Game.PlatFormId);
+                listMyGame.Add(new MyGameResponse()
+                {
+                    Id = myGame.Id,
+                    Date = myGame.Date.ToString(),
+                    PlayerName = myGame.Player.Name.ToString(),
+                    GameName = myGame.Game.Name.ToString(),
+                    StatusGame = myGame.MyGameStatus.ToString(),
+                    PlatformName = platform.Name,
+                });
+            }
+            return listMyGame;
         }
         public MyGameResponse Update(Guid id, UpdateMyGameRequest request)
         {

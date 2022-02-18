@@ -17,8 +17,7 @@ namespace SocialGames.Infra.Persistence.Map
             Property(p => p.Name.LastName).HasMaxLength(50).IsRequired().HasColumnName("LastName");
             Property(p => p.Password.Word).HasColumnName("Password").IsRequired();
             Property(p => p.Status).IsRequired();
-            HasMany(x => x.Games);
-            HasMany(x => x.PlatForms);
+            HasMany(x => x.MyGames);
         }
     }
 }
