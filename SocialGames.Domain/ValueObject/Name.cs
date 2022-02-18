@@ -22,9 +22,6 @@ namespace SocialGames.Domain.ValueObject
                 throw new ValidationException("Name is not empty and cannot be shorter than 30 characters.");
             }
         }
-        public override string ToString()
-        {
-            return FirstName + " " + LastName;
-        }
+
     }
 }

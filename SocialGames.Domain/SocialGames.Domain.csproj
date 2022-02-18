@@ -55,6 +55,8 @@
     <Compile Include="Arguments\Player\CreatePlayerRequest.cs" />
     <Compile Include="Arguments\Player\AuthenticatePlayerRequest.cs" />
     <Compile Include="Arguments\Player\AuthenticatePlayerResponse.cs" />
+    <Compile Include="Arguments\Player\PlayerGamesResponse.cs" />
+    <Compile Include="Arguments\Player\PlayerPlatformsResponse.cs" />
     <Compile Include="Arguments\Player\UpdateAdminPlayerRequest.cs" />
     <Compile Include="Arguments\Player\UpdatePlayerRequest.cs" />
     <Compile Include="Arguments\Player\PlayerResponse.cs" />

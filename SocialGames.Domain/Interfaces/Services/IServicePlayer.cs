@@ -10,6 +10,8 @@ namespace SocialGames.Domain.Interfaces.Services
         PlayerResponse Create(CreatePlayerRequest request);
         IEnumerable<PlayerResponse> GetAll();
         PlayerResponse GetById(Guid id);
+        //IEnumerable<PlayerPlatformsResponse> GetByIdPlayerPlatforms(Guid id);
+        //IEnumerable<PlayerGamesResponse> GetByIdPlayerGames(Guid id);
         PlayerResponse UpdateAdmin(Guid id, UpdateAdminPlayerRequest request);
         PlayerResponse Update(Guid id,UpdatePlayerRequest request);
         void Delete(Guid id);

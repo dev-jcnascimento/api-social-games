@@ -15,10 +15,14 @@ namespace SocialGames.Domain.Services
     public class ServicePlayer : IServicePlayer
     {
         private readonly IRepositoryPlayer _repositoryPlayer;
+        private readonly IServiceMyGame _serviceMyGame;
+        private readonly IServicePlatForm _servicePlatForm;
 
-        public ServicePlayer(IRepositoryPlayer repositoryPlayer)
+        public ServicePlayer(IRepositoryPlayer repositoryPlayer, IServiceMyGame serviceMyGame, IServicePlatForm servicePlatForm)
         {
             _repositoryPlayer = repositoryPlayer;
+            _serviceMyGame = serviceMyGame;
+            _servicePlatForm = servicePlatForm;
         }
 
         public AuthenticatePlayerResponse Authenticate(AuthenticatePlayerRequest request)
@@ -62,6 +66,32 @@ namespace SocialGames.Domain.Services
             return (PlayerResponse)player;
         }
 
+        //public IEnumerable<PlayerPlatformsResponse> GetByIdPlayerPlatforms(Guid id)
+        //{
+        //    var player = ExistPlayer(id);
+        //    var result = _repositoryPlayer.List(x => x.MyGames).ToList().Where(x => x.Id == id).SingleOrDefault();
+        //    List<PlayerPlatformsResponse> ListPlatform = new List<PlayerPlatformsResponse>();
+        //    foreach (var myGames in result.MyGames)
+        //    {
+        //        var platform = (PlayerPlatformsResponse)_servicePlatForm.GetById(myGames.Game.PlatFormId);
+        //        if (platform != null)
+        //        {
+
+
+        //            ListPlatform.Add(platform);
+        //        }
+
+        //    }
+
+        //    return (IEnumerable<PlayerPlatformsResponse>)player;
+        //}
+
+        //public IEnumerable<PlayerGamesResponse> GetByIdPlayerGames(Guid id)
+        //{
+        //    var player = ExistPlayer(id);
+        //    return (IEnumerable<PlayerGamesResponse>)_repositoryPlayer.List(y => y.Games.ToList().Select(x => (PlayerGamesResponse)x).ToList());
+        //}
+
         public PlayerResponse UpdateAdmin(Guid id, UpdateAdminPlayerRequest request)
         {
             var player = ExistPlayer(id);
@@ -86,7 +116,8 @@ namespace SocialGames.Domain.Services
         public void Delete(Guid id)
         {
             var player = ExistPlayer(id);
-
+            var myGames = _repositoryPlayer.List(x => x.MyGames).Where(x => x.Id == id).ToList();
+            if (myGames.Any()) throw new ValidationException("This player has Mygames linked");
             _repositoryPlayer.Delete(player);
         }
 
