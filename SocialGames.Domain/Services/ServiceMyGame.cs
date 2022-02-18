@@ -14,7 +14,7 @@ namespace SocialGames.Domain.Services
     {
         private readonly IRepositoryMyGame _repositoryMyGame;
         private readonly IServiceGame _serviceGame;
-        private readonly IServicePlayer _servicePlayer ;
+        private readonly IServicePlayer _servicePlayer;
 
         public ServiceMyGame(IRepositoryMyGame repositoryMyGame, IServiceGame serviceGame, IServicePlayer servicePlayer)
         {
@@ -26,7 +26,7 @@ namespace SocialGames.Domain.Services
         public MyGameResponse Create(CreateMyGameRequest request)
         {
             _servicePlayer.GetById(request.PlayerId);
-            _serviceGame.GetById(request.GameId);   
+            _serviceGame.GetById(request.GameId);
 
             var myGame = new MyGame(request.PlayerId, request.GameId);
 
@@ -34,14 +34,14 @@ namespace SocialGames.Domain.Services
             {
                 throw new ValidationException("This game already exists for this player ");
             }
-            myGame = _repositoryMyGame.Create(myGame);
+            var result = _repositoryMyGame.Create(myGame);
 
-            return (MyGameResponse)myGame;
+            return (MyGameResponse)result;
         }
 
         public IEnumerable<MyGameResponse> GetAll()
         {
-            return _repositoryMyGame.List().ToList().Select(x => (MyGameResponse)x).ToList();
+            return _repositoryMyGame.List(x => x.Game, y => y.Player).ToList().Select(x => (MyGameResponse)x).ToList();
         }
 
         public MyGameResponse GetById(Guid id)
@@ -49,7 +49,7 @@ namespace SocialGames.Domain.Services
             var myGame = ExistMyGame(id);
             return (MyGameResponse)myGame;
         }
-        public MyGameResponse Update(Guid id,UpdateMyGameRequest request)
+        public MyGameResponse Update(Guid id, UpdateMyGameRequest request)
         {
             var myGame = ExistMyGame(id);
 
@@ -68,9 +68,9 @@ namespace SocialGames.Domain.Services
             }
 
             myGame.Update(status, request.GameId);
-            _repositoryMyGame.Update(myGame);
+            var result = _repositoryMyGame.Update(myGame);
 
-            return (MyGameResponse)myGame;
+            return (MyGameResponse)result;
         }
 
         public void Delete(Guid id)

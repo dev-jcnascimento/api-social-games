@@ -4,12 +4,13 @@ namespace SocialGames.Domain.Arguments.Game
 {
     public class GameResponse
     {
-        public Guid Id{ get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Producer { get; set; }
         public string Gender { get; set; }
         public string Distributor { get; set; }
+        public string Platform { get; set; }
 
         public static explicit operator GameResponse(Entities.Game entity)
         {
@@ -21,6 +22,7 @@ namespace SocialGames.Domain.Arguments.Game
                 Producer = entity.Producer,
                 Gender = entity.Gender,
                 Distributor = entity.Distributor,
+                Platform = entity.PlatForm.Name
             };
         }
     }

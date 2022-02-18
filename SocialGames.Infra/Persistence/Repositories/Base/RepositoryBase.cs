@@ -62,19 +62,22 @@ namespace SocialGames.Infra.Persistence.Repositories.Base
 
         public TEntidade Create(TEntidade entidade)
         {
-            return _context.Set<TEntidade>().Add(entidade);
+            var result =_context.Set<TEntidade>().Add(entidade);
+            _context.SaveChanges();
+            return result;
         }
 
         public TEntidade Update(TEntidade entidade)
         {
             _context.Entry(entidade).State = EntityState.Modified;
-
+            _context.SaveChanges();
             return entidade;
         }
 
         public void Delete(TEntidade entidade)
         {
             _context.Set<TEntidade>().Remove(entidade);
+            _context.SaveChanges();
         }
 
         /// <summary>

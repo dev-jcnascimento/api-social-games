@@ -1,7 +1,5 @@
-﻿using SocialGames.Api.Controllers.Base;
-using SocialGames.Domain.Arguments.MyGame;
+﻿using SocialGames.Domain.Arguments.MyGame;
 using SocialGames.Domain.Interfaces.Services;
-using SocialGames.Infra.Transactions;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
@@ -12,11 +10,11 @@ namespace SocialGames.Api.Controllers
 {
 
     [RoutePrefix("v1/myGames")]
-    public class MyGameController : ControllerBase
+    public class MyGameController : ApiController
     {
         private readonly IServiceMyGame _serviceMyGame;
 
-        public MyGameController(IUnitOfWork unitOfWork, IServiceMyGame serviceMyGame) : base(unitOfWork)
+        public MyGameController(IServiceMyGame serviceMyGame)
         {
             _serviceMyGame = serviceMyGame;
         }
@@ -27,7 +25,6 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _serviceMyGame.Create(request);
-                Commit();
                 return Request.CreateResponse(HttpStatusCode.Created, response);
             }
             catch (ValidationException ex)
@@ -41,7 +38,6 @@ namespace SocialGames.Api.Controllers
         public HttpResponseMessage GetAll()
         {
             var response = _serviceMyGame.GetAll();
-            Commit();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
@@ -52,7 +48,6 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _serviceMyGame.GetById(id);
-                Commit();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (ValidationException ex)
@@ -68,7 +63,6 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _serviceMyGame.Update(id, request);
-                Commit();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (ValidationException ex)
@@ -84,7 +78,6 @@ namespace SocialGames.Api.Controllers
             try
             {
                 _serviceMyGame.Delete(id);
-                Commit();
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
             catch (ValidationException ex)

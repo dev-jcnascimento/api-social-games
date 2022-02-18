@@ -1,7 +1,5 @@
-﻿using SocialGames.Api.Controllers.Base;
-using SocialGames.Domain.Arguments.PlatForm;
+﻿using SocialGames.Domain.Arguments.PlatForm;
 using SocialGames.Domain.Interfaces.Services;
-using SocialGames.Infra.Transactions;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
@@ -11,10 +9,10 @@ using System.Web.Http;
 namespace SocialGames.Api.Controllers
 {
     [RoutePrefix("v1/platforms")]
-    public class PlatFormController : ControllerBase
+    public class PlatFormController : ApiController
     {
         private readonly IServicePlatForm _servicePlatForm;
-        public PlatFormController(IUnitOfWork unitOfWork, IServicePlatForm servicePlatForm) : base(unitOfWork)
+        public PlatFormController(IServicePlatForm servicePlatForm)
         {
             _servicePlatForm = servicePlatForm;
 
@@ -26,7 +24,6 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _servicePlatForm.Create(request);
-                Commit();
                 return Request.CreateResponse(HttpStatusCode.Created, response);
             }
             catch (ValidationException ex)
@@ -40,7 +37,6 @@ namespace SocialGames.Api.Controllers
         public HttpResponseMessage GetAll()
         {
             var response = _servicePlatForm.GetAll();
-            Commit();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
@@ -51,7 +47,6 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _servicePlatForm.GetById(id);
-                Commit();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (ValidationException ex)
@@ -67,7 +62,6 @@ namespace SocialGames.Api.Controllers
             try
             {
                 var response = _servicePlatForm.Update(id, request);
-                Commit();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (ValidationException ex)
@@ -83,7 +77,6 @@ namespace SocialGames.Api.Controllers
             try
             {
                 _servicePlatForm.Delete(id);
-                Commit();
                 return Request.CreateResponse(HttpStatusCode.NoContent);
             }
             catch (ValidationException ex)

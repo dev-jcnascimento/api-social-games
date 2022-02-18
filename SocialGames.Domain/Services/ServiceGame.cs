@@ -24,7 +24,7 @@ namespace SocialGames.Domain.Services
         {
             _ServicePlatForm.GetById(request.PlatFormId);
 
-            if (_RepositoryGame.Exists(x => x.Name.ToString().ToLower() == request.Name.ToString().ToLower() 
+            if (_RepositoryGame.Exists(x => x.Name.ToString().ToLower() == request.Name.ToString().ToLower()
             && x.PlatFormId == request.PlatFormId))
             {
                 throw new ValidationException("This Game already exists in Platform!");
@@ -32,25 +32,28 @@ namespace SocialGames.Domain.Services
 
             var game = new Game(request.Name, request.Description, request.Producer, request.Gender, request.Distributor, request.PlatFormId);
 
-            var response = _RepositoryGame.Create(game);
-            return (GameResponse)game;
+            var result = _RepositoryGame.Create(game);
+            var test = _RepositoryGame.List(x => x.PlatForm).Where(x => x.Id == result.Id).FirstOrDefault();
+            return (GameResponse)result;
         }
         public IEnumerable<GameResponse> GetAll()
         {
-            return _RepositoryGame.List().ToList().Select(x => (GameResponse)x).ToList();
+            return _RepositoryGame.List(x => x.PlatForm).ToList().Select(x => (GameResponse)x).ToList();
         }
         public GameResponse GetById(Guid id)
         {
             var game = ExistGame(id);
-            return (GameResponse)game;
+            var result = _RepositoryGame.List(x => x.PlatForm).Single(x => x.Id == game.Id);
+
+            return (GameResponse)result;
         }
 
         public GameResponse Update(Guid id, UpdateGameRequest request)
         {
             var game = ExistGame(id);
             game.UpdateGame(request.Name, request.Description, request.Producer, request.Gender, request.Distributor);
-            var response = _RepositoryGame.Update(game);
-            return (GameResponse)response;
+            var result = _RepositoryGame.Update(game);
+            return (GameResponse)result;
         }
 
         public void Delete(Guid id)

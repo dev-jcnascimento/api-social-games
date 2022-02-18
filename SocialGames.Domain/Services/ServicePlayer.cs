@@ -45,8 +45,9 @@ namespace SocialGames.Domain.Services
             {
                 throw new ValidationException("This User already exists!");
             }
-            player = _repositoryPlayer.Create(player);
-            return (PlayerResponse)player;
+
+            var result = _repositoryPlayer.Create(player);
+            return (PlayerResponse)result;
         }
 
         public IEnumerable<PlayerResponse> GetAll()
@@ -78,9 +79,9 @@ namespace SocialGames.Domain.Services
             var name = new Name(request.FirstName, request.LastName);
 
             player.UpdatePlayer(name, email, player.Status);
-            player = _repositoryPlayer.Update(player);
+            var result = _repositoryPlayer.Update(player);
 
-            return (PlayerResponse)player;
+            return (PlayerResponse)result;
         }
         public void Delete(Guid id)
         {

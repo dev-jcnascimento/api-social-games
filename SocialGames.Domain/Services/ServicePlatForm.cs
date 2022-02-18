@@ -21,16 +21,16 @@ namespace SocialGames.Domain.Services
 
         public PlatFormResponse Create(CreatePlatFormRequest request)
         {
-            PlatForm platForm = new PlatForm(request.Name);
+            var platForm = new PlatForm(request.Name);
             if (_repositoryPlatForm.Exists(
-                x => x.Name.ToString().ToLower().Replace(" ", "") == 
+                x => x.Name.ToString().ToLower().Replace(" ", "") ==
                 request.Name.ToString().ToLower().Replace(" ", "")))
             {
                 throw new ValidationException("This PlatForm already exists!");
             }
-            platForm = _repositoryPlatForm.Create(platForm);
+            var result = _repositoryPlatForm.Create(platForm);
 
-            return (PlatFormResponse)platForm;
+            return (PlatFormResponse)result;
 
         }
 
@@ -51,15 +51,15 @@ namespace SocialGames.Domain.Services
             var platForm = ExistPlatForm(id);
 
             platForm.ChancePlatForm(request.Name);
-            _repositoryPlatForm.Update(platForm);
+            var result = _repositoryPlatForm.Update(platForm);
 
-            return (PlatFormResponse)platForm;
+            return (PlatFormResponse)result;
         }
         public void Delete(Guid id)
         {
-           var platForm = ExistPlatForm(id);
+            var platForm = ExistPlatForm(id);
 
-            _repositoryPlatForm.Delete(platForm);  
+            _repositoryPlatForm.Delete(platForm);
         }
 
         private PlatForm ExistPlatForm(Guid id)

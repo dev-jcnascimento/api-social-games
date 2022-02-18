@@ -1,7 +1,10 @@
-﻿namespace SocialGames.Domain.Arguments.MyGame
+﻿using System;
+
+namespace SocialGames.Domain.Arguments.MyGame
 {
     public class MyGameResponse
     {
+        public Guid Id { get; set; }
         public string Date { get; set; }
         public string Player { get; set; }
         public string Game { get; set; }
@@ -11,6 +14,7 @@
         {
             return new MyGameResponse()
             {
+                Id = entity.Id,
                 Date = entity.Date.ToString(),
                 Player = entity.Player.Name.ToString(),
                 Game = entity.Game.Name.ToString(),

@@ -97,8 +97,6 @@
     <Compile Include="Persistence\Seeding.cs" />
     <Compile Include="Persistence\SocialGamesContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Transactions\IUnitOfWork.cs" />
-    <Compile Include="Transactions\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SocialGames.Domain\SocialGames.Domain.csproj">
