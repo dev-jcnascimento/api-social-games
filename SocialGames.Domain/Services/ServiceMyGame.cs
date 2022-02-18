@@ -44,7 +44,25 @@ namespace SocialGames.Domain.Services
 
         public IEnumerable<MyGameResponse> GetAll()
         {
-            return _repositoryMyGame.List(x => x.Game, y => y.Player).ToList().Select(x => (MyGameResponse)x).ToList();
+            var myGames = _repositoryMyGame.List(x => x.Game, y => y.Player).ToList();
+
+            List<MyGameResponse> listMyGame = new List<MyGameResponse>();
+            foreach (var myGame in myGames)
+            {
+                var platform = _servicePlatForm.GetById(myGame.Game.PlatFormId);
+                listMyGame.Add(new MyGameResponse()
+                {
+                    Id = myGame.Id,
+                    Date = myGame.Date.ToString(),
+                    PlayerName = myGame.Player.Name.ToString(),
+                    GameName = myGame.Game.Name,
+                    GameId = myGame.GameId,
+                    StatusGame = myGame.MyGameStatus.ToString(),
+                    PlatformId = platform.Id,
+                    PlatformName = platform.Name,
+                }); 
+            }
+            return listMyGame;
         }
 
         public MyGameResponse GetById(Guid id)

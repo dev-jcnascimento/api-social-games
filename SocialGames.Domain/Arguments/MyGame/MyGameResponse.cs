@@ -7,8 +7,10 @@ namespace SocialGames.Domain.Arguments.MyGame
         public Guid Id { get; set; }
         public string Date { get; set; }
         public string PlayerName { get; set; }
+        public Guid GameId { get; set; }
         public string GameName { get; set; }
         public string StatusGame { get; set; }
+        public Guid PlatformId { get; set; }
         public string PlatformName { get; set; }
 
         public static explicit operator MyGameResponse(Entities.MyGame entity)
@@ -19,8 +21,10 @@ namespace SocialGames.Domain.Arguments.MyGame
                 Date = entity.Date.ToString(),
                 PlayerName = entity.Player.Name.ToString(),
                 GameName = entity.Game.Name,
+                GameId = entity.GameId,
                 StatusGame = entity.MyGameStatus.ToString(),
-                PlatformName = entity.Game.PlatFormId.ToString(),
+                PlatformId = entity.Game.PlatFormId,
+                PlatformName = entity.Game.PlatForm.Name.ToString(),
 
             };
         }

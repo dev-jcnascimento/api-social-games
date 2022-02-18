@@ -1,5 +1,4 @@
-﻿using SocialGames.Domain.Arguments.Base;
-using SocialGames.Domain.Arguments.PlatForm;
+﻿using SocialGames.Domain.Arguments.PlatForm;
 using SocialGames.Domain.Entities;
 using SocialGames.Domain.Interfaces.Repositories;
 using SocialGames.Domain.Interfaces.Services;
@@ -13,10 +12,12 @@ namespace SocialGames.Domain.Services
     public class ServicePlatForm : IServicePlatForm
     {
         private readonly IRepositoryPlatForm _repositoryPlatForm;
+        private readonly IRepositoryGame _repositoryGame;
 
-        public ServicePlatForm(IRepositoryPlatForm repositoryPlatForm)
+        public ServicePlatForm(IRepositoryPlatForm repositoryPlatForm, IRepositoryGame repositoryGame)
         {
             _repositoryPlatForm = repositoryPlatForm;
+            _repositoryGame = repositoryGame;
         }
 
         public PlatFormResponse Create(CreatePlatFormRequest request)
@@ -58,7 +59,8 @@ namespace SocialGames.Domain.Services
         public void Delete(Guid id)
         {
             var platForm = ExistPlatForm(id);
-
+            var game = _repositoryGame.List().Any(x => x.PlatFormId == id);
+            if (game == true) throw new ValidationException("This Platform Id is linked to Game!");
             _repositoryPlatForm.Delete(platForm);
         }
 
