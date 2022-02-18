@@ -13,10 +13,12 @@ namespace SocialGames.Domain.Entities
         protected Comment()
         {
         }
-        public Comment(string description)
+        public Comment(string description, Guid myGameId)
         {
             DateTime = DateTime.Now;
             Description = description;
+            if (myGameId == Guid.Empty) throw new ValidationException("MyGameId not empty!");
+            MyGameId = myGameId;
         }
         public void Update(string description)
         {

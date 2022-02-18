@@ -92,6 +92,10 @@
     <Compile Include="Migrations\202202181447000_Refactoring_Player.designer.cs">
       <DependentUpon>202202181447000_Refactoring_Player.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202182049162_Implemention_Commet.cs" />
+    <Compile Include="Migrations\202202182049162_Implemention_Commet.designer.cs">
+      <DependentUpon>202202182049162_Implemention_Commet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\Map\MapComment.cs" />
     <Compile Include="Persistence\Map\MapGame.cs" />
@@ -133,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202181447000_Refactoring_Player.resx">
       <DependentUpon>202202181447000_Refactoring_Player.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202182049162_Implemention_Commet.resx">
+      <DependentUpon>202202182049162_Implemention_Commet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

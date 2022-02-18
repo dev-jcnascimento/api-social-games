@@ -6,6 +6,7 @@ namespace SocialGames.Domain.Arguments.MyGame
     {
         public Guid Id { get; set; }
         public string Date { get; set; }
+        public Guid PlayerId { get; set; }
         public string PlayerName { get; set; }
         public Guid GameId { get; set; }
         public string GameName { get; set; }
@@ -19,6 +20,7 @@ namespace SocialGames.Domain.Arguments.MyGame
             {
                 Id = entity.Id,
                 Date = entity.Date.ToString(),
+                PlayerId = entity.PlayerId,
                 PlayerName = entity.Player.Name.ToString(),
                 GameName = entity.Game.Name,
                 GameId = entity.GameId,
