@@ -1,5 +1,4 @@
-﻿using SocialGames.Domain.Arguments.Base;
-using SocialGames.Domain.Arguments.Player;
+﻿using SocialGames.Domain.Arguments.Player;
 using SocialGames.Domain.Entities;
 using SocialGames.Domain.Extensions;
 using SocialGames.Domain.Interfaces.Repositories;
@@ -15,10 +14,12 @@ namespace SocialGames.Domain.Services
     public class ServicePlayer : IServicePlayer
     {
         private readonly IRepositoryPlayer _repositoryPlayer;
+        private readonly IRepositoryMyGame _repositoryMyGame;
 
-        public ServicePlayer(IRepositoryPlayer repositoryPlayer)
+        public ServicePlayer(IRepositoryPlayer repositoryPlayer, IRepositoryMyGame repositoryMyGame)
         {
             _repositoryPlayer = repositoryPlayer;
+            _repositoryMyGame = repositoryMyGame;
         }
 
         public AuthenticatePlayerResponse Authenticate(AuthenticatePlayerRequest request)
@@ -86,7 +87,8 @@ namespace SocialGames.Domain.Services
         public void Delete(Guid id)
         {
             var player = ExistPlayer(id);
-
+            var myGame = _repositoryMyGame.List().Any(x => x.PlayerId == id);
+            if (myGame == true) throw new ValidationException("This Player Id is linked to MyGame!");
             _repositoryPlayer.Delete(player);
         }
 
