@@ -1,4 +1,5 @@
-﻿using SocialGames.Domain.Arguments.MyGame;
+﻿using Canducci.Pagination;
+using SocialGames.Domain.Arguments.MyGame;
 using SocialGames.Domain.Interfaces.Services;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -35,9 +36,9 @@ namespace SocialGames.Api.Controllers
 
         [Route("")]
         [HttpGet]
-        public HttpResponseMessage GetAll()
+        public HttpResponseMessage GetAll(int page,int size)
         {
-            var response = _serviceMyGame.GetAll();
+            var response = _serviceMyGame.GetAll().ToPaginated(page,size);
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 

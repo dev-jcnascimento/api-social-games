@@ -35,6 +35,7 @@ namespace SocialGames.Domain.Services
                 throw new ValidationException("This game already exists for this player ");
             }
             var result = _repositoryMyGame.Create(myGame);
+            result = _repositoryMyGame.List(x => x.Game, y => y.Player).Where(x => x.Id == result.Id).FirstOrDefault();
 
             return (MyGameResponse)result;
         }
@@ -46,8 +47,10 @@ namespace SocialGames.Domain.Services
 
         public MyGameResponse GetById(Guid id)
         {
-            var myGame = ExistMyGame(id);
-            return (MyGameResponse)myGame;
+            var result = ExistMyGame(id);
+            result = _repositoryMyGame.List(x => x.Game, y => y.Player).Where(x => x.Id == result.Id).FirstOrDefault();
+
+            return (MyGameResponse)result;
         }
         public MyGameResponse Update(Guid id, UpdateMyGameRequest request)
         {
@@ -69,6 +72,7 @@ namespace SocialGames.Domain.Services
 
             myGame.Update(status, request.GameId);
             var result = _repositoryMyGame.Update(myGame);
+            result = _repositoryMyGame.List(x => x.Game, y => y.Player).Where(x => x.Id == result.Id).FirstOrDefault();
 
             return (MyGameResponse)result;
         }
