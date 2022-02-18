@@ -84,6 +84,10 @@
     <Compile Include="Migrations\202202171314040_Refactoring2.designer.cs">
       <DependentUpon>202202171314040_Refactoring2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202181442046_Refactoring1.cs" />
+    <Compile Include="Migrations\202202181442046_Refactoring1.designer.cs">
+      <DependentUpon>202202181442046_Refactoring1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\Map\MapGame.cs" />
     <Compile Include="Persistence\Map\MapMyGame.cs" />
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202171314040_Refactoring2.resx">
       <DependentUpon>202202171314040_Refactoring2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202181442046_Refactoring1.resx">
+      <DependentUpon>202202181442046_Refactoring1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
