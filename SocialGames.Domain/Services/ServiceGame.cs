@@ -33,7 +33,7 @@ namespace SocialGames.Domain.Services
             var game = new Game(request.Name, request.Description, request.Producer, request.Gender, request.Distributor, request.PlatFormId);
 
             var result = _RepositoryGame.Create(game);
-            var test = _RepositoryGame.List(x => x.PlatForm).Where(x => x.Id == result.Id).FirstOrDefault();
+            result = _RepositoryGame.List(x => x.PlatForm).Where(x => x.Id == result.Id).FirstOrDefault();
             return (GameResponse)result;
         }
         public IEnumerable<GameResponse> GetAll()
@@ -42,8 +42,8 @@ namespace SocialGames.Domain.Services
         }
         public GameResponse GetById(Guid id)
         {
-            var game = ExistGame(id);
-            var result = _RepositoryGame.List(x => x.PlatForm).Single(x => x.Id == game.Id);
+            var result = ExistGame(id);
+            result = _RepositoryGame.List(x => x.PlatForm).Where(x => x.Id == result.Id).FirstOrDefault();
 
             return (GameResponse)result;
         }
@@ -53,6 +53,8 @@ namespace SocialGames.Domain.Services
             var game = ExistGame(id);
             game.UpdateGame(request.Name, request.Description, request.Producer, request.Gender, request.Distributor);
             var result = _RepositoryGame.Update(game);
+            result = _RepositoryGame.List(x => x.PlatForm).Where(x => x.Id == result.Id).FirstOrDefault();
+
             return (GameResponse)result;
         }
 
