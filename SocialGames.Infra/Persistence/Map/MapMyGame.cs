@@ -14,7 +14,6 @@ namespace SocialGames.Infra.Persistence.Map
             Property(x => x.MyGameStatus).IsRequired().HasColumnName("Game Status");
             Property(x => x.PlayerId).IsRequired().HasColumnName("PlayerId");
             Property(x => x.GameId).IsRequired().HasColumnName("GameId");
-            
         }
     }
 }

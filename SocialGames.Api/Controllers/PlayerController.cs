@@ -57,34 +57,6 @@ namespace SocialGames.Api.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
             }
         }
-        //[Route("getByIdPlayerPlatforms/{id}")]
-        //[HttpGet]
-        //public HttpResponseMessage GetByIdPlayerPlatforms(Guid id)
-        //{
-        //    try
-        //    {
-        //        var response = _servicePlayer.GetByIdPlayerPlatforms(id);
-        //        return Request.CreateResponse(HttpStatusCode.OK, response);
-        //    }
-        //    catch (ValidationException ex)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
-        //    }
-        //}
-        //[Route("getByIdPlayerGames/{id}")]
-        //[HttpGet]
-        //public HttpResponseMessage GetByIdPlayerGames(Guid id)
-        //{
-        //    try
-        //    {
-        //        var response = _servicePlayer.GetByIdPlayerGames(id);
-        //        return Request.CreateResponse(HttpStatusCode.OK, response);
-        //    }
-        //    catch (ValidationException ex)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
-        //    }
-        //}
 
         [Route("updateAdmin/{id}")]
         [HttpPut]

@@ -1,5 +1,4 @@
 ﻿using SocialGames.Domain.Entities;
-using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
@@ -18,7 +17,8 @@ namespace SocialGames.Infra.Persistence.Map
             Property(p => p.Name.LastName).HasMaxLength(50).IsRequired().HasColumnName("LastName");
             Property(p => p.Password.Word).HasColumnName("Password").IsRequired();
             Property(p => p.Status).IsRequired();
-            HasMany<MyGame>(x => x.MyGames).WithRequired(x => x.Player).HasForeignKey<Guid>(x => x.PlayerId);
+            HasMany(x => x.Games);
+            HasMany(x => x.PlatForms);
         }
     }
 }
