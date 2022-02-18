@@ -13,8 +13,7 @@ namespace SocialGames.Domain.Entities
         public Email Email { get; private set; }
         public Password Password { get; private set; }
         public PlayerStatus Status { get; private set; }
-        public ICollection<PlatForm> PlatForms { get; private set; }
-        public ICollection<Game> Games { get; private set; }
+        public ICollection<MyGame> MyGames { get; private set; }
         protected Player()
         {
         }
