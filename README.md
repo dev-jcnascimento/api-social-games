@@ -9,16 +9,10 @@ utilizando:<br>
 A API foi elaborada tendo como objetivo, aplicar conceitos e princípios: REST, Clean Code e SOLID.
 
 ToDo: <br>
-Renomar EndPoints<br>
-GamePlatForm - Delete<br>
-Finalizar Requests e Responses MyGame.<br>
-Tratamento de erros<br>
 Teste Unitários<br>
-Paginação nos EndPoints<br>
 Implementar Comentários<br>
 Implementer Interesse de Troca e Venda de Games<br>
 Documentação com Postman<br>
-Seendig<br>
 
 
 
@@ -34,4 +28,4 @@ Execute o comando para rodar o projeto:
 
 ## DOCUMENTAÇÃO
 Para ter acesso aos endpoints criados, acesse no navegador:
->https://localhost:/Swagger
+
