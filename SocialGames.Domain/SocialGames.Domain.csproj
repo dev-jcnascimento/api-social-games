@@ -82,6 +82,7 @@
     <Compile Include="Interfaces\Services\IServicePlatForm.cs" />
     <Compile Include="Interfaces\Services\IServicePlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ServiceComment.cs" />
     <Compile Include="Services\ServiceGame.cs" />
     <Compile Include="Services\ServiceMyGame.cs" />
     <Compile Include="Services\ServicePlatForm.cs" />

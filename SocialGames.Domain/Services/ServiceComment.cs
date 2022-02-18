@@ -16,11 +16,12 @@ namespace SocialGames.Domain.Services
         private readonly IRepositoryPlayer _repositoryPlayer;
         private readonly IServiceMyGame _serviceMyGame;
 
-        public ServiceComment(IRepositoryComment repositoryComment, IRepositoryGame repositoryGame, IRepositoryPlayer repositoryPlayer)
+        public ServiceComment(IRepositoryComment repositoryComment, IRepositoryGame repositoryGame, IRepositoryPlayer repositoryPlayer, IServiceMyGame serviceMyGame)
         {
             _repositoryComment = repositoryComment;
             _repositoryGame = repositoryGame;
             _repositoryPlayer = repositoryPlayer;
+            _serviceMyGame = serviceMyGame;
         }
 
         public CommentResponse Create(CreateCommentRequest request)
