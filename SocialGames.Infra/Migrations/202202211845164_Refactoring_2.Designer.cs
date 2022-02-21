@@ -7,13 +7,13 @@ namespace SocialGames.Infra.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Inicial : IMigrationMetadata
+    public sealed partial class Refactoring_2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Inicial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Refactoring_2));
         
         string IMigrationMetadata.Id
         {
-            get { return "202202041838178_Inicial"; }
+            get { return "202202211845164_Refactoring_2"; }
         }
         
         string IMigrationMetadata.Source

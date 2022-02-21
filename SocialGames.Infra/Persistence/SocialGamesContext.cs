@@ -11,10 +11,11 @@ namespace SocialGames.Infra.Persistence
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
         }
-        public IDbSet<Player> Players { get; set; }
-        public IDbSet<Game> Games { get; set; }
-        public IDbSet<PlatForm> PlatForms { get; set; }
-        public IDbSet<MyGame> MyGames { get; set; }
+        public IDbSet<Player> Player { get; set; }
+        public IDbSet<Game> Game { get; set; }
+        public IDbSet<PlatForm> PlatForm { get; set; }
+        public IDbSet<MyGame> MyGame { get; set; }
+        public IDbSet<Comment> Comment { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelbuilder)
         {

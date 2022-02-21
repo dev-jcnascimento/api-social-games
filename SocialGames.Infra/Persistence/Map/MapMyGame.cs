@@ -7,7 +7,7 @@ namespace SocialGames.Infra.Persistence.Map
     {
         public MapMyGame()
         {
-            ToTable("MyGames");
+            ToTable("MyGame");
 
             HasKey(x => x.Id);
             Property(x => x.Date).IsRequired().HasColumnName("Date");

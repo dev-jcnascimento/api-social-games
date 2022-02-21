@@ -12,8 +12,8 @@ namespace SocialGames.Infra.Persistence
             using (var _context = new SocialGamesContext())
             {
 
-                if (_context.Players.Any() || _context.PlatForms.Any() || _context.Games.Any()
-                    || _context.MyGames.Any())
+                if (_context.Player.Any() || _context.PlatForm.Any() || _context.Game.Any()
+                    || _context.MyGame.Any())
                 {
                     return;
                 }
@@ -88,51 +88,78 @@ namespace SocialGames.Infra.Persistence
                 var game11 = new Game("Gran Turismo", "Uma breve descrição do jogo Gran Turismo",
                     "SCEA", "Driving, Racing, GT / Street", "SCEA", platForm3.Id);
 
-                var date = System.DateTime.Now;
+                var comment1 = new Comment("Where it goes beyond a typical first person shooter is in its story " +
+                    "telling. The graphics engine is so realistic that you feel like you are participating in a movie." +
+                    " The character's facial animation is incredible. It's done so well, you can get a sense of how " +
+                    "the characters are feeling.", game6.Id, player2.Id);
+
+                var comment2 = new Comment("We can talk hours and hours about it, but it won't change the fact that " +
+                    "Grand Theft Auto IV is a very good game. The brand new video editor will offer tons and tons of " +
+                    "extra gameplay and makes up for a lot of the waiting time the PC-gamers had to endure. Gamers" +
+                    " that still aren't satisfied can wait for the hundreds or so mods that will appear after the " +
+                    "release. And with that enough gaming material to last at least until Grand Theft Auto V shows" +
+                    " up.", game1.Id, player1.Id);
+
+                var comment3 = new Comment("Half-Life 2 has astonished us from start to finish. Valve has done to the " +
+                    "FPS genre what restaurants in Chinatown do to ducks; shredded it, smothered it in a delicious " +
+                    "sauce of their own devising, and served it up in a way which you simply couldn't have imagined " +
+                    "when looking at them in the pond.", game7.Id, player3.Id);
+
 
                 var myGame1 = new MyGame(player1.Id, game1.Id);
                 var myGame2 = new MyGame(player1.Id, game11.Id);
                 var myGame3 = new MyGame(player1.Id, game10.Id);
                 var myGame4 = new MyGame(player1.Id, game4.Id);
                 var myGame5 = new MyGame(player2.Id, game4.Id);
-                var myGame6 = new MyGame(player2.Id, game11.Id);
+                var myGame6 = new MyGame(player2.Id, game6.Id);
                 var myGame7 = new MyGame(player3.Id, game9.Id);
                 var myGame8 = new MyGame(player3.Id, game7.Id);
 
-                _context.Players.Add(player1);
-                _context.Players.Add(player2);
-                _context.Players.Add(player3);
-                _context.Players.Add(player4);
-                _context.Players.Add(player5);
+                _context.Player.Add(player1);
+                _context.Player.Add(player2);
+                _context.Player.Add(player3);
+                _context.Player.Add(player4);
+                _context.Player.Add(player5);
 
-                _context.PlatForms.Add(platForm1);
-                _context.PlatForms.Add(platForm2);
-                _context.PlatForms.Add(platForm3);
-                _context.PlatForms.Add(platForm4);
-                _context.PlatForms.Add(platForm5);
 
-                _context.Games.Add(game1);
-                _context.Games.Add(game2);
-                _context.Games.Add(game3);
-                _context.Games.Add(game4);
-                _context.Games.Add(game5);
-                _context.Games.Add(game6);
-                _context.Games.Add(game7);
-                _context.Games.Add(game8);
-                _context.Games.Add(game9);
-                _context.Games.Add(game10);
-                _context.Games.Add(game11);
 
-                _context.MyGames.Add(myGame1);
-                _context.MyGames.Add(myGame2);
-                _context.MyGames.Add(myGame3);
-                _context.MyGames.Add(myGame4);
-                _context.MyGames.Add(myGame5);
-                _context.MyGames.Add(myGame6);
-                _context.MyGames.Add(myGame7);
-                _context.MyGames.Add(myGame8);
+                _context.PlatForm.Add(platForm1);
+                _context.PlatForm.Add(platForm2);
+                _context.PlatForm.Add(platForm3);
+                _context.PlatForm.Add(platForm4);
+                _context.PlatForm.Add(platForm5);
 
-                _context.SaveChangesAsync();
+
+
+                _context.Game.Add(game1);
+                _context.Game.Add(game2);
+                _context.Game.Add(game3);
+                _context.Game.Add(game4);
+                _context.Game.Add(game5);
+                _context.Game.Add(game6);
+                _context.Game.Add(game7);
+                _context.Game.Add(game8);
+                _context.Game.Add(game9);
+                _context.Game.Add(game10);
+                _context.Game.Add(game11);
+
+
+
+                _context.MyGame.Add(myGame1);
+                _context.MyGame.Add(myGame2);
+                _context.MyGame.Add(myGame3);
+                _context.MyGame.Add(myGame4);
+                _context.MyGame.Add(myGame5);
+                _context.MyGame.Add(myGame6);
+                _context.MyGame.Add(myGame7);
+                _context.MyGame.Add(myGame8);
+
+               
+                _context.Comment.Add(comment1);
+                _context.Comment.Add(comment2);
+                _context.Comment.Add(comment3);
+
+                _context.SaveChanges();
             }
         }
     }
