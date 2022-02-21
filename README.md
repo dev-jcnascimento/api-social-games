@@ -45,5 +45,6 @@ Execute o comando para rodar o projeto:
 >dotnet run --project SocialGames.Api
 
 ## DOCUMENTAÇÃO
-Para ter acesso aos endpoints criados, acesse no navegador:
+Para ter acesso aos endpoints criados, utilizando Pastman,<br>
+use ferramenta de import e entre o link: https://www.getpostman.com/collections/ad309759374c39648e69
 
