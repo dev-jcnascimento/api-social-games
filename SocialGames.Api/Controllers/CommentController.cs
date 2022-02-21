@@ -55,13 +55,13 @@ namespace SocialGames.Api.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
             }
         }
-        [Route("getBy/{gameId}")]
+        [Route("getByGame/{id}")]
         [HttpGet]
-        public HttpResponseMessage GetByGameId(Guid gameId)
+        public HttpResponseMessage GetByGameId(Guid id)
         {
             try
             {
-                var response = _serviceComment.GetByGameId(gameId);
+                var response = _serviceComment.GetByGameId(id);
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (ValidationException ex)
@@ -69,13 +69,13 @@ namespace SocialGames.Api.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound, ex.Message);
             }
         }
-        [Route("getBy/{playerId}")]
+        [Route("getByPlayer/{id}")]
         [HttpGet]
-        public HttpResponseMessage GetByPlayerId(Guid playerId)
+        public HttpResponseMessage GetByPlayerId(Guid id)
         {
             try
             {
-                var response = _serviceComment.GetByPlayerId(playerId);
+                var response = _serviceComment.GetByPlayerId(id);
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (ValidationException ex)
