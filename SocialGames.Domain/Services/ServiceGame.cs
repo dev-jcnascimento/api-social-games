@@ -13,12 +13,14 @@ namespace SocialGames.Domain.Services
     {
         private readonly IRepositoryGame _repositoryGame;
         private readonly IRepositoryMyGame _repositoryMyGame;
+        private readonly IRepositoryComment _repositoryComment;
         private readonly IServicePlatForm _servicePlatForm;
 
-        public ServiceGame(IRepositoryGame repositoryGame, IRepositoryMyGame repositoryMyGame, IServicePlatForm servicePlatForm)
+        public ServiceGame(IRepositoryGame repositoryGame, IRepositoryMyGame repositoryMyGame, IRepositoryComment repositoryComment, IServicePlatForm servicePlatForm)
         {
             _repositoryGame = repositoryGame;
             _repositoryMyGame = repositoryMyGame;
+            _repositoryComment = repositoryComment;
             _servicePlatForm = servicePlatForm;
         }
 
@@ -72,6 +74,8 @@ namespace SocialGames.Domain.Services
             var game = ExistGame(id);
             var myGame = _repositoryMyGame.List(x => x.Game).Any(x => x.GameId == id);
             if (myGame == true) throw new ValidationException("This Game Id is linked to MyGame!");
+            var comment = _repositoryComment.List(x => x.Game).Any(x => x.GameId == id);
+            if (comment == true) throw new ValidationException("This Game Id is linked to Comment!");
             _repositoryGame.Delete(game);
         }
 
