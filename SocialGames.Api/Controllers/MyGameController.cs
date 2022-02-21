@@ -57,13 +57,13 @@ namespace SocialGames.Api.Controllers
             }
         }
 
-        [Route("getBy/{playerId}")]
+        [Route("getByPlayer/{id}")]
         [HttpGet]
-        public HttpResponseMessage GetByPlayerId(Guid playerId, int page = 1, int size = 5)
+        public HttpResponseMessage GetByPlayerId(Guid id, int page = 1, int size = 5)
         {
             try
             {
-                var response = _serviceMyGame.GetByPlayerId(playerId).ToPaginated(page, size);
+                var response = _serviceMyGame.GetByPlayerId(id).ToPaginated(page, size);
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (ValidationException ex)
