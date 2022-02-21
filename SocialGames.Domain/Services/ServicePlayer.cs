@@ -15,11 +15,13 @@ namespace SocialGames.Domain.Services
     {
         private readonly IRepositoryPlayer _repositoryPlayer;
         private readonly IRepositoryMyGame _repositoryMyGame;
+        private readonly IRepositoryComment _repositoryComment;
 
-        public ServicePlayer(IRepositoryPlayer repositoryPlayer, IRepositoryMyGame repositoryMyGame)
+        public ServicePlayer(IRepositoryPlayer repositoryPlayer, IRepositoryMyGame repositoryMyGame, IRepositoryComment repositoryComment)
         {
             _repositoryPlayer = repositoryPlayer;
             _repositoryMyGame = repositoryMyGame;
+            _repositoryComment = repositoryComment;
         }
 
         public AuthenticatePlayerResponse Authenticate(AuthenticatePlayerRequest request)
@@ -89,6 +91,8 @@ namespace SocialGames.Domain.Services
             var player = ExistPlayer(id);
             var myGame = _repositoryMyGame.List().Any(x => x.PlayerId == id);
             if (myGame == true) throw new ValidationException("This Player Id is linked to MyGame!");
+            var comment = _repositoryComment.List().Any(x => x.PlayerId == id);
+            if (comment == true) throw new ValidationException("This Player Id is linked to Comment!");
             _repositoryPlayer.Delete(player);
         }
 
