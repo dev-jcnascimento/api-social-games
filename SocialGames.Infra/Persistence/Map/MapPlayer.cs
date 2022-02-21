@@ -18,6 +18,7 @@ namespace SocialGames.Infra.Persistence.Map
             Property(p => p.Password.Word).HasColumnName("Password").IsRequired();
             Property(p => p.Status).IsRequired();
             HasMany(x => x.MyGames);
+            HasMany(x => x.Comments);
         }
     }
 }

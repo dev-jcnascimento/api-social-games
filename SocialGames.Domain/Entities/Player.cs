@@ -14,6 +14,7 @@ namespace SocialGames.Domain.Entities
         public Password Password { get; private set; }
         public PlayerStatus Status { get; private set; }
         public ICollection<MyGame> MyGames { get; private set; }
+        public ICollection<Comment> Comments { get; private set; }
         protected Player()
         {
         }

@@ -1,5 +1,6 @@
 ﻿using SocialGames.Domain.Entities.Base;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace SocialGames.Domain.Entities
@@ -13,6 +14,9 @@ namespace SocialGames.Domain.Entities
         public string Distributor { get; private set; }
         public Guid PlatFormId { get; private set; }
         public PlatForm PlatForm { get; private set; }
+        public ICollection<MyGame> MyGames { get; private set; }
+        public ICollection<Comment> Comments { get; private set; }
+
         protected Game()
         {
         }

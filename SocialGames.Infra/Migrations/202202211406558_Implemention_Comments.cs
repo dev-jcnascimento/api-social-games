@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Implemention_Commet : DbMigration
+    public partial class Implemention_Comments : DbMigration
     {
         public override void Up()
         {
@@ -14,18 +14,23 @@
                         Id = c.Guid(nullable: false),
                         Date = c.DateTime(nullable: false),
                         Description = c.String(nullable: false, maxLength: 500, unicode: false),
-                        MyGameId = c.Guid(nullable: false),
+                        GameId = c.Guid(nullable: false),
+                        PlayerId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.MyGames", t => t.MyGameId)
-                .Index(t => t.MyGameId);
+                .ForeignKey("dbo.Player", t => t.PlayerId)
+                .ForeignKey("dbo.Game", t => t.GameId)
+                .Index(t => t.GameId)
+                .Index(t => t.PlayerId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Comment", "MyGameId", "dbo.MyGames");
-            DropIndex("dbo.Comment", new[] { "MyGameId" });
+            DropForeignKey("dbo.Comment", "GameId", "dbo.Game");
+            DropForeignKey("dbo.Comment", "PlayerId", "dbo.Player");
+            DropIndex("dbo.Comment", new[] { "PlayerId" });
+            DropIndex("dbo.Comment", new[] { "GameId" });
             DropTable("dbo.Comment");
         }
     }

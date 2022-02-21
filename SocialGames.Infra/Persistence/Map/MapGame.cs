@@ -17,6 +17,8 @@ namespace SocialGames.Infra.Persistence.Map
             Property(x => x.Distributor).IsRequired().HasColumnName("Distributor").HasMaxLength(100); 
             Property(x => x.Producer).IsRequired().HasColumnName("Producer").HasMaxLength(100);
             Property(x => x.PlatFormId).IsRequired().HasColumnName("PlatFormId");
+            HasMany(x => x.MyGames);
+            HasMany(x => x.Comments);
         }
     }
 }
