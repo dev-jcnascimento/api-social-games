@@ -39,7 +39,7 @@ Ela é uma idealização de uma rede Social de Games, onde consiste em:<br><p>
     
 + CRUD - Comentários ou Comment, onde uni um Jogador e um Jogo a um Comentário<br>
   Mais um EndPoint de busca por Jogo especificando um Id<br>
-  Mais um EndPoint de busca por Jogador especificando um Id.<br><p>
+  Mais um EndPoint de busca por Jogador especificando um Id.<br>
   https://github.com/juliodive/api-social-games/blob/master/SocialGames.Api/Controllers/CommentController.cs <br><p>
     
 Essa API foi desenvolvida em:<br>
