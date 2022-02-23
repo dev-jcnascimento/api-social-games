@@ -1,4 +1,6 @@
 ## O que é CRUD?
+<p><img src="https://github.com/juliodive/api-social-games/blob/master/img/crud.PNG" alt="O que é Crud?" title="O que é Crud?">
+
 CRUD é a composição da primeira letra de 4 funções básicas de um sistema que trabalha com banco de dados:
 
 ✅ C: Create (criar) - criar um novo registro
@@ -22,14 +24,23 @@ Ela é uma idealização de uma rede Social de Games, onde consiste em:<br><p>
   
 + CRUD - Usuário ou Player<br>
   Mais um EndPoint de atualização de status por um ADMIN,<br>
+  https://github.com/juliodive/api-social-games/blob/master/SocialGames.Api/Controllers/PlayerController.cs <br><p>
+    
 + CRUD - Console ou Platform,<br>
+  https://github.com/juliodive/api-social-games/blob/master/SocialGames.Api/Controllers/PlatFormController.cs <br><p>
+    
 + CRUD - Jogo ou Game, o Jogo é vinculado a um Console<br>
   Mais um EndPoint que busca todos os Jogos de um referente Console por Id,<br>
+  https://github.com/juliodive/api-social-games/blob/master/SocialGames.Api/Controllers/GameController.cs  <br><p>
+    
 + CRUD - Meus Jogos ou MyGame, onde uni o Jogador com os Jogos que ele possue<br>
   Mais um EndPoint que busca todos os Jogos de um Jogador especificado por Id,<br>
+  https://github.com/juliodive/api-social-games/blob/master/SocialGames.Api/Controllers/MyGameController.cs <br><p>
+    
 + CRUD - Comentários ou Comment, onde uni um Jogador e um Jogo a um Comentário<br>
   Mais um EndPoint de busca por Jogo especificando um Id<br>
   Mais um EndPoint de busca por Jogador especificando um Id.<br><p>
+  https://github.com/juliodive/api-social-games/blob/master/SocialGames.Api/Controllers/CommentController.cs <br><p>
     
 Essa API foi desenvolvida em:<br>
 **.NET Framework 4.8**<br>
